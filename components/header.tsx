@@ -1,7 +1,7 @@
 'use client';
 
 import { SignInButton, UserButton, useAuth, Protect } from '@clerk/nextjs';
-import { Home, MicVocal, Zap, Crown } from 'lucide-react';
+import { Home, MicVocal, CloudLightning, Crown } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { DashboardNav } from '@/components/dashboard-nav';
@@ -80,7 +80,7 @@ export const Header = () => {
                           : 'gradient-sunrise text-white hover-glow hover:scale-105 gap-2 shadow-lg transition-all duration-300'
                       }
                     >
-                      <Zap className='h-4 w-4' />
+                      <CloudLightning className='h-4 w-4' />
                       <span className='hidden lg:inline'>Upgrade to Pro</span>
                       <span className='lg:hidden'>Pro</span>
                     </Button>

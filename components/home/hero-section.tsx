@@ -80,7 +80,7 @@ export const HeroSection = async () => {
       {/* Decorative gradient orbs */}
       <div className='absolute top-0 right-0 w-96 h-96 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float'></div>
       <div
-        className='absolute bottom-0 left-0 w-96 h-96 bg-teal-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float'
+        className='absolute bottom-0 left-0 w-96 h-96 bg-orange-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float'
         style={{ animationDelay: '1s' }}
       ></div>
     </section>
