@@ -6,8 +6,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 
 export const HeroSection = async () => {
-  const { userId } = await auth();
-  const isSignedIn = !!userId;
+  const { isAuthenticated } = await auth();
 
   return (
     <section className='relative overflow-hidden mesh-background'>
@@ -34,7 +33,7 @@ export const HeroSection = async () => {
             </p>
           </div>
 
-          {isSignedIn ? (
+          {isAuthenticated ? (
             <div className='space-y-6'>
               <div className='glass-card-strong rounded-2xl p-8 hover-lift'>
                 {/* <PodcastUploader /> */}

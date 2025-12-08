@@ -80,7 +80,7 @@ export const FeaturesSection = () => {
                 <div className='rounded-2xl gradient-sunrise p-4 w-fit mb-6 group-hover:animate-pulse-sunrise transition-all'>
                   <Icon className='h-8 w-8 text-white' />
                 </div>
-                <h3 className='text-2xl font-bold mb-3 group-hover:text-blue-500/80 transition-colors'>
+                <h3 className='text-2xl font-bold mb-3 group-hover:text-blue-500/90 transition-colors'>
                   {feature.title}
                 </h3>
                 <p className='text-gray-600 leading-relaxed'>
