@@ -1,8 +1,7 @@
-@import "tailwindcss";
-@import "tw-animate-css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
 
-@custom-variant dark (&:is(.dark *));
-
+/* Shadcn Core */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -78,40 +77,6 @@
   --sidebar-ring: oklch(0.708 0 0);
 }
 
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
-}
-
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -119,4 +84,251 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* 
+"Sunrise" = name I gave for the core color combinations of the app (blue & orange), embodies blue as the sky and orange as the sun, therefore like a "sunrise" 
+*/
+
+/* Custom theme variables */
+:root {
+  --blue-50: 239 246 255;
+  --blue-100: 219 234 254;
+  --blue-200: 191 219 254;
+  --blue-300: 147 197 253;
+  --blue-400: 96 165 250;
+  --blue-500: 59 130 246;
+  --blue-600: 37 99 235;
+  --blue-700: 29 78 216;
+  --blue-800: 30 64 175;
+  --blue-900: 30 58 138;
+
+  --orange-50: 255 247 237;
+  --orange-100: 255 237 213;
+  --orange-200: 254 215 170;
+  --orange-300: 253 186 116;
+  --orange-400: 251 146 60;
+  --orange-500: 249 115 22;
+  --orange-600: 234 88 12;
+  --orange-700: 194 65 12;
+
+  /* Gradient definitions */
+  --gradient-sunrise: linear-gradient(
+    135deg,
+    rgb(59 130 246) 0%,
+    rgb(249 115 22) 100%
+  );
+  --gradient-sunrise-soft: linear-gradient(
+    135deg,
+    rgb(59 130 246 / 0.1) 0%,
+    rgb(249 115 22 / 0.1) 100%
+  );
+  --gradient-sunrise-glow: linear-gradient(
+    135deg,
+    rgb(59 130 246 / 0.2) 0%,
+    rgb(249 115 22 / 0.3) 100%
+  );
+}
+
+/* Glass morphism design style utilities */
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 2px 8px 0 rgba(31, 38, 135, 0.08);
+}
+
+.glass-card-strong {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 4px 12px 0 rgba(31, 38, 135, 0.1);
+}
+
+.glass-nav {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* Gradient utilities */
+.gradient-sunrise {
+  background: linear-gradient(135deg, rgb(59 130 246) 0%, rgb(249 115 22) 100%);
+}
+
+.gradient-sunrise-text {
+  background: linear-gradient(135deg, rgb(59 130 246) 0%, rgb(249 115 22) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-sunrise-hover {
+  position: relative;
+  overflow: hidden;
+}
+
+.gradient-sunrise-hover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgb(59 130 246) 0%, rgb(249 115 22) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gradient-sunrise-hover:hover::before {
+  opacity: 0.1;
+}
+
+/* Animations */
+@keyframes glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3),
+      0 0 40px rgba(249, 115, 22, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.4),
+      0 0 60px rgba(249, 115, 22, 0.3);
+  }
+}
+
+@keyframes pulse-sunrise {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+/* Utilities for the animations */
+.animate-glow {
+  animation: glow 3s ease-in-out infinite;
+}
+
+.animate-pulse-sunrise {
+  animation: pulse-sunrise 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 2s linear infinite;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(59, 130, 246, 0.1) 50%,
+    transparent 100%
+  );
+  background-size: 1000px 100%;
+}
+
+/* Hover Effects */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+}
+
+.hover-glow {
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.3), 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.hover-scale {
+  transition: transform 0.2s ease;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+/* Sunrise accent borders */
+.border-sunrise-gradient {
+  border-image: linear-gradient(135deg, rgb(59 130 246), rgb(249 115 22)) 1;
+}
+
+.border-l-sunrise-gradient {
+  border-left: 4px solid;
+  border-image: linear-gradient(to bottom, rgb(59 130 246), rgb(249 115 22)) 1;
+  border-image-slice: 1;
+}
+
+/* Sunrise progress bar */
+.progress-sunrise {
+  background: linear-gradient(90deg, rgb(59 130 246) 0%, rgb(249 115 22) 100%);
+}
+
+/* Mesh background patterns */
+.mesh-background {
+  background-color: rgb(239 246 255);
+  background-image: radial-gradient(
+      at 40% 20%,
+      rgb(219 234 254 / 0.5) 0px,
+      transparent 50%
+    ),
+    radial-gradient(at 80% 0%, rgb(191 219 254 / 0.5) 0px, transparent 50%),
+    radial-gradient(at 0% 50%, rgb(147 197 253 / 0.3) 0px, transparent 50%),
+    radial-gradient(at 80% 50%, rgb(96 165 250 / 0.3) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, rgb(59 130 246 / 0.2) 0px, transparent 50%),
+    radial-gradient(at 80% 100%, rgb(249 115 22 / 0.3) 0px, transparent 50%);
+}
+
+.mesh-background-subtle {
+  background: radial-gradient(
+      circle at 20% 30%,
+      rgba(59, 130, 246, 0.05) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 70%,
+      rgba(249, 115, 22, 0.05) 0%,
+      transparent 50%
+    );
+}
+
+/* Clerk Pricing Table text color */
+.cl-pricingTableCardPeriodToggle label,
+.cl-pricingTableCardPeriodToggle span {
+  color: white;
+}
+
+/* Any modal div's z-index from Clerk should appear properly above other UI elements */
+div[role='dialog'],
+div[role='alertdialog'] {
+  z-index: 99999 !important;
 }
