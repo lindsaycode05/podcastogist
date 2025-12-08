@@ -49,7 +49,7 @@ const FEATURES: Feature[] = [
     icon: UsersRound,
     title: 'Speaker-Level Transcript',
     description:
-      'Full transcript with clear speaker labels so you can see who said what and when (Ultra tier only).',
+      'Full transcript with clear speaker labels so you can see who said what and when (Max tier only).',
   },
 ];
 

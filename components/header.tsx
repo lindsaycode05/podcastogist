@@ -1,7 +1,7 @@
 'use client';
 
 import { SignInButton, UserButton, useAuth, Protect } from '@clerk/nextjs';
-import { Home, MicVocal, CloudLightning, Crown } from 'lucide-react';
+import { Home, MicVocal, Plus, Crown } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { DashboardNav } from '@/components/dashboard-nav';
@@ -65,10 +65,10 @@ export const Header = () => {
           <div className='flex items-center gap-2 lg:gap-3'>
             {isSignedIn ? (
               <>
-                {/* Show "Upgrade to Pro" for Free users */}
+                {/* Show "Upgrade to Plus" for Free users */}
                 <Protect
                   condition={(has) =>
-                    !has({ plan: 'pro' }) && !has({ plan: 'ultra' })
+                    !has({ plan: 'plus' }) && !has({ plan: 'max' })
                   }
                   fallback={null}
                 >
@@ -80,17 +80,17 @@ export const Header = () => {
                           : 'gradient-sunrise text-white hover-glow hover:scale-105 gap-2 shadow-lg transition-all duration-300'
                       }
                     >
-                      <CloudLightning className='h-4 w-4' />
-                      <span className='hidden lg:inline'>Upgrade to Pro</span>
-                      <span className='lg:hidden'>Pro</span>
+                      <Plus className='h-4 w-4' />
+                      <span className='hidden lg:inline'>Upgrade to Plus</span>
+                      <span className='lg:hidden'>Plus</span>
                     </Button>
                   </Link>
                 </Protect>
 
-                {/* Show "Upgrade to Ultra" for Pro users */}
+                {/* Show "Upgrade to Max" for Plus users */}
                 <Protect
                   condition={(has) =>
-                    has({ plan: 'pro' }) && !has({ plan: 'ultra' })
+                    has({ plan: 'plus' }) && !has({ plan: 'max' })
                   }
                   fallback={null}
                 >
@@ -103,15 +103,15 @@ export const Header = () => {
                       }
                     >
                       <Crown className='h-4 w-4' />
-                      <span className='hidden lg:inline'>Upgrade to Ultra</span>
-                      <span className='lg:hidden'>Ultra</span>
+                      <span className='hidden lg:inline'>Upgrade to Max</span>
+                      <span className='lg:hidden'>Max</span>
                     </Button>
                   </Link>
                 </Protect>
 
-                {/* Show Ultra badge for Ultra users */}
+                {/* Show Max badge for Max users */}
                 <Protect
-                  condition={(has) => has({ plan: 'ultra' })}
+                  condition={(has) => has({ plan: 'max' })}
                   fallback={null}
                 >
                   <Badge
@@ -122,7 +122,7 @@ export const Header = () => {
                     }
                   >
                     <Crown className='h-3.5 w-3.5' />
-                    <span className='font-semibold'>Ultra</span>
+                    <span className='font-semibold'>Max</span>
                   </Badge>
                 </Protect>
 

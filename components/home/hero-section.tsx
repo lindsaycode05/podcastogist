@@ -30,7 +30,7 @@ export const HeroSection = async () => {
             <p className='text-xl md:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed'>
               Upload your episode audio and get AI-created summaries,
               transcripts, social content, highlight moments, and more - all in
-              just minutes.
+              just moments.
             </p>
           </div>
 
