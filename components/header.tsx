@@ -7,6 +7,7 @@ import { usePathname } from 'next/navigation';
 import { DashboardNav } from '@/components/dashboard-nav';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { PODCASTOGIST_USER_PLANS } from '@/lib/tier-config';
 
 export const Header = () => {
   const { isSignedIn } = useAuth();
@@ -68,7 +69,8 @@ export const Header = () => {
                 {/* Show "Upgrade to Plus" for Free users */}
                 <Protect
                   condition={(has) =>
-                    !has({ plan: 'plus' }) && !has({ plan: 'max' })
+                    !has({ plan: PODCASTOGIST_USER_PLANS.PLUS }) &&
+                    !has({ plan: PODCASTOGIST_USER_PLANS.MAX })
                   }
                   fallback={null}
                 >
@@ -90,7 +92,8 @@ export const Header = () => {
                 {/* Show "Upgrade to Max" for Plus users */}
                 <Protect
                   condition={(has) =>
-                    has({ plan: 'plus' }) && !has({ plan: 'max' })
+                    has({ plan: PODCASTOGIST_USER_PLANS.PLUS }) &&
+                    !has({ plan: PODCASTOGIST_USER_PLANS.MAX })
                   }
                   fallback={null}
                 >
@@ -111,7 +114,9 @@ export const Header = () => {
 
                 {/* Show Max badge for Max users */}
                 <Protect
-                  condition={(has) => has({ plan: 'max' })}
+                  condition={(has) =>
+                    has({ plan: PODCASTOGIST_USER_PLANS.MAX })
+                  }
                   fallback={null}
                 >
                   <Badge
