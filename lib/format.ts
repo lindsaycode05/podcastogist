@@ -56,7 +56,7 @@ export function formatDuration(seconds: number): string {
  *
  * Use Cases:
  * - YouTube timestamps: forceHours=false (shortest format)
- * - Key moments: forceHours=true, padHours=true (consistent length)
+ * - Highlight moments: forceHours=true, padHours=true (consistent length)
  * - Video players: forceHours=true (standard format)
  *
  * Examples:

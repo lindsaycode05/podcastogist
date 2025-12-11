@@ -98,7 +98,7 @@ export interface GenerationOutput {
 
 export const GENERATION_OUTPUTS: GenerationOutput[] = [
   {
-    name: 'Summary',
+    name: 'Recaps',
     icon: FileText,
     description:
       'Producing rich episode overviews packed with key insights and takeaways',

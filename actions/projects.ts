@@ -27,6 +27,7 @@ import { inngest } from '@/inngest/client';
 import { convex } from '@/lib/convex-client';
 import { checkUploadLimits } from '@/lib/tier-utils';
 import { PODCASTOGIST_USER_PLANS } from '@/lib/tier-config';
+import { PODCAST_UPLOADED_EVENT } from '@/lib/events';
 
 /**
  * Validate upload before starting
@@ -158,7 +159,7 @@ export async function createProjectAction(input: CreateProjectInput) {
     // Trigger Inngest workflow asynchronously with user's current plan
     // Event name "podcast/uploaded" matches workflow trigger
     await inngest.send({
-      name: 'podcast/uploaded',
+      name: PODCAST_UPLOADED_EVENT,
       data: {
         projectId, // Convex project ID
         userId,

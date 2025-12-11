@@ -24,8 +24,7 @@
  */
 import { serve } from 'inngest/next';
 import { inngest } from '@/inngest/client';
-// import { podcastProcessor } from '../../../inngest/functions/podcast-processor';
-// import { retryJobFunction } from '../../../inngest/functions/retry-job';
+import { podcastProcessor } from '@/inngest/functions/podcast-processor';
 
 // Force dynamic rendering (disable static optimization)
 // Required because Inngest needs to call this endpoint at runtime
@@ -45,6 +44,5 @@ export const dynamic = 'force-dynamic';
  */
 export const { GET, POST, PUT } = serve({
   client: inngest, // Inngest client instance
-  functions: [], // Array of all Inngest functions to serve
-  //   functions: [podcastProcessor, retryJobFunction], // Array of all Inngest functions to serve
+  functions: [podcastProcessor], // Array of all Inngest functions to serve
 });

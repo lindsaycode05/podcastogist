@@ -1,0 +1,1 @@
+export const PODCAST_UPLOADED_EVENT = 'podcast/uploaded';

@@ -66,7 +66,7 @@ export default defineSchema({
     error: v.optional(
       v.object({
         message: v.string(), // User-friendly error message
-        step: v.string(), // Which job failed (transcription, summary, etc.)
+        step: v.string(), // Which job failed (transcription, recaps, etc.)
         timestamp: v.number(), // When the error occurred
         details: v.optional(
           v.object({
@@ -80,8 +80,8 @@ export default defineSchema({
     // Per-job error tracking - stores errors for individual generation steps
     jobErrors: v.optional(
       v.object({
-        keyMoments: v.optional(v.string()),
-        summary: v.optional(v.string()),
+        highlightMoments: v.optional(v.string()),
+        recaps: v.optional(v.string()),
         socialPosts: v.optional(v.string()),
         titles: v.optional(v.string()),
         hashtags: v.optional(v.string()),
@@ -137,8 +137,8 @@ export default defineSchema({
       })
     ),
 
-    // AI-generated key moments - interesting points for social media clips
-    keyMoments: v.optional(
+    // AI-generated highlight moments - interesting points for social media clips
+    highlightMoments: v.optional(
       v.array(
         v.object({
           time: v.string(), // Human-readable time (e.g., "12:34")
@@ -149,8 +149,8 @@ export default defineSchema({
       )
     ),
 
-    // Podcast summary - multi-format for different use cases
-    summary: v.optional(
+    // Podcast recaps - multi-format for different use cases
+    recaps: v.optional(
       v.object({
         full: v.string(), // 200-300 word overview
         bullets: v.array(v.string()), // 5-7 key points
@@ -193,12 +193,12 @@ export default defineSchema({
       })
     ),
 
-    // YouTube chapter timestamps - enhances navigation and watch time
+    // YouTube timestamps - enhances navigation and watch time
     youtubeTimestamps: v.optional(
       v.array(
         v.object({
           timestamp: v.string(), // Format: "12:34"
-          description: v.string(), // Chapter title/description
+          description: v.string(), // Timestamp title/description
         })
       )
     ),

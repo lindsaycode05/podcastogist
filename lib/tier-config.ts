@@ -41,14 +41,15 @@ export const PLAN_LIMITS: Record<PlanName, PlanLimits> = {
  * Feature names corresponding to Clerk billing features
  * These should match the feature identifiers in Clerk Dashboard
  *
- * Note: Transcription is NOT a feature - it's core functionality available to all plans
  */
 export const FEATURES = {
-  SUMMARY: 'recaps',
+  // * Note: Transcription is NOT a feature - it's core functionality available to all plans
+  // TRANSCRIPTIONS: 'transcriptions',
+  RECAPS: 'recaps',
   SOCIAL_POSTS: 'social_posts',
   TITLES: 'podcast_titles',
   HASHTAGS: 'hashtags',
-  YOUTUBE_TIMESTAMPS: 'youtube_chapters',
+  YOUTUBE_TIMESTAMPS: 'youtube_timestamps',
   HIGHLIGHT_MOMENTS: 'highlight_moments',
   SPEAKER_DIARIZATION: 'full_transcript_speaker_recognition',
 } as const;
@@ -62,15 +63,15 @@ export type FeatureName = (typeof FEATURES)[keyof typeof FEATURES];
  * Note: Transcription is available to ALL plans as core functionality
  */
 export const PLAN_FEATURES: Record<PlanName, FeatureName[]> = {
-  free: [FEATURES.SUMMARY],
+  free: [FEATURES.RECAPS],
   plus: [
-    FEATURES.SUMMARY,
+    FEATURES.RECAPS,
     FEATURES.SOCIAL_POSTS,
     FEATURES.TITLES,
     FEATURES.HASHTAGS,
   ],
   max: [
-    FEATURES.SUMMARY,
+    FEATURES.RECAPS,
     FEATURES.SOCIAL_POSTS,
     FEATURES.TITLES,
     FEATURES.HASHTAGS,
@@ -111,8 +112,8 @@ export const FEATURE_TO_JOB_MAP = {
   [FEATURES.TITLES]: 'podcastTitles',
   [FEATURES.HASHTAGS]: 'hashtags',
   [FEATURES.HIGHLIGHT_MOMENTS]: 'highlightMoments',
-  [FEATURES.YOUTUBE_TIMESTAMPS]: 'youtubeChapters',
-  [FEATURES.SUMMARY]: 'recaps',
+  [FEATURES.YOUTUBE_TIMESTAMPS]: 'youtubeTimestamps',
+  [FEATURES.RECAPS]: 'recaps',
 } as const;
 
 export type JobName =

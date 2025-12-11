@@ -243,7 +243,7 @@ export const updateJobStatus = mutation({
 export const saveGeneratedContent = mutation({
   args: {
     projectId: v.id('projects'),
-    keyMoments: v.optional(
+    highlightMoments: v.optional(
       v.array(
         v.object({
           time: v.string(),
@@ -253,7 +253,7 @@ export const saveGeneratedContent = mutation({
         })
       )
     ),
-    summary: v.optional(
+    recaps: v.optional(
       v.object({
         full: v.string(),
         bullets: v.array(v.string()),
@@ -300,7 +300,7 @@ export const saveGeneratedContent = mutation({
   handler: async (ctx, args) => {
     const { projectId, ...content } = args;
 
-    // Spread all optional content fields (summary, keyMoments, socialPosts, etc.)
+    // Spread all optional content fields (recaps, highlightMoments, socialPosts, etc.)
     // Only provided fields are updated, others remain unchanged
     await ctx.db.patch(projectId, {
       ...content,
@@ -358,8 +358,8 @@ export const saveJobErrors = mutation({
   args: {
     projectId: v.id('projects'),
     jobErrors: v.object({
-      keyMoments: v.optional(v.string()),
-      summary: v.optional(v.string()),
+      highlightMoments: v.optional(v.string()),
+      recaps: v.optional(v.string()),
       socialPosts: v.optional(v.string()),
       titles: v.optional(v.string()),
       hashtags: v.optional(v.string()),
