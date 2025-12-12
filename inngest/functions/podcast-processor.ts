@@ -49,6 +49,7 @@ import { saveResultsToConvex } from '../steps/resolution/save-to-convex';
 import { convex } from '@/lib/convex-client';
 import { PODCAST_UPLOADED_EVENT } from '@/lib/events';
 import { INNGEST_STEPS } from '@/lib/inngest-steps';
+import { PODCAST_PROCESSING_PHASE_STATUS } from '@/lib/constants';
 
 const FUNCTION_NAME = 'podcast-processor';
 
@@ -84,7 +85,7 @@ export const podcastProcessor = inngest.createFunction(
         async () => {
           await convex.mutation(api.projects.updateJobStatus, {
             projectId,
-            transcription: 'running',
+            transcription: PODCAST_PROCESSING_PHASE_STATUS.RUNNING,
           });
         }
       );
@@ -102,7 +103,7 @@ export const podcastProcessor = inngest.createFunction(
         async () => {
           await convex.mutation(api.projects.updateJobStatus, {
             projectId,
-            transcription: 'completed',
+            transcription: PODCAST_PROCESSING_PHASE_STATUS.COMPLETED,
           });
         }
       );
@@ -113,7 +114,7 @@ export const podcastProcessor = inngest.createFunction(
         async () => {
           await convex.mutation(api.projects.updateJobStatus, {
             projectId,
-            contentGeneration: 'running',
+            contentGeneration: PODCAST_PROCESSING_PHASE_STATUS.RUNNING,
           });
         }
       );
@@ -207,7 +208,7 @@ export const podcastProcessor = inngest.createFunction(
         async () => {
           await convex.mutation(api.projects.updateJobStatus, {
             projectId,
-            contentGeneration: 'completed',
+            contentGeneration: PODCAST_PROCESSING_PHASE_STATUS.COMPLETED,
           });
         }
       );

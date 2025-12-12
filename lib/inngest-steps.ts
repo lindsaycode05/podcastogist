@@ -11,6 +11,16 @@ export const INNGEST_STEPS = {
   SAVE_RESULTS_TO_CONVEX: 'save-results-to-convex',
   SAVE_JOB_ERRORS: 'save-job-errors',
 
+  // Invoked only by the retry job
+  SAVE_HIGHLIGHT_MOMENTS: 'save-highlight-moments',
+  SAVE_RECAPS: 'save-recaps',
+  SAVE_SOCIAL_POSTS: 'save-social-posts',
+  SAVE_TITLES: 'save-titles',
+  SAVE_HASHTAGS: 'save-hashtags',
+  SAVE_YOUTUBE_TIMESTAMPS: 'save-youtube-timestamps',
+  CLEAR_JOB_ERROR: 'clear-job-error',
+
+  // Steps where AI services are used within
   AI: {
     GENERATE_HASHTAGS: 'generate-hashtags-with-gpt',
     GENERATE_RECAPS: 'generate-recaps-with-gpt',

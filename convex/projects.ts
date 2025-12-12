@@ -19,6 +19,7 @@
 import { v } from 'convex/values';
 import type { Doc } from './_generated/dataModel';
 import { mutation, query } from './_generated/server';
+import { PODCAST_PROCESSING_PHASE_STATUS } from '../lib/constants';
 
 /**
  * Creates a new project record after file upload
@@ -58,8 +59,8 @@ export const createProject = mutation({
       mimeType: args.mimeType,
       status: 'uploaded',
       jobStatus: {
-        transcription: 'pending',
-        contentGeneration: 'pending',
+        transcription: PODCAST_PROCESSING_PHASE_STATUS.PENDING,
+        contentGeneration: PODCAST_PROCESSING_PHASE_STATUS.PENDING,
       },
       createdAt: now,
       updatedAt: now,
