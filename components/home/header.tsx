@@ -1,7 +1,7 @@
 'use client';
 
 import { SignInButton, UserButton, useAuth, Protect } from '@clerk/nextjs';
-import { Home, MicVocal, Plus, Crown } from 'lucide-react';
+import { Home, MicVocal, Plus, ArrowBigUpDash } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { HeaderRoutes } from '@/components/home/header-routes';
@@ -105,7 +105,7 @@ export const Header = () => {
                           : 'gradient-sunrise text-white hover-glow hover:scale-105 gap-2 shadow-lg transition-all duration-300'
                       }
                     >
-                      <Crown className='h-4 w-4' />
+                      <ArrowBigUpDash className='h-4 w-4' />
                       <span className='hidden lg:inline'>Upgrade to Max</span>
                       <span className='lg:hidden'>Go Max</span>
                     </Button>
@@ -126,7 +126,7 @@ export const Header = () => {
                         : 'gap-1.5 hidden md:flex gradient-sunrise text-white border-0 px-3 py-1.5 shadow-md hover:shadow-lg transition-all duration-300'
                     }
                   >
-                    <Crown className='h-3.5 w-3.5' />
+                    <ArrowBigUpDash className='h-3.5 w-3.5' />
                     <span className='font-semibold'>Max</span>
                   </Badge>
                 </Protect>

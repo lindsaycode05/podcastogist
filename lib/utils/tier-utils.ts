@@ -74,12 +74,14 @@ export const checkUploadLimits = async (
 
   // Check duration limit (if duration provided and plan has limit)
   if (duration && limits.maxDuration && duration > limits.maxDuration) {
-    const durationMinutes = Math.floor(duration / 60);
+    const durationMinutesAndSeconds = `${Math.floor(duration / 60)}m ${
+      duration % 60
+    }s`;
     const limitMinutes = Math.floor(limits.maxDuration / 60);
     return {
       allowed: false,
       reason: 'duration',
-      message: `Duration (${durationMinutes} minutes) exceeds your plan limit of ${limitMinutes} minutes`,
+      message: `Duration (${durationMinutesAndSeconds} minutes) exceeds your plan limit of ${limitMinutes} minutes`,
     };
   }
 

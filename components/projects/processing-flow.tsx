@@ -156,7 +156,7 @@ export const ProcessingFlow = ({
     if (isGenerating)
       return `Creating ${unlockedCount} AI output${
         unlockedCount !== 1 ? 's' : ''
-      } in parallel...`;
+      }${unlockedCount > 1 ? ' in parallel' : ''}...`;
     if (generationComplete) return 'Everything has been generated!';
     return 'Preparing to generate content...';
   }, [
@@ -215,7 +215,8 @@ export const ProcessingFlow = ({
                   Results available soon!
                 </span>{' '}
                 — AI is generating {unlockedOutputs.length} output
-                {unlockedOutputs.length > 1 ? 's' : ''} simultaneously
+                {unlockedOutputs.length > 1 ? 's' : ''}
+                {unlockedOutputs.length > 1 ? ' simultaneously' : ''}
               </p>
             </div>
           </div>

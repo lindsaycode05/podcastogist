@@ -26,7 +26,7 @@
 
 import { AudioLines, Upload } from 'lucide-react';
 import { useCallback, useMemo } from 'react';
-import { useDropzone } from 'react-dropzone';
+import { ErrorCode, useDropzone } from 'react-dropzone';
 import { ALLOWED_AUDIO_TYPES_EXTENSION_MAP } from '@/lib/constants';
 import { cn } from '@/lib/utils/utils';
 import { useAuth } from '@clerk/nextjs';
@@ -81,6 +81,7 @@ export const UploadDropzone = ({
 
   // Extract first rejection error for display
   const errorMessage = fileRejections[0]?.errors[0]?.message;
+  const errorCode = fileRejections[0]?.errors[0]?.code;
 
   return (
     <div className='w-full'>
@@ -140,7 +141,11 @@ export const UploadDropzone = ({
       {/* Error message display */}
       {errorMessage && (
         <div className='mt-4 p-4 rounded-xl bg-red-50 border border-red-200'>
-          <p className='text-sm text-red-600 font-medium'>{errorMessage}</p>
+          <p className='text-sm text-red-600 font-medium'>
+            {errorCode === ErrorCode.FileTooLarge
+              ? `File is larger than ${maxFileSizeLabel}`
+              : errorMessage}
+          </p>
         </div>
       )}
     </div>

@@ -1,6 +1,6 @@
 'use client';
 
-import { FileAudio, Upload } from 'lucide-react';
+import { FileUp, FileVolume } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 
@@ -11,19 +11,19 @@ export const EmptyState = () => {
         <div className='relative mb-8'>
           <div className='absolute inset-0 gradient-sunrise opacity-20 blur-3xl rounded-full'></div>
           <div className='relative rounded-3xl gradient-sunrise p-8 w-fit mx-auto shadow-2xl'>
-            <FileAudio className='h-20 w-20 text-white' />
+            <FileVolume className='h-20 w-20 text-white' />
           </div>
         </div>
         <h3 className='text-3xl font-bold mb-4 text-gray-900'>
           No projects yet
         </h3>
         <p className='text-lg text-gray-600 mb-8 leading-relaxed'>
-          Upload your first podcast to unlock AI-powered insights, recaps, and
-          social content
+          Upload your first podcast to unlock AI-powered insights, key moments,
+          social content and much more!
         </p>
         <Link href='/dashboard/upload'>
           <Button className='gradient-sunrise text-white hover-glow shadow-xl px-8 py-6 text-lg'>
-            <Upload className='mr-2 h-6 w-6' />
+            <FileUp className='mr-2 h-6 w-6' />
             Upload Your First Podcast
           </Button>
         </Link>

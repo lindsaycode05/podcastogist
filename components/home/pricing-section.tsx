@@ -1,11 +1,7 @@
 import { PricingTable } from '@clerk/nextjs';
 import { Loader2 } from 'lucide-react';
 
-interface PricingSectionProps {
-  compact?: boolean;
-}
-
-export const PricingSection = ({ compact = false }: PricingSectionProps) => {
+export const PricingSection = () => {
   return (
     <section className='relative py-24 md:py-32 overflow-hidden'>
       {/* Gradient background */}
@@ -25,7 +21,7 @@ export const PricingSection = ({ compact = false }: PricingSectionProps) => {
           </div>
 
           <div className='flex justify-center w-full'>
-            <div className={compact ? 'max-w-4xl w-full' : 'max-w-6xl w-full'}>
+            <div className='max-w-6xl w-full'>
               <PricingTable
                 appearance={{
                   elements: {
@@ -34,23 +30,23 @@ export const PricingSection = ({ compact = false }: PricingSectionProps) => {
                         'linear-gradient(135deg, rgb(59 130 246), rgb(249 115 22))',
                       color: 'white',
                       borderRadius: '1rem 1rem 0 0',
-                      padding: compact ? '2rem' : '2.5rem',
+                      padding: '2.5rem',
                     },
                     pricingTableCardTitle: {
-                      fontSize: compact ? '1.75rem' : '2.25rem',
+                      fontSize: '2.25rem',
                       fontWeight: '800',
                       color: 'white',
                       marginBottom: '0.5rem',
                     },
                     pricingTableCardDescription: {
-                      fontSize: compact ? '0.95rem' : '1.1rem',
+                      fontSize: '1.1rem',
                       color: 'rgba(255, 255, 255, 0.95)',
                       fontWeight: '500',
                     },
                     pricingTableCardFee: {
                       color: 'white',
                       fontWeight: '800',
-                      fontSize: compact ? '2.5rem' : '3rem',
+                      fontSize: '3rem',
                     },
                     pricingTableCardFeePeriod: {
                       color: 'rgba(255, 255, 255, 0.85)',
@@ -66,14 +62,14 @@ export const PricingSection = ({ compact = false }: PricingSectionProps) => {
                       backdropFilter: 'blur(10px)',
                     },
                     pricingTableCardBody: {
-                      padding: compact ? '2rem' : '2.5rem',
+                      padding: '2.5rem',
                     },
                     pricingTableCardFeatures: {
                       marginTop: '2rem',
                       gap: '1rem',
                     },
                     pricingTableCardFeature: {
-                      fontSize: compact ? '0.95rem' : '1.05rem',
+                      fontSize: '1.05rem',
                       padding: '0.75rem 0',
                       fontWeight: '500',
                     },

@@ -114,6 +114,8 @@ export async function generateMissingFeatures(projectId: Id<'projects'>) {
     generated: missingJobs,
     message: `Generating ${missingJobs.length} feature${
       missingJobs.length > 1 ? 's' : ''
-    }: ${missingJobs.map(humanize).join(', ')}`,
+    }: ${missingJobs
+      .map(humanize)
+      .join(', ')}. They will appear in your project shortly.`,
   };
 }

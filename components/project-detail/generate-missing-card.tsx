@@ -3,7 +3,6 @@
 import { generateMissingFeatures } from '@/actions/generate-missing-features';
 import { Button } from '@/components/ui/button';
 import type { Id } from '@/convex/_generated/dataModel';
-import { MicVocal } from 'lucide-react';
 import { useState } from 'react';
 import { toast } from 'sonner';
 
@@ -29,7 +28,6 @@ export const GenerateMissingCard = ({
       toast.error(
         error instanceof Error ? error.message : 'Failed to generate features'
       );
-      setIsGenerating(false);
     }
   };
 
@@ -48,7 +46,6 @@ export const GenerateMissingCard = ({
         disabled={isGenerating}
         className='gradient-sunrise text-white hover-glow shadow-lg px-6 py-3 gap-2'
       >
-        <MicVocal className='h-5 w-5' />
         {isGenerating ? 'Generating...' : 'Generate All Missing Features'}
       </Button>
       <p className='text-xs text-gray-500'>

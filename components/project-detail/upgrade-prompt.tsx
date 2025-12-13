@@ -5,7 +5,7 @@
  * Used in project detail tabs for features not available on their current plan.
  */
 
-import { Lock, MicVocal, Crown } from 'lucide-react';
+import { Lock, MicVocal, ArrowBigUpDash } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import {
@@ -67,7 +67,7 @@ export const UpgradePrompt = ({
         <div className='bg-gradient-to-br from-blue-50 to-orange-50 rounded-2xl p-6 md:p-8 mb-8 text-left'>
           <div className='flex items-start gap-3 mb-4'>
             {minPlan === PODCASTOGIST_USER_PLANS.MAX ? (
-              <Crown className='h-6 w-6 text-blue-600 mt-0.5 flex-shrink-0' />
+              <ArrowBigUpDash className='h-6 w-6 text-blue-600 mt-0.5 flex-shrink-0' />
             ) : (
               <MicVocal className='h-6 w-6 text-blue-600 mt-0.5 flex-shrink-0' />
             )}
