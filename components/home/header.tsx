@@ -4,7 +4,7 @@ import { SignInButton, UserButton, useAuth, Protect } from '@clerk/nextjs';
 import { Home, MicVocal, Plus, Crown } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { DashboardNav } from '@/components/dashboard-nav';
+import { HeaderRoutes } from '@/components/home/header-routes';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { PODCASTOGIST_USER_PLANS } from '@/lib/tier-config';
@@ -13,7 +13,7 @@ export const Header = () => {
   const { isSignedIn } = useAuth();
   const pathname = usePathname();
   const isDashboard = pathname?.startsWith('/dashboard');
-  const showDashboardNav = isDashboard;
+  const showHeaderRoutes = isDashboard;
 
   return (
     <header
@@ -56,9 +56,9 @@ export const Header = () => {
               </span>
             </Link>
 
-            {showDashboardNav && (
+            {showHeaderRoutes && (
               <div className='flex items-center pl-2 sm:pl-4 border-l border-white/20'>
-                <DashboardNav />
+                <HeaderRoutes />
               </div>
             )}
           </div>
@@ -84,7 +84,7 @@ export const Header = () => {
                     >
                       <Plus className='h-4 w-4' />
                       <span className='hidden lg:inline'>Upgrade to Plus</span>
-                      <span className='lg:hidden'>Plus</span>
+                      <span className='lg:hidden'>Go Plus</span>
                     </Button>
                   </Link>
                 </Protect>
@@ -107,7 +107,7 @@ export const Header = () => {
                     >
                       <Crown className='h-4 w-4' />
                       <span className='hidden lg:inline'>Upgrade to Max</span>
-                      <span className='lg:hidden'>Max</span>
+                      <span className='lg:hidden'>Go Max</span>
                     </Button>
                   </Link>
                 </Protect>
@@ -131,7 +131,7 @@ export const Header = () => {
                   </Badge>
                 </Protect>
 
-                {!showDashboardNav && (
+                {!showHeaderRoutes && (
                   <Link href='/dashboard/projects'>
                     <Button
                       variant='ghost'
@@ -147,7 +147,7 @@ export const Header = () => {
                     </Button>
                   </Link>
                 )}
-                {showDashboardNav && (
+                {showHeaderRoutes && (
                   <Link href='/' className='hidden lg:block'>
                     <Button
                       variant='ghost'

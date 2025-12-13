@@ -33,9 +33,9 @@ import { useState } from 'react';
 import { toast } from 'sonner';
 import { createProjectAction, validateUploadAction } from '@/actions/projects';
 import { Button } from '@/components/ui/button';
-import { UploadDropzone } from '@/components/upload-dropzone';
-import { UploadProgress } from '@/components/upload-progress';
-import { estimateDurationFromSize, getAudioDuration } from '@/lib/audio-utils';
+import { UploadDropzone } from '@/components/upload/upload-dropzone';
+import { UploadProgress } from '@/components/upload/upload-progress';
+import { estimateDurationFromSize, getAudioDuration } from '@/lib/utils/audio-utils';
 import type { UploadStatus } from '@/lib/types';
 import { PODCAST_UPLOAD_STATUS } from '@/lib/constants';
 

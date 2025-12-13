@@ -23,7 +23,7 @@
  */
 'use client';
 
-import { CheckCircle2, Clock, FileAudio, Loader2, XCircle } from 'lucide-react';
+import { CheckCircle2, Clock, FileVolume, Loader2, XCircle } from 'lucide-react';
 import { formatDuration, formatFileSize } from '@/lib/format';
 import type { UploadStatus } from '@/lib/types';
 import { PODCAST_UPLOAD_STATUS } from '@/lib/constants';
@@ -50,7 +50,7 @@ export const UploadProgress = ({
       <div className='space-y-6'>
         <div className='flex items-start gap-5'>
           <div className='rounded-2xl gradient-sunrise p-4 shadow-lg'>
-            <FileAudio className='h-8 w-8 text-white' />
+            <FileVolume className='h-8 w-8 text-white' />
           </div>
 
           <div className='flex-1 min-w-0'>
@@ -133,12 +133,12 @@ export const UploadProgress = ({
                 {/* Helpful hints based on error message */}
                 {error.includes('plan limit') && (
                   <p className='text-xs text-gray-600 mt-3 pt-3 border-t border-red-200'>
-                    💡 Upgrade your plan to upload larger files or more projects
+                    Upgrade your plan to upload larger files or more projects
                   </p>
                 )}
                 {error.includes('Authentication') && (
                   <p className='text-xs text-gray-600 mt-3 pt-3 border-t border-red-200'>
-                    💡 Try refreshing the page or signing in again
+                    Try refreshing the page or signing in again
                   </p>
                 )}
               </div>

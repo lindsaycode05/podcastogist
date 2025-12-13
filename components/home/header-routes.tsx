@@ -1,12 +1,12 @@
 'use client';
 
-import { FolderOpen, Upload } from 'lucide-react';
+import { FileVolume, FileUp } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
+import { cn } from '@/lib/utils/utils';
 
-export const DashboardNav = () => {
+export const HeaderRoutes = () => {
   const pathname = usePathname();
 
   // We will conditionally check and render Projects and Upload tablinks in the nav if the user is on the Projects or Upload page respectively
@@ -30,7 +30,7 @@ export const DashboardNav = () => {
               : 'text-white hover:bg-white/20 hover:scale-105'
           )}
         >
-          <FolderOpen className='h-4 w-4' />
+          <FileVolume className='h-4 w-4' />
           <span className='hidden lg:inline'>Projects</span>
         </Button>
       </Link>
@@ -45,7 +45,7 @@ export const DashboardNav = () => {
               : 'text-white hover:bg-white/20 hover:scale-105'
           )}
         >
-          <Upload className='h-4 w-4' />
+          <FileUp className='h-4 w-4' />
           <span className='hidden lg:inline'>Upload</span>
         </Button>
       </Link>

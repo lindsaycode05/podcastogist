@@ -25,22 +25,35 @@
 'use client';
 
 import { AudioLines, Upload } from 'lucide-react';
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 import { useDropzone } from 'react-dropzone';
-import { ALLOWED_AUDIO_TYPES_EXTENSION_MAP, MAX_FILE_SIZE } from '@/lib/constants';
-import { cn } from '@/lib/utils';
+import { ALLOWED_AUDIO_TYPES_EXTENSION_MAP } from '@/lib/constants';
+import { cn } from '@/lib/utils/utils';
+import { useAuth } from '@clerk/nextjs';
+import { PLAN_LIMITS, PODCASTOGIST_USER_PLANS } from '@/lib/tier-config';
 
 interface UploadDropzoneProps {
   onFileSelect: (file: File) => void; // Callback when valid file is selected
   disabled?: boolean; // Disable during upload
-  maxSize?: number; // Max file size in bytes (default: MAX_FILE_SIZE)
 }
 
 export const UploadDropzone = ({
   onFileSelect,
   disabled = false,
-  maxSize = MAX_FILE_SIZE,
 }: UploadDropzoneProps) => {
+  const { has } = useAuth();
+
+  // Determine user's plan using Clerk's has() method
+  const userPlan = useMemo(() => {
+    if (has?.({ plan: PODCASTOGIST_USER_PLANS.MAX }))
+      return PODCASTOGIST_USER_PLANS.MAX;
+    if (has?.({ plan: PODCASTOGIST_USER_PLANS.PLUS }))
+      return PODCASTOGIST_USER_PLANS.PLUS;
+    return PODCASTOGIST_USER_PLANS.FREE;
+  }, [has]);
+  const maxFileSize = PLAN_LIMITS[userPlan].maxFileSize;
+  const maxFileSizeLabel = PLAN_LIMITS[userPlan].maxFileSizeLabel;
+
   /**
    * Handle accepted files from dropzone
    *
@@ -61,7 +74,7 @@ export const UploadDropzone = ({
     useDropzone({
       onDrop,
       accept: ALLOWED_AUDIO_TYPES_EXTENSION_MAP,
-      maxSize, // File size limit (validates before upload)
+      maxSize: maxFileSize, // File size limit (validates before upload)
       maxFiles: 1, // Only allow single file selection
       disabled, // Disable dropzone during upload
     });
@@ -117,7 +130,7 @@ export const UploadDropzone = ({
                 Supports: MP3, WAV, M4A, FLAC, OGG, AAC, and more
               </p>
               <p className='text-sm text-gray-500 font-semibold'>
-                Maximum file size: {Math.round(maxSize / (1024 * 1024))}MB
+                Maximum file size: {maxFileSizeLabel}
               </p>
             </div>
           </div>
