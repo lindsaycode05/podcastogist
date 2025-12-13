@@ -12,6 +12,7 @@ export type PlanName = 'free' | 'plus' | 'max';
 export interface PlanLimits {
   maxProjects: number | null; // null = unlimited
   maxFileSize: number; // bytes
+  maxFileSizeLabel: string; // human-readable label
   maxDuration: number | null; // seconds, null = unlimited
 }
 
@@ -23,16 +24,19 @@ export const PLAN_LIMITS: Record<PlanName, PlanLimits> = {
   free: {
     maxProjects: 3, // lifetime, including deleted
     maxFileSize: 10 * 1024 * 1024, // 10MB
+    maxFileSizeLabel: '10MB', // human-readable label
     maxDuration: 600, // 10 minutes
   },
   plus: {
     maxProjects: 30, // active projects only
     maxFileSize: 200 * 1024 * 1024, // 200MB
+    maxFileSizeLabel: '200MB', // human-readable label
     maxDuration: 7200, // 2 hours
   },
   max: {
     maxProjects: null, // unlimited
     maxFileSize: 3 * 1024 * 1024 * 1024, // 3GB
+    maxFileSizeLabel: '3GB', // human-readable label
     maxDuration: null, // unlimited
   },
 };
