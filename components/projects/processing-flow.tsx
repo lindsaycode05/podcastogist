@@ -23,7 +23,7 @@ import {
   type FeatureName,
   PODCASTOGIST_USER_PLANS,
 } from '@/lib/tier-config';
-import { getMinimumPlanForFeature } from '@/lib/tier-utils';
+import { getMinimumPlanForFeature } from '@/lib/utils/tier-utils';
 
 interface ProcessingFlowProps {
   transcriptionStatus: PhaseStatus;

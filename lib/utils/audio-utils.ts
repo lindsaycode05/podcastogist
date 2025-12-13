@@ -31,7 +31,7 @@
  * @returns Duration in seconds (floored to integer)
  * @throws Error if file cannot be loaded or is invalid
  */
-export async function getAudioDuration(file: File): Promise<number> {
+export const getAudioDuration = async (file: File): Promise<number> => {
   return new Promise((resolve, reject) => {
     const audio = new Audio();
     // Create temporary URL for file (revoked after use)
@@ -52,7 +52,7 @@ export async function getAudioDuration(file: File): Promise<number> {
     // Start loading audio file
     audio.src = objectUrl;
   });
-}
+};
 
 /**
  * Estimate duration from file size (fallback)
@@ -72,7 +72,7 @@ export async function getAudioDuration(file: File): Promise<number> {
  * @param fileSize - File size in bytes
  * @returns Estimated duration in seconds
  */
-export function estimateDurationFromSize(fileSize: number): number {
+export const estimateDurationFromSize = (fileSize: number): number => {
   // Convert bytes to MB, multiply by 8 (minutes per MB), convert to seconds
   return Math.floor((fileSize / (1024 * 1024)) * 8 * 60);
-}
+};

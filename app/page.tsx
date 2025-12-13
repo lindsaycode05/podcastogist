@@ -1,11 +1,11 @@
-import { Header } from '@/components/header';
+import { Header } from '@/components/home/header';
 import { HeroSection } from '@/components/home/hero-section';
 import { FeaturesSection } from '@/components/home/features-section';
 import { PricingSection } from '@/components/home/pricing-section';
 import { CtaSection } from '@/components/home/cta-section';
 import { Footer } from '@/components/home/footer';
 
-export default function Home() {
+const Home = () => {
   return (
     <div>
       <Header />
@@ -16,4 +16,6 @@ export default function Home() {
       <Footer />
     </div>
   );
-}
+};
+
+export default Home;

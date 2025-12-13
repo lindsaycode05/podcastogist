@@ -25,6 +25,7 @@ import {
   JobName,
 } from '@/lib/tier-config';
 import { PODCAST_RETRY_JOB_EVENT } from '@/lib/events';
+import { humanize } from '@/lib/utils/utils';
 
 /**
  * Generate all missing features for user's current plan
@@ -113,6 +114,6 @@ export async function generateMissingFeatures(projectId: Id<'projects'>) {
     generated: missingJobs,
     message: `Generating ${missingJobs.length} feature${
       missingJobs.length > 1 ? 's' : ''
-    }: ${missingJobs.join(', ')}`,
+    }: ${missingJobs.map(humanize).join(', ')}`,
   };
 }

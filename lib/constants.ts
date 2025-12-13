@@ -8,9 +8,6 @@ import type { LucideIcon } from 'lucide-react';
 import { FileText, Hash, Type, Share2, Crosshair, Youtube } from 'lucide-react';
 import type { PhaseStatus, UploadStatus } from '@/lib/types';
 
-// File upload constraints
-export const MAX_FILE_SIZE = 100 * 1024 * 1024; // 100MB limit
-
 /**
  * Allowed audio MIME types for upload validation
  *
