@@ -8,8 +8,12 @@
 import { api } from '@/convex/_generated/api';
 import { convex } from '@/lib/convex-client';
 import type { PlanName, FeatureName } from '@/lib/tier-config';
-import { FEATURE_TO_JOB_MAP, FEATURES, PODCASTOGIST_USER_PLANS } from '@/lib/tier-config';
-import { planHasFeature } from '@/lib/tier-utils';
+import {
+  FEATURE_TO_JOB_MAP,
+  FEATURES,
+  PODCASTOGIST_USER_PLANS,
+} from '@/lib/tier-config';
+import { planHasFeature } from '@/lib/utils/tier-utils';
 import { inngest } from '../client';
 import { generateHashtags } from '../steps/ai-generation/hashtags';
 import { generateHighlightMoments } from '../steps/ai-generation/highlight-moments';
@@ -90,7 +94,9 @@ export const retryJob = inngest.createFunction(
     // Regenerate the specific job
     try {
       switch (job) {
-        case FEATURE_TO_JOB_MAP[FEATURES.HIGHLIGHT_MOMENTS as keyof typeof FEATURE_TO_JOB_MAP]: {
+        case FEATURE_TO_JOB_MAP[
+          FEATURES.HIGHLIGHT_MOMENTS as keyof typeof FEATURE_TO_JOB_MAP
+        ]: {
           const result = await generateHighlightMoments(transcript);
           await step.run(INNGEST_STEPS.SAVE_HIGHLIGHT_MOMENTS, () =>
             convex.mutation(api.projects.saveGeneratedContent, {
@@ -101,7 +107,9 @@ export const retryJob = inngest.createFunction(
           break;
         }
 
-        case FEATURE_TO_JOB_MAP[FEATURES.RECAPS as keyof typeof FEATURE_TO_JOB_MAP]: {
+        case FEATURE_TO_JOB_MAP[
+          FEATURES.RECAPS as keyof typeof FEATURE_TO_JOB_MAP
+        ]: {
           const result = await generateRecaps(step, transcript);
           await step.run(INNGEST_STEPS.SAVE_RECAPS, () =>
             convex.mutation(api.projects.saveGeneratedContent, {
@@ -112,7 +120,9 @@ export const retryJob = inngest.createFunction(
           break;
         }
 
-        case FEATURE_TO_JOB_MAP[FEATURES.SOCIAL_POSTS as keyof typeof FEATURE_TO_JOB_MAP]: {
+        case FEATURE_TO_JOB_MAP[
+          FEATURES.SOCIAL_POSTS as keyof typeof FEATURE_TO_JOB_MAP
+        ]: {
           const result = await generateSocialPosts(step, transcript);
           await step.run(INNGEST_STEPS.SAVE_SOCIAL_POSTS, () =>
             convex.mutation(api.projects.saveGeneratedContent, {
@@ -123,7 +133,9 @@ export const retryJob = inngest.createFunction(
           break;
         }
 
-        case FEATURE_TO_JOB_MAP[FEATURES.TITLES as keyof typeof FEATURE_TO_JOB_MAP]: {
+        case FEATURE_TO_JOB_MAP[
+          FEATURES.TITLES as keyof typeof FEATURE_TO_JOB_MAP
+        ]: {
           const result = await generateTitles(step, transcript);
           await step.run(INNGEST_STEPS.SAVE_TITLES, () =>
             convex.mutation(api.projects.saveGeneratedContent, {
@@ -134,7 +146,9 @@ export const retryJob = inngest.createFunction(
           break;
         }
 
-        case FEATURE_TO_JOB_MAP[FEATURES.HASHTAGS as keyof typeof FEATURE_TO_JOB_MAP]: {
+        case FEATURE_TO_JOB_MAP[
+          FEATURES.HASHTAGS as keyof typeof FEATURE_TO_JOB_MAP
+        ]: {
           const result = await generateHashtags(step, transcript);
           await step.run(INNGEST_STEPS.SAVE_HASHTAGS, () =>
             convex.mutation(api.projects.saveGeneratedContent, {
@@ -145,7 +159,9 @@ export const retryJob = inngest.createFunction(
           break;
         }
 
-        case FEATURE_TO_JOB_MAP[FEATURES.YOUTUBE_TIMESTAMPS as keyof typeof FEATURE_TO_JOB_MAP]: {
+        case FEATURE_TO_JOB_MAP[
+          FEATURES.YOUTUBE_TIMESTAMPS as keyof typeof FEATURE_TO_JOB_MAP
+        ]: {
           const result = await generateYouTubeTimestamps(step, transcript);
           await step.run(INNGEST_STEPS.SAVE_YOUTUBE_TIMESTAMPS, () =>
             convex.mutation(api.projects.saveGeneratedContent, {
