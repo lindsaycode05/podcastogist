@@ -1,0 +1,85 @@
+import { PodcastUploader } from '@/components/upload/podcast-uploader';
+
+const UploadPage = () => {
+  return (
+    <div className='min-h-screen mesh-background-subtle'>
+      <div className='container max-w-5xl mx-auto py-16 px-4'>
+        <div className='mb-12 text-center'>
+          <h1 className='text-5xl font-extrabold mb-4'>
+            Upload <span className='gradient-sunrise-text'>Your Podcast</span>
+          </h1>
+          <p className='text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed'>
+            Upload your podcast episode audio file to generate AI-powered
+            insights, recaps, social media content and more.
+          </p>
+        </div>
+        <div className='space-y-8'>
+          <PodcastUploader />
+          <div className='glass-card rounded-2xl p-8'>
+            <h3 className='text-2xl font-bold mb-6 gradient-sunrise-text'>
+              What happens next?
+            </h3>
+            <ul className='space-y-4'>
+              <li className='flex items-start gap-4'>
+                <div className='py-2 px-4 rounded-xl gradient-sunrise shrink-0 mt-1'>
+                  <span className='text-white font-bold text-lg'>1</span>
+                </div>
+                <div>
+                  <p className='font-semibold text-gray-900 mb-1'>
+                    Secure Upload
+                  </p>
+                  <p className='text-gray-600'>
+                    Your file will be securely uploaded to our cloud storage
+                  </p>
+                </div>
+              </li>
+              <li className='flex items-start gap-4'>
+                <div className='py-2 px-4 rounded-xl gradient-sunrise shrink-0 mt-1'>
+                  <span className='text-white font-bold text-lg'>2</span>
+                </div>
+                <div>
+                  <p className='font-semibold text-gray-900 mb-1'>
+                    AI Transcription
+                  </p>
+                  <p className='text-gray-600'>
+                    AI will transcribe your podcast and extract highlight
+                    moments
+                  </p>
+                </div>
+              </li>
+              <li className='flex items-start gap-4'>
+                <div className='py-2 px-4 rounded-xl gradient-sunrise shrink-0 mt-1'>
+                  <span className='text-white font-bold text-lg'>3</span>
+                </div>
+                <div>
+                  <p className='font-semibold text-gray-900 mb-1'>
+                    Content Generation
+                  </p>
+                  <p className='text-gray-600'>
+                    Generate summaries & recaps, social posts, timestamps,
+                    titles and hashtags
+                  </p>
+                </div>
+              </li>
+              <li className='flex items-start gap-4'>
+                <div className='py-2 px-4 rounded-xl gradient-sunrise shrink-0 mt-1'>
+                  <span className='text-white font-bold text-lg'>4</span>
+                </div>
+                <div>
+                  <p className='font-semibold text-gray-900 mb-1'>
+                    View Results
+                  </p>
+                  <p className='text-gray-600'>
+                    Access your results in the project dashboard momentarily
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default UploadPage;
