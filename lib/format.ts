@@ -20,9 +20,9 @@ import { MS_PER_DAY, MS_PER_HOUR, MS_PER_MINUTE } from './constants';
  *
  * Uses bytes library for consistent cross-platform formatting
  */
-export function formatFileSize(size: number): string {
+export const formatFileSize = (size: number): string => {
   return bytes(size, { unitSeparator: ' ' }) || '';
-}
+};
 
 /**
  * Format duration in MM:SS or HH:MM:SS format
@@ -34,7 +34,7 @@ export function formatFileSize(size: number): string {
  * Automatically includes hours only if needed
  * Always pads minutes and seconds with leading zeros
  */
-export function formatDuration(seconds: number): string {
+export const formatDuration = (seconds: number): string => {
   const hours = Math.floor(seconds / 3600);
   const minutes = Math.floor((seconds % 3600) / 60);
   const secs = seconds % 60;
@@ -45,7 +45,7 @@ export function formatDuration(seconds: number): string {
     ).padStart(2, '0')}`;
   }
   return `${minutes}:${String(secs).padStart(2, '0')}`;
-}
+};
 
 /**
  * Format timestamp with flexible options
@@ -64,13 +64,13 @@ export function formatDuration(seconds: number): string {
  * - 65s, padHours=false: "1:05"
  * - 65s, forceHours=true: "00:01:05"
  */
-export function formatTimestamp(
+export const formatTimestamp = (
   seconds: number,
   options?: {
     padHours?: boolean;
     forceHours?: boolean;
   }
-): string {
+): string => {
   const { padHours = true, forceHours = false } = options || {};
 
   const hours = Math.floor(seconds / 3600);
@@ -85,7 +85,7 @@ export function formatTimestamp(
     return `${hoursStr}:${minutesStr}:${secsStr}`;
   }
   return `${minutesStr}:${secsStr}`;
-}
+};
 
 /**
  * Format date in full format
@@ -95,9 +95,9 @@ export function formatTimestamp(
  *
  * Good for: Detail pages, logs, timestamps
  */
-export function formatDate(timestamp: number): string {
+export const formatDate = (timestamp: number): string => {
   return format(new Date(timestamp), 'PPpp');
-}
+};
 
 /**
  * Format date in smart relative format
@@ -112,7 +112,7 @@ export function formatDate(timestamp: number): string {
  * Good for: Lists, feeds, activity streams
  * Improves UX by showing contextually relevant time format
  */
-export function formatSmartDate(timestamp: number): string {
+export const formatSmartDate = (timestamp: number): string => {
   const date = new Date(timestamp);
   const now = new Date();
   const diffMs = now.getTime() - date.getTime();
@@ -133,4 +133,4 @@ export function formatSmartDate(timestamp: number): string {
 
   // 7+ days: Show date
   return date.toLocaleDateString();
-}
+};

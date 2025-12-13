@@ -35,7 +35,7 @@ import { AssemblyAI } from 'assemblyai';
 import { api } from '@/convex/_generated/api';
 import type { Id } from '@/convex/_generated/dataModel';
 import { convex } from '@/lib/convex-client';
-import type { PlanName } from '@/lib/tier-config';
+import { PODCASTOGIST_USER_PLANS, type PlanName } from '@/lib/tier-config';
 import type {
   AssemblyAIChapter,
   AssemblyAISegment,
@@ -60,7 +60,7 @@ const assemblyai = new AssemblyAI({
 export async function transcribeWithAssemblyAI(
   audioUrl: string,
   projectId: Id<'projects'>,
-  userPlan: PlanName = 'free'
+  userPlan: PlanName = PODCASTOGIST_USER_PLANS.FREE
 ): Promise<TranscriptWithExtras> {
   console.log(
     `Starting AssemblyAI transcription for project ${projectId} (${userPlan} plan)`

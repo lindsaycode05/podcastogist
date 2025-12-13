@@ -8,8 +8,7 @@
  * All plan checks use Clerk's native billing system per:
  * https://clerk.com/docs/nextjs/guides/billing/for-b2c
  */
-
-import type { Auth } from '@clerk/nextjs/server';
+import { auth as authType } from '@clerk/nextjs/server';
 import { convex } from '@/lib/convex-client';
 import { api } from '@/convex/_generated/api';
 import {
@@ -18,7 +17,7 @@ import {
   PODCASTOGIST_USER_PLANS,
   type FeatureName,
   type PlanName,
-} from './tier-config';
+} from '../tier-config';
 
 export interface UploadValidationResult {
   allowed: boolean;
@@ -42,12 +41,12 @@ export interface UploadValidationResult {
  * @param duration - Optional duration in seconds
  * @returns Validation result with details
  */
-export async function checkUploadLimits(
-  auth: Auth,
+export const checkUploadLimits = async (
+  auth: Awaited<ReturnType<typeof authType>>,
   userId: string,
   fileSize: number,
   duration?: number
-): Promise<UploadValidationResult> {
+): Promise<UploadValidationResult> => {
   // Get user's plan using Clerk's has() method
   const { has } = auth;
   let plan: PlanName = PODCASTOGIST_USER_PLANS.FREE;
@@ -109,21 +108,7 @@ export async function checkUploadLimits(
 
   // All checks passed
   return { allowed: true };
-}
-
-/**
- * Check if user has access to a specific feature
- *
- * Uses Clerk's has() method for feature-level checking
- *
- * @param auth - Clerk auth object
- * @param feature - Feature name to check
- * @returns True if user has access to feature
- */
-export function checkFeatureAccess(auth: Auth, feature: FeatureName): boolean {
-  const { has } = auth;
-  return has ? has({ feature }) : false;
-}
+};
 
 /**
  * Get list of features available to a plan
@@ -131,9 +116,9 @@ export function checkFeatureAccess(auth: Auth, feature: FeatureName): boolean {
  * @param plan - Plan name
  * @returns Array of feature names available to the plan
  */
-export function getPlanFeatures(plan: PlanName): FeatureName[] {
+export const getPlanFeatures = (plan: PlanName): FeatureName[] => {
   return PLAN_FEATURES[plan];
-}
+};
 
 /**
  * Check if a plan has a specific feature
@@ -142,9 +127,12 @@ export function getPlanFeatures(plan: PlanName): FeatureName[] {
  * @param feature - Feature to check
  * @returns True if plan includes feature
  */
-export function planHasFeature(plan: PlanName, feature: FeatureName): boolean {
+export const planHasFeature = (
+  plan: PlanName,
+  feature: FeatureName
+): boolean => {
   return PLAN_FEATURES[plan].includes(feature);
-}
+};
 
 /**
  * Get the minimum plan required for a feature
@@ -152,8 +140,8 @@ export function planHasFeature(plan: PlanName, feature: FeatureName): boolean {
  * @param feature - Feature name
  * @returns Minimum plan name that includes this feature
  */
-export function getMinimumPlanForFeature(feature: FeatureName): PlanName {
+export const getMinimumPlanForFeature = (feature: FeatureName): PlanName => {
   if (PLAN_FEATURES.free.includes(feature)) return PODCASTOGIST_USER_PLANS.FREE;
   if (PLAN_FEATURES.plus.includes(feature)) return PODCASTOGIST_USER_PLANS.PLUS;
   return PODCASTOGIST_USER_PLANS.MAX;
-}
+};

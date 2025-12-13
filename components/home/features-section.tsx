@@ -2,9 +2,9 @@ import {
   BrainCircuit,
   ScrollText,
   Share2,
-  Tags,
   Clapperboard,
   UsersRound,
+  Hash,
   type LucideIcon,
 } from 'lucide-react';
 
@@ -34,16 +34,16 @@ const FEATURES: Feature[] = [
       'Auto-generate channel-ready social copy for Twitter, LinkedIn, Instagram, TikTok, YouTube, Facebook, and more.',
   },
   {
-    icon: Tags,
+    icon: Hash,
     title: 'Titles & Tags',
     description:
       'Automatically craft SEO-friendly titles and platform-specific tags and hashtags to maximize discoverability.',
   },
   {
     icon: Clapperboard,
-    title: 'Highlights & Chapters',
+    title: 'Highlights & Timestamps',
     description:
-      'Detect highlight-worthy segments and generate YouTube-ready chapters and timestamps for better engagement.',
+      'Detect highlight-worthy segments and generate YouTube-ready timestamps for better engagement.',
   },
   {
     icon: UsersRound,
