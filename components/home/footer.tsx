@@ -17,7 +17,7 @@ export const Footer = () => {
                 </span>
               </div>
               <p className='text-gray-600 text-sm leading-relaxed'>
-                AI-powered podcast processing platform that converts your
+                AI-powered podcast post-production platform that converts your
                 content into audience-growth fuel.
               </p>
             </div>

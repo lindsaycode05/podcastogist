@@ -19,7 +19,7 @@ const FEATURES: Feature[] = [
     icon: BrainCircuit,
     title: 'AI-Driven Insights',
     description:
-      'AssemblyAI-powered audio intelligence that deeply understands your episodes and powers every AI workflow.',
+      'Industry-grade AI audio intelligence that deeply understands your episodes and powers every AI workflow.',
   },
   {
     icon: ScrollText,
@@ -49,7 +49,7 @@ const FEATURES: Feature[] = [
     icon: UsersRound,
     title: 'Speaker-Level Transcript',
     description:
-      'Full transcript with clear speaker labels so you can see who said what and when (Max tier only).',
+      'Full transcript with clear speaker labels so you can see who said what and when.',
   },
 ];
 
