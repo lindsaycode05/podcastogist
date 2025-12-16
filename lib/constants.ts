@@ -6,7 +6,7 @@
  */
 import type { LucideIcon } from 'lucide-react';
 import { FileText, Hash, Type, Share2, Crosshair, Youtube } from 'lucide-react';
-import type { PhaseStatus, UploadStatus } from '@/lib/types';
+import type { PhaseStatus, UploadStatus } from './types';
 
 /**
  * Allowed audio MIME types for upload validation
