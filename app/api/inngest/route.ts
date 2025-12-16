@@ -31,6 +31,11 @@ import { retryJob } from '@/inngest/functions/retry-job';
 // Required because Inngest needs to call this endpoint at runtime
 export const dynamic = 'force-dynamic';
 
+// Allow long-lived background execution for Inngest webhooks
+// This keeps the handler alive for larger podcast processing jobs instead of
+// hitting Vercel's default 300s runtime timeout.
+export const maxDuration = 900;
+
 /**
  * Inngest HTTP handler for Next.js App Router
  *
