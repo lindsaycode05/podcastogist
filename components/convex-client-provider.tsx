@@ -5,7 +5,11 @@ import { ReactNode } from 'react';
 import { useAuth } from '@clerk/nextjs';
 import { ConvexProviderWithClerk } from 'convex/react-clerk';
 
-const convex = new ConvexReactClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
+if (!process.env.NEXT_PUBLIC_CONVEX_URL) {
+  throw new Error('Missing NEXT_PUBLIC_CONVEX_URL environment variable');
+}
+
+const convex = new ConvexReactClient(process.env.NEXT_PUBLIC_CONVEX_URL);
 
 export const ConvexClientProvider = ({ children }: { children: ReactNode }) => {
   return (

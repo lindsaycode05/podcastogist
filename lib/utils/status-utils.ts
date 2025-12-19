@@ -10,6 +10,7 @@ import {
   XCircle,
 } from 'lucide-react';
 import type { Doc } from '@/convex/_generated/dataModel';
+import { capitalize } from './utils';
 
 export type ProjectStatus = Doc<'projects'>['status'];
 export type JobStatus = Doc<'projects'>['jobStatus'];
@@ -49,7 +50,7 @@ export const getStatusIcon = (status: ProjectStatus): LucideIcon => {
  * @returns User-friendly label for the current phase
  */
 export const getProcessingPhaseLabel = (project: Doc<'projects'>): string => {
-  if (project.status !== 'processing') return project.status;
+  if (project.status !== 'processing') return capitalize(project.status);
 
   if (project.jobStatus?.transcription === 'running') {
     return 'Transcribing';

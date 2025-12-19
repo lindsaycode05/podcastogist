@@ -81,7 +81,7 @@ export const checkUploadLimits = async (
     return {
       allowed: false,
       reason: 'duration',
-      message: `Duration (${durationMinutesAndSeconds} minutes) exceeds your plan limit of ${limitMinutes} minutes`,
+      message: `Duration (${durationMinutesAndSeconds}) exceeds your plan limit of ${limitMinutes} minutes`,
     };
   }
 

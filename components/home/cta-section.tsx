@@ -26,7 +26,7 @@ export const CtaSection = async () => {
               Ready to level up your podcast post-production?
             </h2>
             <p className='text-xl md:text-2xl text-white mb-10 leading-relaxed drop-shadow-md'>
-              Upload the first podcast and watch the effects happen within
+              Upload your podcast episode and watch the effects happen within
               moments.
             </p>
             {isAuthenticated ? (
@@ -36,7 +36,7 @@ export const CtaSection = async () => {
                   className='bg-white text-blue-500/90 hover:bg-white/90 hover-glow text-lg px-10 py-7 rounded-xl shadow-2xl font-bold'
                 >
                   <Upload className='mr-2 h-6 w-6' />
-                  Upload Your First Podcast
+                  Upload Your Podcast Episode
                 </Button>
               </Link>
             ) : (
