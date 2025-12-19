@@ -9,11 +9,12 @@
  *
  * Integration Flow:
  * 1. Receive audio URL from Vercel Blob and user's plan
- * 2. Submit to AssemblyAI with all features enabled
- * 3. AssemblyAI polls until transcription completes
- * 4. Transform response to match our Convex schema
- * 5. Save to Convex (triggers UI update)
- * 6. Return enhanced transcript for AI generation
+ * 2. Submit to AssemblyAI with all features enabled + webhook URL
+ * 3. Wait for AssemblyAI webhook via Inngest (durable, no long-running HTTP)
+ * 4. Fetch final transcript once AssemblyAI is done
+ * 5. Transform response to match our Convex schema
+ * 6. Save to Convex (triggers UI update)
+ * 7. Return enhanced transcript for AI generation
  *
  * Feature Gating:
  * - Speaker diarization data is always captured during transcription
@@ -31,15 +32,19 @@
  * - Faster processing: Optimized for speech (vs. Whisper for accuracy)
  * - Async API: Better for long podcasts (no timeout issues)
  */
+import type { step as InngestStep } from 'inngest';
 import { AssemblyAI } from 'assemblyai';
 import { api } from '@/convex/_generated/api';
 import type { Id } from '@/convex/_generated/dataModel';
 import { convex } from '@/lib/convex-client';
+import { ASSEMBLYAI_TRANSCRIPT_STATUS_EVENT } from '@/lib/events';
+import { INNGEST_STEPS } from '@/lib/inngest-steps';
 import { PODCASTOGIST_USER_PLANS, type PlanName } from '@/lib/tier-config';
 import type {
   AssemblyAIChapter,
   AssemblyAISegment,
   AssemblyAIUtterance,
+  AssemblyAIWebhookEvent,
   AssemblyAIWord,
   TranscriptWithExtras,
 } from '@/lib/types';
@@ -49,15 +54,30 @@ const assemblyai = new AssemblyAI({
   apiKey: process.env.ASSEMBLYAI_API_KEY || '',
 });
 
+function buildAssemblyAIWebhookUrl(projectId: Id<'projects'>): string {
+  const appUrl = process.env.NEXT_PUBLIC_APP_URL;
+
+  if (!appUrl) {
+    throw new Error('NEXT_PUBLIC_APP_URL is required for AssemblyAI webhooks');
+  }
+
+  const webhookUrl = new URL('/api/webhooks/assemblyai', appUrl);
+  webhookUrl.searchParams.set('projectId', projectId);
+
+  return webhookUrl.toString();
+}
+
 /**
  * Main transcription function called by Inngest workflow
  *
+ * @param step - Inngest step tools for durable waits and retries
  * @param audioUrl - Public URL to audio file (from Vercel Blob)
  * @param projectId - Convex project ID for status updates
  * @param userPlan - User's subscription plan (for logging, speaker data always captured)
  * @returns TranscriptWithExtras - Enhanced transcript with chapters and speakers
  */
 export async function transcribeWithAssemblyAI(
+  step: typeof InngestStep,
   audioUrl: string,
   projectId: Id<'projects'>,
   userPlan: PlanName = PODCASTOGIST_USER_PLANS.FREE
@@ -67,19 +87,75 @@ export async function transcribeWithAssemblyAI(
   );
 
   try {
-    // Submit transcription job to AssemblyAI
-    // This API call blocks until transcription is complete (can take minutes for long files)
-    const transcriptResponse = await assemblyai.transcripts.transcribe({
-      audio: audioUrl, // Public URL - AssemblyAI downloads the file
-      speaker_labels: true, // Always enable speaker diarization (UI-gated for MAX)
-      auto_chapters: true, // Detect topic changes automatically
-      format_text: true, // Add punctuation and capitalization
-    });
+    const webhookUrl = buildAssemblyAIWebhookUrl(projectId);
+
+    // Submit transcription job to AssemblyAI (non-blocking)
+    const submittedTranscript = await step.run(
+      INNGEST_STEPS.START_ASSEMBLYAI_TRANSCRIPTION,
+      async () =>
+        assemblyai.transcripts.submit({
+          audio: audioUrl, // Public URL - AssemblyAI downloads the file
+          speaker_labels: true, // Always enable speaker diarization (UI-gated for MAX)
+          auto_chapters: true, // Detect topic changes automatically
+          format_text: true, // Add punctuation and capitalization
+          // The webhook URL AssemblyAI will call on transcription finalization
+          webhook_url: webhookUrl,
+          // Handles Vercel Automation Bypass authing so AssemblyAI webhook service can reach our webhook API route successfully
+          webhook_auth_header_name: 'x-vercel-protection-bypass',
+          webhook_auth_header_value:
+            process.env.VERCEL_AUTOMATION_BYPASS_SECRET,
+        })
+    );
+
+    const transcriptId =
+      (submittedTranscript as { id?: string; transcript_id?: string }).id ||
+      (submittedTranscript as { id?: string; transcript_id?: string })
+        .transcript_id;
+
+    if (!transcriptId) {
+      throw new Error('AssemblyAI did not return a transcript ID');
+    }
+
+    console.log(`AssemblyAI job queued: ${transcriptId}`);
+
+    // Wait for AssemblyAI webhook via Inngest (durable wait/no long HTTP that causes timeouts on Vercel)
+    const webhookEvent = (await step.waitForEvent(
+      INNGEST_STEPS.WAIT_FOR_ASSEMBLYAI_TRANSCRIPTION,
+      {
+        event: ASSEMBLYAI_TRANSCRIPT_STATUS_EVENT,
+        // No podcast will realistically exceed 3 hours of transcription, can be increased if needed, no problem on that front
+        timeout: '3h',
+        // Ensure we only capture the webhook incoming for this specific transcript/project/podcast, matches the projectId param we initiate the whole Inngest job with
+        match: 'data.projectId',
+      }
+    )) as AssemblyAIWebhookEvent | null;
+
+    if (!webhookEvent) {
+      throw new Error('AssemblyAI webhook timed out');
+    }
+
+    if (webhookEvent.data?.status === 'error') {
+      throw new Error(
+        webhookEvent.data?.error || 'AssemblyAI transcription failed'
+      );
+    }
+
+    // Fetch final transcript after webhook signals completion
+    const transcriptResponse = await step.run(
+      INNGEST_STEPS.FETCH_ASSEMBLYAI_TRANSCRIPT,
+      async () => assemblyai.transcripts.get(transcriptId)
+    );
 
     // Check for transcription errors
     if (transcriptResponse.status === 'error') {
       throw new Error(
         transcriptResponse.error || 'AssemblyAI transcription failed'
+      );
+    }
+
+    if (transcriptResponse.status !== 'completed') {
+      throw new Error(
+        `AssemblyAI transcription not completed (status: ${transcriptResponse.status})`
       );
     }
 

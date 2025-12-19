@@ -91,10 +91,13 @@ export const podcastProcessor = inngest.createFunction(
       );
 
       // Step 1: Transcribe audio with AssemblyAI (sequential - blocks next steps)
-      // This step is durable: if it fails, Inngest retries automatically
+      // Uses webhook + step.waitForEvent for durable waiting
       // Speaker diarization is always enabled; UI access is gated by plan
-      const transcript = await step.run(INNGEST_STEPS.TRANSCRIBE_AUDIO, () =>
-        transcribeWithAssemblyAI(fileUrl, projectId, plan)
+      const transcript = await transcribeWithAssemblyAI(
+        step,
+        fileUrl,
+        projectId,
+        plan
       );
 
       // Update jobStatus: transcription complete

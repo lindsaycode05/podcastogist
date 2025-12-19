@@ -115,3 +115,13 @@ export type TranscriptWithExtras = {
   utterances: AssemblyAIUtterance[]; // Speaker-attributed text
   audio_duration?: number; // Total audio duration in milliseconds
 };
+
+export type AssemblyAIWebhookEvent = {
+  data?: {
+    projectId?: string;
+    transcriptId?: string;
+    status?: string;
+    error?: string;
+  };
+};
+

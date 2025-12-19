@@ -2,7 +2,9 @@ export const INNGEST_STEPS = {
   UPDATE_STATUS_PROCESSING: 'update-status-processing',
   UPDATE_JOB_STATUS_TRANSCRIPTION_RUNNING:
     'update-job-status-transcription-running',
-  TRANSCRIBE_AUDIO: 'transcribe-audio',
+  START_ASSEMBLYAI_TRANSCRIPTION: 'start-assemblyai-transcription',
+  WAIT_FOR_ASSEMBLYAI_TRANSCRIPTION: 'wait-for-assemblyai-transcription',
+  FETCH_ASSEMBLYAI_TRANSCRIPT: 'fetch-assemblyai-transcript',
   UPDATE_JOB_STATUS_TRANSCRIPTION_COMPLETED:
     'update-job-status-transcription-completed',
   UPDATE_JOB_STATUS_GENERATION_RUNNING: 'update-job-status-generation-running',
