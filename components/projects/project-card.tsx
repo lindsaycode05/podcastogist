@@ -56,8 +56,9 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
         className={cn(
           'glass-card rounded-2xl group relative hover-lift cursor-pointer overflow-hidden transition-all',
           project.status === 'processing' &&
-            'ring-2 ring-blue-400 shadow-blue-200 shadow-lg',
-          project.status === 'failed' && 'ring-2 ring-red-400'
+            'ring-2 ring-blue-400 shadow-blue-200 shadow-lg dark:ring-blue-500/60 dark:shadow-blue-500/30',
+          project.status === 'failed' &&
+            'ring-2 ring-red-400 dark:ring-red-400/70'
         )}
       >
         <div className='p-6 md:p-7'>
@@ -69,19 +70,19 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
             <div className='flex-1 min-w-0 overflow-hidden'>
               <div className='flex flex-col gap-3 md:flex-row md:flex-wrap md:items-start md:justify-between'>
                 <div className='flex-1 min-w-0 overflow-hidden order-1 md:order-1'>
-                  <h3 className='font-extrabold text-lg md:text-xl lg:text-2xl wrap-break-word hyphens-auto group-hover:text-blue-600 transition-colors leading-snug'>
+                  <h3 className='font-extrabold text-lg md:text-xl lg:text-2xl wrap-break-word hyphens-auto group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors leading-snug'>
                     {project.displayName || project.fileName}
                   </h3>
-                  <p className='text-sm text-gray-600 mt-2 font-medium'>
+                  <p className='text-sm text-gray-600 dark:text-slate-300 mt-2 font-medium'>
                     {formatSmartDate(project.createdAt)}
                   </p>
                 </div>
-                <div className='flex items-center gap-3 order-3 md:order-2 md:shrink-0'>
+                <div className='flex flex-wrap items-center gap-3 order-3 md:order-2 md:shrink-0 w-full md:w-auto'>
                   {project.status !== 'completed' && (
                     <Badge
                       variant={getStatusVariant(project.status)}
                       className={cn(
-                        'flex items-center gap-2 h-9 md:h-10 text-sm md:text-base px-4 whitespace-nowrap font-bold shadow-md',
+                        'flex items-center gap-2 h-9 md:h-10 text-sm md:text-base px-4 whitespace-normal md:whitespace-nowrap font-bold shadow-md text-center',
                         project.status === 'processing' &&
                           'gradient-sunrise text-white animate-pulse-sunrise'
                       )}
@@ -106,14 +107,14 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
                         setIsConfirmOpen(true);
                       }}
                       disabled={isDeleting}
-                      className='h-10 w-auto md:w-10 px-3 md:px-0 rounded-full bg-red-50 hover:bg-red-100 flex items-center justify-center gap-2 transition-all hover:scale-110 disabled:opacity-50 cursor-pointer'
+                      className='h-10 w-auto md:w-10 px-3 md:px-0 rounded-full bg-red-50 hover:bg-red-100 dark:bg-red-500/15 dark:hover:bg-red-500/25 flex items-center justify-center gap-2 transition-all hover:scale-110 disabled:opacity-50 cursor-pointer'
                     >
                       {isDeleting ? (
-                        <Loader2 className='h-5 w-5 animate-spin text-red-600' />
+                        <Loader2 className='h-5 w-5 animate-spin text-red-600 dark:text-red-300' />
                       ) : (
-                        <Trash2 className='h-5 w-5 text-red-600' />
+                        <Trash2 className='h-5 w-5 text-red-600 dark:text-red-300' />
                       )}
-                      <span className='text-sm font-semibold text-red-700 md:hidden'>
+                      <span className='text-sm font-semibold text-red-700 dark:text-red-200 md:hidden'>
                         Delete
                       </span>
                     </button>
@@ -143,14 +144,14 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
                 </div>
 
                 <div className='flex items-center gap-3 flex-wrap order-2 md:order-3 md:basis-full'>
-                  <Badge className='text-xs font-semibold bg-blue-100 text-blue-700 border-blue-200'>
+                  <Badge className='text-xs font-semibold bg-blue-100 text-blue-700 border-blue-200 dark:bg-blue-500/20 dark:text-blue-200 dark:border-blue-500/40'>
                     {formatFileSize(project.fileSize)}
                   </Badge>
-                  <Badge className='text-xs font-semibold bg-blue-100 text-blue-700 border-blue-200 uppercase'>
+                  <Badge className='text-xs font-semibold bg-blue-100 text-blue-700 border-blue-200 dark:bg-blue-500/20 dark:text-blue-200 dark:border-blue-500/40 uppercase'>
                     {project.fileFormat}
                   </Badge>
                   {project.fileDuration && (
-                    <Badge className='text-xs font-semibold bg-blue-100 text-blue-700 border-blue-200'>
+                    <Badge className='text-xs font-semibold bg-blue-100 text-blue-700 border-blue-200 dark:bg-blue-500/20 dark:text-blue-200 dark:border-blue-500/40'>
                       {formatDuration(project.fileDuration)}
                     </Badge>
                   )}
@@ -168,8 +169,8 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
               )}
 
               {project.status === 'failed' && project.error && (
-                <div className='mt-2 p-4 rounded-xl bg-red-50 border-2 border-red-200'>
-                  <p className='text-sm text-red-700 font-semibold'>
+                <div className='mt-2 p-4 rounded-xl bg-red-50 border-2 border-red-200 dark:bg-red-500/15 dark:border-red-500/30'>
+                  <p className='text-sm text-red-700 dark:text-red-200 font-semibold'>
                     {project.error.message}
                   </p>
                 </div>

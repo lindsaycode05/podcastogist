@@ -14,16 +14,16 @@ export const EmptyState = () => {
             <FileVolume className='h-20 w-20 text-white' />
           </div>
         </div>
-        <h3 className='text-3xl font-bold mb-4 text-gray-900'>
+        <h3 className='text-3xl font-bold mb-4 text-gray-900 dark:text-slate-100'>
           No projects yet
         </h3>
-        <p className='text-lg text-gray-600 mb-8 leading-relaxed'>
+        <p className='text-lg text-gray-600 dark:text-slate-300 mb-8 leading-relaxed'>
           Upload your first podcast to unlock AI-powered insights, key moments,
           social content and much more!
         </p>
         <Link href='/dashboard/upload'>
           <Button className='gradient-sunrise text-white hover-glow shadow-xl px-8 py-6 text-lg'>
-            <FileUp className='mr-2 h-6 w-6' />
+            <FileUp className='h-6 w-6' />
             Upload Your First Podcast
           </Button>
         </Link>

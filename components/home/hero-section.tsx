@@ -14,7 +14,7 @@ export const HeroSection = async () => {
         <div className='max-w-5xl mx-auto'>
           <div className='text-center mb-20 animate-float'>
             <div className='inline-flex items-center gap-2 px-5 py-2.5 rounded-full glass-card hover-glow mb-8 animate-shimmer'>
-              <MicVocal className='h-5 w-5 text-blue-600' />
+              <MicVocal className='h-5 w-5 text-blue-600 dark:text-blue-400' />
               <span className='text-sm font-semibold bg-gradient-to-r from-blue-600 to-orange-500 bg-clip-text text-transparent'>
                 AI-Powered Podcast Post-Production
               </span>
@@ -26,7 +26,7 @@ export const HeroSection = async () => {
               Podcasts with AI
             </h1>
 
-            <p className='text-xl md:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed'>
+            <p className='text-xl md:text-2xl text-gray-600 dark:text-slate-300 mb-12 max-w-3xl mx-auto leading-relaxed'>
               Upload your episode audio and get AI-created summaries,
               transcripts, social content, highlight moments, and more - all in
               just moments.
@@ -43,8 +43,7 @@ export const HeroSection = async () => {
                   <Button
                     variant='outline'
                     size='lg'
-                    className='hover-glow'
-                    style={{ backgroundColor: 'white' }}
+                    className='hover-glow bg-white dark:bg-slate-900/80 dark:text-slate-100 dark:border-slate-700'
                   >
                     View All Projects
                   </Button>
@@ -65,8 +64,7 @@ export const HeroSection = async () => {
                 <Button
                   size='lg'
                   variant='outline'
-                  className='hover-glow text-lg px-8 py-6 rounded-xl'
-                  style={{ backgroundColor: 'white' }}
+                  className='hover-glow text-lg px-8 py-6 rounded-xl bg-white dark:bg-slate-900/80 dark:text-slate-100 dark:border-slate-700'
                 >
                   View Projects
                 </Button>
@@ -77,9 +75,9 @@ export const HeroSection = async () => {
       </div>
 
       {/* Decorative gradient orbs */}
-      <div className='absolute top-0 right-0 w-96 h-96 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float'></div>
+      <div className='absolute top-0 right-0 w-96 h-96 bg-blue-300 dark:bg-blue-500/40 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-3xl opacity-20 dark:opacity-15 animate-float'></div>
       <div
-        className='absolute bottom-0 left-0 w-96 h-96 bg-orange-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float'
+        className='absolute bottom-0 left-0 w-96 h-96 bg-orange-300 dark:bg-orange-500/40 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-3xl opacity-20 dark:opacity-15 animate-float -z-1'
         style={{ animationDelay: '1s' }}
       ></div>
     </section>

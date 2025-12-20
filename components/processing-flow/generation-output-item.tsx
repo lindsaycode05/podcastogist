@@ -26,7 +26,7 @@ export const GenerationOutputItem = ({
         isLocked
           ? 'opacity-30 scale-100'
           : isActive
-          ? 'ring-2 ring-blue-400 shadow-lg scale-[1.02]'
+          ? 'ring-2 ring-blue-400 shadow-lg scale-[1.02] dark:ring-blue-500/60 dark:shadow-blue-500/30'
           : 'opacity-40 scale-100'
       )}
     >
@@ -36,20 +36,20 @@ export const GenerationOutputItem = ({
             className={cn(
               'rounded-xl p-3 transition-all duration-500',
               isLocked
-                ? 'bg-gray-200'
+                ? 'bg-gray-200 dark:bg-slate-700/60'
                 : isActive
                 ? 'gradient-sunrise shadow-md'
-                : 'bg-blue-100'
+                : 'bg-blue-100 dark:bg-blue-500/20'
             )}
           >
             <Icon
               className={cn(
                 'h-6 w-6 transition-all duration-500',
                 isLocked
-                  ? 'text-gray-400'
+                  ? 'text-gray-400 dark:text-slate-500'
                   : isActive
                   ? 'text-white'
-                  : 'text-blue-600'
+                  : 'text-blue-600 dark:text-blue-300'
               )}
             />
           </div>
@@ -59,10 +59,10 @@ export const GenerationOutputItem = ({
                 className={cn(
                   'font-bold text-base transition-all duration-500',
                   isLocked
-                    ? 'text-gray-400'
+                    ? 'text-gray-400 dark:text-slate-500'
                     : isActive
-                    ? 'text-blue-700'
-                    : 'text-gray-600'
+                    ? 'text-blue-700 dark:text-blue-200'
+                    : 'text-gray-600 dark:text-slate-300'
                 )}
               >
                 {name}
@@ -72,8 +72,8 @@ export const GenerationOutputItem = ({
                   className={cn(
                     'h-5 w-5 animate-spin transition-all duration-500',
                     isActive
-                      ? 'text-blue-600 opacity-100'
-                      : 'text-gray-400 opacity-50'
+                      ? 'text-blue-600 dark:text-blue-300 opacity-100'
+                      : 'text-gray-400 dark:text-slate-500 opacity-50'
                   )}
                 />
               )}
@@ -82,10 +82,10 @@ export const GenerationOutputItem = ({
               className={cn(
                 'text-sm transition-all duration-500',
                 isLocked
-                  ? 'text-gray-400 opacity-50'
+                  ? 'text-gray-400 dark:text-slate-500 opacity-50'
                   : isActive
-                  ? 'text-gray-700 opacity-100'
-                  : 'text-gray-500 opacity-60'
+                  ? 'text-gray-700 dark:text-slate-200 opacity-100'
+                  : 'text-gray-500 dark:text-slate-400 opacity-60'
               )}
             >
               {description}

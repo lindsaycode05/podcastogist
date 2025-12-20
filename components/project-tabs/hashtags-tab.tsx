@@ -32,14 +32,14 @@ export const HashtagsTab = ({ hashtags }: HashtagsTabProps) => {
       <div className='space-y-4 md:space-y-6'>
         {PLATFORMS.map((platform) => (
           <div key={platform.key} className='p-4 md:p-5 glass-card rounded-xl'>
-            <p className='text-sm md:text-base font-bold mb-3 md:mb-4 text-gray-900'>
+            <p className='text-sm md:text-base font-bold mb-3 md:mb-4 text-gray-900 dark:text-slate-100'>
               {platform.title}
             </p>
             <div className='flex flex-wrap gap-2 md:gap-3'>
               {hashtags[platform.key].map((tag, idx) => (
                 <Badge
                   key={`${platform.key}-${idx}`}
-                  className='px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm bg-blue-100 text-blue-700 border-blue-200 wrap-break-word'
+                  className='px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm bg-blue-100 text-blue-700 border-blue-200 dark:bg-blue-500/20 dark:text-blue-200 dark:border-blue-500/40 wrap-break-word'
                 >
                   {tag}
                 </Badge>

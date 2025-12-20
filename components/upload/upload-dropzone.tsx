@@ -90,13 +90,15 @@ export const UploadDropzone = ({
         className={cn(
           // Base styles: Dashed border, clickable, transitions
           'border-3 border-dashed rounded-2xl p-16 text-center cursor-pointer transition-all',
-          'border-blue-300 hover:border-blue-500 hover:bg-blue-50/50',
+          'border-blue-300 hover:border-blue-500 hover:bg-blue-50/50 dark:border-blue-500/40 dark:hover:border-blue-400 dark:hover:bg-blue-500/10',
           // Drag active state (file hovering over dropzone)
-          isDragActive && 'border-blue-600 bg-blue-50 scale-[1.02] shadow-xl',
+          isDragActive &&
+            'border-blue-600 bg-blue-50 scale-[1.02] shadow-xl dark:border-blue-400 dark:bg-blue-500/15',
           // Disabled state
           disabled && 'opacity-50 cursor-not-allowed',
           // Error state
-          errorMessage && 'border-red-400 bg-red-50/30',
+          errorMessage &&
+            'border-red-400 bg-red-50/30 dark:border-red-500/40 dark:bg-red-500/10',
           !disabled && 'hover-glow'
         )}
       >
@@ -114,23 +116,25 @@ export const UploadDropzone = ({
             {isDragActive ? (
               <Upload className='h-16 w-16 text-white animate-bounce' />
             ) : (
-              <AudioLines className='h-16 w-16 text-blue-600' />
+              <AudioLines className='h-16 w-16 text-blue-600 dark:text-blue-300' />
             )}
           </div>
 
           {/* Instructions and info */}
           <div className='space-y-3'>
-            <p className='text-2xl font-bold text-gray-900'>
+            <p className='text-2xl font-bold text-gray-900 dark:text-slate-100'>
               {isDragActive
                 ? 'Drop your podcast file here'
                 : 'Drag & drop your podcast file'}
             </p>
-            <p className='text-base text-gray-600'>or click to browse files</p>
+            <p className='text-base text-gray-600 dark:text-slate-300'>
+              or click to browse files
+            </p>
             <div className='pt-2 space-y-1'>
-              <p className='text-sm text-gray-500 font-medium'>
+              <p className='text-sm text-gray-500 dark:text-slate-400 font-medium'>
                 Supports: MP3, WAV, M4A, FLAC, OGG, AAC, and more
               </p>
-              <p className='text-sm text-gray-500 font-semibold'>
+              <p className='text-sm text-gray-500 dark:text-slate-400 font-semibold'>
                 Maximum file size: {maxFileSizeLabel}
               </p>
             </div>
@@ -140,8 +144,8 @@ export const UploadDropzone = ({
 
       {/* Error message display */}
       {errorMessage && (
-        <div className='mt-4 p-4 rounded-xl bg-red-50 border border-red-200'>
-          <p className='text-sm text-red-600 font-medium'>
+        <div className='mt-4 p-4 rounded-xl bg-red-50 border border-red-200 dark:bg-red-500/10 dark:border-red-500/30'>
+          <p className='text-sm text-red-600 dark:text-red-300 font-medium'>
             {errorCode === ErrorCode.FileTooLarge
               ? `File is larger than ${maxFileSizeLabel}`
               : errorMessage}

@@ -44,14 +44,14 @@ export const CompactProgress = ({
   return (
     <div className='space-y-2'>
       <div className='flex items-center justify-between'>
-        <Badge className='text-xs font-semibold bg-blue-100 text-blue-700 border-blue-200'>
+        <Badge className='text-xs font-semibold bg-blue-100 text-blue-700 border-blue-200 dark:bg-blue-500/20 dark:text-blue-200 dark:border-blue-500/40'>
           {statusText}
         </Badge>
-        <span className='text-xs font-bold text-blue-600'>
+        <span className='text-xs font-bold text-blue-600 dark:text-blue-300'>
           {Math.round(progress)}%
         </span>
       </div>
-      <div className='relative h-2 bg-blue-100 rounded-full overflow-hidden'>
+      <div className='relative h-2 bg-blue-100 dark:bg-blue-500/20 rounded-full overflow-hidden'>
         <div
           className='absolute inset-y-0 left-0 progress-sunrise rounded-full transition-all duration-300'
           style={{ width: `${progress}%` }}

@@ -62,7 +62,7 @@ export const FeaturesSection = () => {
             All the Tools You Need in{' '}
             <span className='gradient-sunrise-text'>One Workspace</span>
           </h2>
-          <p className='text-xl text-gray-600 max-w-2xl mx-auto'>
+          <p className='text-xl text-gray-600 dark:text-slate-300 max-w-2xl mx-auto'>
             AI-native tools to boost your podcast&apos;s reach and listener
             engagement
           </p>
@@ -80,10 +80,10 @@ export const FeaturesSection = () => {
                 <div className='rounded-2xl gradient-sunrise p-4 w-fit mb-6 group-hover:animate-pulse-sunrise transition-all'>
                   <Icon className='h-8 w-8 text-white' />
                 </div>
-                <h3 className='text-2xl font-bold mb-3 group-hover:text-blue-500/90 transition-colors'>
+                <h3 className='text-2xl font-bold mb-3 group-hover:text-blue-500/90 dark:group-hover:text-blue-300 transition-colors'>
                   {feature.title}
                 </h3>
-                <p className='text-gray-600 leading-relaxed'>
+                <p className='text-gray-600 dark:text-slate-300 leading-relaxed'>
                   {feature.description}
                 </p>
               </div>

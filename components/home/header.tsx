@@ -8,6 +8,7 @@ import { HeaderRoutes } from '@/components/home/header-routes';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { PODCASTOGIST_USER_PLANS } from '@/lib/tier-config';
+import { ThemeToggle } from '@/components/theme-toggle';
 
 export const Header = () => {
   const { isSignedIn } = useAuth();
@@ -20,7 +21,7 @@ export const Header = () => {
       className={
         isDashboard
           ? 'gradient-sunrise sticky top-0 transition-all shadow-xl backdrop-blur-sm z-50 border-b border-white/10'
-          : 'glass-nav sticky top-0 transition-all z-50 backdrop-blur-md border-b border-gray-200/50 shadow-sm'
+          : 'glass-nav sticky top-0 transition-all z-50 backdrop-blur-md border-b border-gray-200/50 dark:border-slate-800/60 shadow-sm'
       }
     >
       <div className='container mx-auto px-4 lg:px-6'>
@@ -33,8 +34,8 @@ export const Header = () => {
               <div
                 className={
                   isDashboard
-                    ? 'hidden md:inline p-2 rounded-xl bg-white/95 group-hover:bg-white group-hover:scale-110 group-hover:shadow-xl transition-all duration-300'
-                    : 'hidden md:inline p-2 rounded-xl gradient-sunrise group-hover:scale-110 group-hover:shadow-xl transition-all duration-300'
+                    ? 'p-2 rounded-xl bg-white/95 group-hover:bg-white group-hover:scale-110 group-hover:shadow-xl transition-all duration-300'
+                    : 'p-2 rounded-xl gradient-sunrise group-hover:scale-110 group-hover:shadow-xl transition-all duration-300'
                 }
               >
                 <MicVocal
@@ -48,8 +49,8 @@ export const Header = () => {
               <span
                 className={
                   isDashboard
-                    ? 'text-xl font-bold text-white tracking-tight'
-                    : 'text-xl font-bold gradient-sunrise-text tracking-tight'
+                    ? 'hidden md:inline text-xl font-bold text-white tracking-tight'
+                    : 'hidden md:inline text-xl font-bold gradient-sunrise-text tracking-tight'
                 }
               >
                 Podcastogist
@@ -57,7 +58,7 @@ export const Header = () => {
             </Link>
 
             {showHeaderRoutes && (
-              <div className='flex items-center pl-2 sm:pl-4 border-l border-white/20'>
+              <div className='flex items-center pl-2 sm:pl-4 border-l border-white/50'>
                 <HeaderRoutes />
               </div>
             )}
@@ -78,7 +79,7 @@ export const Header = () => {
                     <Button
                       className={
                         isDashboard
-                          ? 'bg-white/95 text-blue-600 hover:bg-white hover:scale-105 gap-2 shadow-lg font-semibold transition-all duration-300 border border-white/20'
+                          ? 'bg-white/95 text-blue-600 hover:bg-white hover:scale-105 gap-2 shadow-lg font-semibold transition-all duration-300 border border-white/20 dark:bg-slate-900/70 dark:text-slate-100 dark:border-white/10 dark:hover:bg-slate-900/70'
                           : 'gradient-sunrise text-white hover-glow hover:scale-105 gap-2 shadow-lg transition-all duration-300'
                       }
                     >
@@ -101,7 +102,7 @@ export const Header = () => {
                     <Button
                       className={
                         isDashboard
-                          ? 'bg-white/95 text-blue-600 hover:bg-white hover:scale-105 gap-2 shadow-lg font-semibold transition-all duration-300 border border-white/20'
+                          ? 'bg-white/95 text-blue-600 hover:bg-white hover:scale-105 gap-2 shadow-lg font-semibold transition-all duration-300 border border-white/20 dark:bg-slate-900/70 dark:text-slate-100 dark:border-white/10 dark:hover:bg-slate-900/70'
                           : 'gradient-sunrise text-white hover-glow hover:scale-105 gap-2 shadow-lg transition-all duration-300'
                       }
                     >
@@ -122,8 +123,8 @@ export const Header = () => {
                   <Badge
                     className={
                       isDashboard
-                        ? 'gap-1.5 hidden md:flex bg-white/95 text-blue-600 border-0 px-3 py-1.5 shadow-md hover:shadow-lg transition-all duration-300'
-                        : 'gap-1.5 hidden md:flex gradient-sunrise text-white border-0 px-3 py-1.5 shadow-md hover:shadow-lg transition-all duration-300'
+                        ? 'gap-1.5 flex bg-white/95 text-blue-600 border-0 px-3 py-1.5 shadow-md hover:shadow-lg transition-all duration-300 dark:bg-slate-900/70 dark:text-slate-100'
+                        : 'gap-1.5 flex gradient-sunrise text-white border-0 px-3 py-1.5 shadow-md hover:shadow-lg transition-all duration-300'
                     }
                   >
                     <ArrowBigUpDash className='h-3.5 w-3.5' />
@@ -163,22 +164,38 @@ export const Header = () => {
                     </Button>
                   </Link>
                 )}
+                <ThemeToggle
+                  className={
+                    isDashboard
+                      ? 'text-white hover:bg-white/20 hover:scale-105'
+                      : 'text-gray-700 hover:bg-gray-100 hover:scale-105 dark:text-slate-200 dark:hover:bg-white/10'
+                  }
+                />
                 <div className='mt-1.5 scale-110 hover:scale-125 transition-transform duration-300'>
                   <UserButton afterSignOutUrl='/' />
                 </div>
               </>
             ) : (
-              <SignInButton mode='modal'>
-                <Button
+              <>
+                <ThemeToggle
                   className={
                     isDashboard
-                      ? 'bg-white/95 text-blue-600 hover:bg-white hover:scale-105 shadow-lg font-semibold transition-all duration-300'
-                      : 'gradient-sunrise text-white hover-glow hover:scale-105 shadow-lg transition-all duration-300'
+                      ? 'text-white hover:bg-white/20 hover:scale-105'
+                      : 'text-gray-700 hover:bg-gray-100 hover:scale-105 dark:text-slate-200 dark:hover:bg-white/10'
                   }
-                >
-                  Sign In
-                </Button>
-              </SignInButton>
+                />
+                <SignInButton mode='modal'>
+                  <Button
+                    className={
+                      isDashboard
+                        ? 'bg-white/95 text-blue-600 hover:bg-white hover:scale-105 shadow-lg font-semibold transition-all duration-300 dark:bg-slate-900/70 dark:text-slate-100'
+                        : 'gradient-sunrise text-white hover-glow hover:scale-105 shadow-lg transition-all duration-300'
+                    }
+                  >
+                    Sign In
+                  </Button>
+                </SignInButton>
+              </>
             )}
           </div>
         </div>

@@ -54,11 +54,11 @@ export const UploadProgress = ({
           </div>
 
           <div className='flex-1 min-w-0'>
-            <p className='font-bold text-lg truncate text-gray-900'>
+            <p className='font-bold text-lg truncate text-gray-900 dark:text-slate-100'>
               {fileName}
             </p>
 
-            <div className='flex items-center gap-3 text-sm text-gray-600 mt-2'>
+            <div className='flex items-center gap-3 text-sm text-gray-600 dark:text-slate-300 mt-2'>
               <span className='font-medium'>{formatFileSize(fileSize)}</span>
               {fileDuration && (
                 <>
@@ -77,16 +77,16 @@ export const UploadProgress = ({
           {/* Status icon */}
           <div>
             {status === PODCAST_UPLOAD_STATUS.UPLOADING && (
-              <Loader2 className='h-7 w-7 animate-spin text-blue-600' />
+              <Loader2 className='h-7 w-7 animate-spin text-blue-600 dark:text-blue-300' />
             )}
             {status === PODCAST_UPLOAD_STATUS.PROCESSING && (
-              <Loader2 className='h-7 w-7 animate-spin text-blue-600' />
+              <Loader2 className='h-7 w-7 animate-spin text-blue-600 dark:text-blue-300' />
             )}
             {status === PODCAST_UPLOAD_STATUS.COMPLETED && (
-              <CheckCircle2 className='h-7 w-7 text-blue-600' />
+              <CheckCircle2 className='h-7 w-7 text-blue-600 dark:text-blue-300' />
             )}
             {status === PODCAST_UPLOAD_STATUS.ERROR && (
-              <XCircle className='h-7 w-7 text-red-500' />
+              <XCircle className='h-7 w-7 text-red-500 dark:text-red-300' />
             )}
           </div>
         </div>
@@ -95,27 +95,29 @@ export const UploadProgress = ({
         {(status === PODCAST_UPLOAD_STATUS.UPLOADING ||
           status === PODCAST_UPLOAD_STATUS.PROCESSING) && (
           <div className='space-y-3'>
-            <div className='relative h-3 bg-gray-200 rounded-full overflow-hidden'>
+            <div className='relative h-3 bg-gray-200 dark:bg-slate-700/60 rounded-full overflow-hidden'>
               <div
                 className='absolute inset-y-0 left-0 progress-sunrise rounded-full transition-all duration-300 ease-out'
                 style={{ width: `${progress}%` }}
               />
             </div>
             <div className='flex justify-between text-sm font-medium'>
-              <span className='text-gray-700'>
+              <span className='text-gray-700 dark:text-slate-300'>
                 {status === PODCAST_UPLOAD_STATUS.UPLOADING
                   ? 'Uploading...'
                   : 'Processing...'}
               </span>
-              <span className='text-blue-600'>{Math.round(progress)}%</span>
+              <span className='text-blue-600 dark:text-blue-300'>
+                {Math.round(progress)}%
+              </span>
             </div>
           </div>
         )}
 
         {/* Status message for completed state */}
         {status === PODCAST_UPLOAD_STATUS.COMPLETED && (
-          <div className='p-4 rounded-xl bg-blue-50 border-2 border-blue-200'>
-            <p className='text-sm font-semibold text-blue-700'>
+          <div className='p-4 rounded-xl bg-blue-50 border-2 border-blue-200 dark:bg-blue-500/15 dark:border-blue-500/30'>
+            <p className='text-sm font-semibold text-blue-700 dark:text-blue-200'>
               Upload completed! Redirecting to project dashboard...
             </p>
           </div>
@@ -123,21 +125,23 @@ export const UploadProgress = ({
 
         {/* Error message display */}
         {status === PODCAST_UPLOAD_STATUS.ERROR && error && (
-          <div className='rounded-xl bg-red-50 border-2 border-red-200 p-5'>
+          <div className='rounded-xl bg-red-50 border-2 border-red-200 dark:bg-red-500/15 dark:border-red-500/30 p-5'>
             <div className='flex items-start gap-4'>
-              <XCircle className='h-6 w-6 text-red-600 shrink-0 mt-0.5' />
+              <XCircle className='h-6 w-6 text-red-600 dark:text-red-300 shrink-0 mt-0.5' />
               <div className='space-y-2 flex-1'>
-                <p className='font-bold text-red-900'>Upload Failed</p>
-                <p className='text-sm text-red-700 leading-relaxed'>{error}</p>
+                <p className='font-bold text-red-900 dark:text-red-200'>Upload Failed</p>
+                <p className='text-sm text-red-700 dark:text-red-200 leading-relaxed'>
+                  {error}
+                </p>
 
                 {/* Helpful hints based on error message */}
                 {error.includes('plan limit') && (
-                  <p className='text-xs text-gray-600 mt-3 pt-3 border-t border-red-200'>
+                  <p className='text-xs text-gray-600 dark:text-slate-300 mt-3 pt-3 border-t border-red-200 dark:border-red-500/30'>
                     Upgrade your plan to upload larger files or more projects
                   </p>
                 )}
                 {error.includes('Authentication') && (
-                  <p className='text-xs text-gray-600 mt-3 pt-3 border-t border-red-200'>
+                  <p className='text-xs text-gray-600 dark:text-slate-300 mt-3 pt-3 border-t border-red-200 dark:border-red-500/30'>
                     Try refreshing the page or signing in again
                   </p>
                 )}

@@ -209,9 +209,9 @@ export const ProcessingFlow = ({
               );
             })}
 
-            <div className='bg-gradient-to-r from-blue-50 to-orange-50 rounded-2xl p-6 text-center mt-6 border-2 border-blue-200 shadow-lg'>
-              <p className='text-sm text-gray-700 leading-relaxed'>
-                <span className='font-bold text-blue-600 text-base'>
+            <div className='bg-gradient-to-r from-blue-50 to-orange-50 dark:from-blue-950/50 dark:to-orange-950/40 rounded-2xl p-6 text-center mt-6 border-2 border-blue-200 dark:border-blue-500/30 shadow-lg'>
+              <p className='text-sm text-gray-700 dark:text-slate-200 leading-relaxed'>
+                <span className='font-bold text-blue-600 dark:text-blue-300 text-base'>
                   Results available soon!
                 </span>{' '}
                 — AI is generating {unlockedOutputs.length} output

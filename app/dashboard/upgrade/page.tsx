@@ -22,14 +22,13 @@ import {
   FolderKanban,
   Star,
   Rocket,
-  Loader2,
   ArrowBigUpDash,
 } from 'lucide-react';
 import Link from 'next/link';
-import { PricingTable } from '@clerk/nextjs';
 import { Badge } from '@/components/ui/badge';
 import { PODCASTOGIST_USER_PLANS } from '@/lib/tier-config';
 import { capitalize } from '@/lib/utils/utils';
+import { PricingTable } from '@/components/home/pricing-table';
 
 interface UpgradePageProps {
   searchParams: Promise<{
@@ -107,7 +106,7 @@ const UpgradePage = async ({ searchParams }: UpgradePageProps) => {
         <div className='container mx-auto px-4 py-6'>
           <Link
             href='/dashboard/projects'
-            className='inline-flex items-center text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors'
+            className='inline-flex items-center text-sm font-medium text-gray-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors'
           >
             <ArrowLeft className='h-4 w-4 mr-2' />
             Back to Dashboard
@@ -117,23 +116,23 @@ const UpgradePage = async ({ searchParams }: UpgradePageProps) => {
 
       <div className='container mx-auto px-4 py-16'>
         <div className='max-w-3xl mx-auto text-center mb-16'>
-          <div className='inline-flex items-center justify-center w-20 h-20 rounded-full bg-gray-100 mb-6'>
-            <Icon className='h-10 w-10 text-gray-700' />
+          <div className='inline-flex items-center justify-center w-20 h-20 rounded-full bg-gray-100 dark:bg-slate-800/70 mb-6'>
+            <Icon className='h-10 w-10 text-gray-700 dark:text-slate-200' />
           </div>
           <h1 className='text-5xl font-extrabold mb-6'>
             <span className='gradient-sunrise-text'>{message.title}</span>
           </h1>
-          <p className='text-xl text-gray-600 mb-8 leading-relaxed'>
+          <p className='text-xl text-gray-600 dark:text-slate-300 mb-8 leading-relaxed'>
             {message.description}
           </p>
 
-          <div className='flex items-center justify-center gap-2 text-base text-gray-600'>
+          <div className='flex items-center justify-center gap-2 text-base text-gray-600 dark:text-slate-300'>
             <span>Current plan:</span>
             <Badge
               className={
                 currentPlan === PODCASTOGIST_USER_PLANS.MAX
                   ? 'gradient-sunrise text-white px-4 py-1.5'
-                  : 'bg-gray-200 text-gray-700 px-4 py-1.5'
+                  : 'bg-gray-200 text-gray-700 px-4 py-1.5 dark:bg-slate-800 dark:text-slate-100'
               }
             >
               {currentPlan === PODCASTOGIST_USER_PLANS.MAX && (
@@ -148,90 +147,7 @@ const UpgradePage = async ({ searchParams }: UpgradePageProps) => {
             </Badge>
           </div>
         </div>
-
-        <div className='flex justify-center w-full'>
-          <div className='max-w-6xl w-full'>
-            <PricingTable
-              appearance={{
-                elements: {
-                  pricingTableCardHeader: {
-                    background:
-                      'linear-gradient(135deg, rgb(59 130 246), rgb(249 115 22))',
-                    color: 'white',
-                    borderRadius: '1rem 1rem 0 0',
-                    padding: '2.5rem',
-                  },
-                  pricingTableCardTitle: {
-                    fontSize: '2.25rem',
-                    fontWeight: '800',
-                    color: 'white',
-                    marginBottom: '0.5rem',
-                  },
-                  pricingTableCardDescription: {
-                    fontSize: '1.1rem',
-                    color: 'rgba(255, 255, 255, 0.95)',
-                    fontWeight: '500',
-                  },
-                  pricingTableCardFee: {
-                    color: 'white',
-                    fontWeight: '800',
-                    fontSize: '3rem',
-                  },
-                  pricingTableCardFeePeriod: {
-                    color: 'rgba(255, 255, 255, 0.85)',
-                    fontSize: '1.1rem',
-                  },
-                  pricingTableCard: {
-                    borderRadius: '1rem',
-                    border: '2px solid rgb(59 130 246 / 0.2)',
-                    boxShadow: '0 10px 40px rgba(59, 130, 246, 0.15)',
-                    transition: 'all 0.3s ease',
-                    overflow: 'hidden',
-                    background: 'rgba(255, 255, 255, 0.9)',
-                    backdropFilter: 'blur(10px)',
-                  },
-                  pricingTableCardBody: {
-                    padding: '2.5rem',
-                  },
-                  pricingTableCardFeatures: {
-                    marginTop: '2rem',
-                    gap: '1rem',
-                  },
-                  pricingTableCardFeature: {
-                    fontSize: '1.05rem',
-                    padding: '0.75rem 0',
-                    fontWeight: '500',
-                  },
-                  pricingTableCardButton: {
-                    marginTop: '2rem',
-                    borderRadius: '0.75rem',
-                    fontWeight: '700',
-                    padding: '1rem 2.5rem',
-                    transition: 'all 0.2s ease',
-                    fontSize: '1.1rem',
-                    background:
-                      'linear-gradient(135deg, rgb(59 130 246), rgb(249 115 22))',
-                    border: 'none',
-                    boxShadow: '0 4px 15px rgba(59, 130, 246, 0.3)',
-                  },
-                  pricingTableCardFeePeriodNotice: {
-                    color: 'white',
-                  },
-                },
-              }}
-              fallback={
-                <div className='flex items-center justify-center py-20'>
-                  <div className='text-center space-y-4 glass-card p-12 rounded-2xl'>
-                    <Loader2 className='h-16 w-16 animate-spin text-blue-600 mx-auto' />
-                    <p className='text-gray-600 text-lg font-medium'>
-                      Loading pricing options...
-                    </p>
-                  </div>
-                </div>
-              }
-            />
-          </div>
-        </div>
+        <PricingTable />
       </div>
     </div>
   );

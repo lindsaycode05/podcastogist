@@ -40,7 +40,7 @@ export const YouTubeTimestampsTab = ({
           <h3 className='text-xl md:text-2xl font-bold gradient-sunrise-text mb-2'>
             YouTube Timestamps & Chapters
           </h3>
-          <p className='text-sm text-gray-600'>
+          <p className='text-sm text-gray-600 dark:text-slate-300'>
             Copy these timestamps and paste them into your YouTube video
             description. YouTube will automatically create clickable chapter
             markers.
@@ -65,14 +65,14 @@ export const YouTubeTimestampsTab = ({
       </div>
 
       <div className='space-y-6'>
-        <div className='glass-card rounded-xl p-4 md:p-5 bg-linear-to-br from-blue-50 to-orange-50 border border-blue-100'>
-          <pre className='whitespace-pre-wrap font-mono text-xs md:text-sm wrap-break-word text-gray-800'>
+        <div className='glass-card rounded-xl p-4 md:p-5 bg-linear-to-br from-blue-50 to-orange-50 dark:from-blue-950/50 dark:to-orange-950/40 border border-blue-100 dark:border-blue-500/30'>
+          <pre className='whitespace-pre-wrap font-mono text-xs md:text-sm wrap-break-word text-gray-800 dark:text-slate-100'>
             {formattedTimestamps}
           </pre>
         </div>
 
-        <div className='space-y-4 pt-4 border-t border-gray-200'>
-          <h4 className='text-base md:text-lg font-bold text-gray-900'>
+        <div className='space-y-4 pt-4 border-t border-gray-200 dark:border-slate-700'>
+          <h4 className='text-base md:text-lg font-bold text-gray-900 dark:text-slate-100'>
             Individual Timestamps:
           </h4>
           <div className='space-y-3'>
@@ -82,12 +82,12 @@ export const YouTubeTimestampsTab = ({
                   0,
                   20
                 )}`}
-                className='flex items-start gap-3 md:gap-4 p-4 md:p-5 glass-card rounded-xl border-l-4 border-l-blue-400'
+                className='flex items-start gap-3 md:gap-4 p-4 md:p-5 glass-card rounded-xl border-l-4 border-l-blue-400 dark:border-l-blue-500/60'
               >
                 <code className='text-sm md:text-base font-mono font-bold gradient-sunrise text-white px-3 py-1.5 rounded-lg shadow-md shrink-0'>
                   {timestamp.timestamp}
                 </code>
-                <p className='text-sm md:text-base text-gray-700 flex-1 min-w-0 wrap-break-word leading-relaxed'>
+                <p className='text-sm md:text-base text-gray-700 dark:text-slate-200 flex-1 min-w-0 wrap-break-word leading-relaxed'>
                   {timestamp.description}
                 </p>
               </div>

@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export const Footer = () => {
   return (
-    <footer className='border-t bg-gradient-to-br from-gray-50 to-blue-50/30'>
+    <footer className='border-t border-gray-200 dark:border-slate-800 bg-gradient-to-br from-gray-50 to-blue-50/30 dark:from-slate-950 dark:to-slate-900'>
       <div className='container mx-auto px-4 py-8'>
         <div className='max-w-6xl mx-auto'>
           <div className='grid md:grid-cols-3 gap-8 mb-8'>
@@ -16,19 +16,21 @@ export const Footer = () => {
                   Podcastogist
                 </span>
               </div>
-              <p className='text-gray-600 text-sm leading-relaxed'>
+              <p className='text-gray-600 dark:text-slate-300 text-sm leading-relaxed'>
                 AI-powered podcast post-production platform that converts your
                 content into audience-growth fuel.
               </p>
             </div>
 
             <div>
-              <h3 className='font-bold mb-4 text-gray-900'>Quick Links</h3>
+              <h3 className='font-bold mb-4 text-gray-900 dark:text-slate-100'>
+                Quick Links
+              </h3>
               <ul className='space-y-2'>
                 <li>
                   <Link
                     href='/'
-                    className='text-gray-600 hover:text-blue-600 transition-colors text-sm'
+                    className='text-gray-600 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 transition-colors text-sm'
                   >
                     Home
                   </Link>
@@ -36,7 +38,7 @@ export const Footer = () => {
                 <li>
                   <Link
                     href='/dashboard/projects'
-                    className='text-gray-600 hover:text-blue-600 transition-colors text-sm'
+                    className='text-gray-600 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 transition-colors text-sm'
                   >
                     Projects
                   </Link>
@@ -44,7 +46,7 @@ export const Footer = () => {
                 <li>
                   <Link
                     href='/dashboard/upload'
-                    className='text-gray-600 hover:text-blue-600 transition-colors text-sm'
+                    className='text-gray-600 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 transition-colors text-sm'
                   >
                     Upload
                   </Link>
@@ -53,12 +55,14 @@ export const Footer = () => {
             </div>
 
             <div>
-              <h3 className='font-bold mb-4 text-gray-900'>Support</h3>
+              <h3 className='font-bold mb-4 text-gray-900 dark:text-slate-100'>
+                Support
+              </h3>
               <ul className='space-y-2'>
                 <li>
                   <Link
                     href='#'
-                    className='text-gray-600 hover:text-blue-600 transition-colors text-sm'
+                    className='text-gray-600 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 transition-colors text-sm'
                   >
                     Documentation
                   </Link>
@@ -66,7 +70,7 @@ export const Footer = () => {
                 <li>
                   <Link
                     href='#'
-                    className='text-gray-600 hover:text-blue-600 transition-colors text-sm'
+                    className='text-gray-600 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 transition-colors text-sm'
                   >
                     Contact Us
                   </Link>
@@ -74,7 +78,7 @@ export const Footer = () => {
                 <li>
                   <Link
                     href='#'
-                    className='text-gray-600 hover:text-blue-600 transition-colors text-sm'
+                    className='text-gray-600 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 transition-colors text-sm'
                   >
                     Privacy Policy
                   </Link>
@@ -83,8 +87,8 @@ export const Footer = () => {
             </div>
           </div>
 
-          <div className='pt-8 border-t border-gray-200'>
-            <p className='text-center text-sm text-gray-600'>
+          <div className='pt-8 border-t border-gray-200 dark:border-slate-800'>
+            <p className='text-center text-sm text-gray-600 dark:text-slate-400'>
               {new Date().getFullYear()} Podcastogist. This is a demo project.
             </p>
           </div>

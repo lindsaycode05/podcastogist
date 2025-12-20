@@ -26,8 +26,8 @@ export const HeaderRoutes = () => {
           className={cn(
             'gap-2 transition-all duration-300 font-medium',
             isActive('/dashboard/projects')
-              ? 'bg-white/95 text-blue-600 hover:bg-white hover:scale-105 shadow-lg border border-white/20'
-              : 'text-white hover:bg-white/20 hover:scale-105'
+              ? 'bg-white/95 text-blue-600 hover:bg-white hover:scale-105 shadow-lg border border-white/20 dark:bg-slate-900/70 dark:text-slate-100 dark:border-white/10'
+              : 'text-white dark:text-slate-100 hover:bg-white/20 hover:scale-105'
           )}
         >
           <FileVolume className='h-4 w-4' />
@@ -41,8 +41,8 @@ export const HeaderRoutes = () => {
           className={cn(
             'gap-2 transition-all duration-300 font-medium',
             isActive('/dashboard/upload')
-              ? 'bg-white/95 text-blue-600 hover:bg-white hover:scale-105 shadow-lg border border-white/20'
-              : 'text-white hover:bg-white/20 hover:scale-105'
+              ? 'bg-white/95 text-blue-600 hover:bg-white hover:scale-105 shadow-lg border border-white/20 dark:bg-slate-900/70 dark:text-slate-100 dark:border-white/10'
+              : 'text-white dark:text-slate-100 hover:bg-white/20 hover:scale-105'
           )}
         >
           <FileUp className='h-4 w-4' />

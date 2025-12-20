@@ -12,13 +12,13 @@ export const PageHeader = () => {
           <h1 className='text-4xl md:text-5xl font-extrabold mb-3'>
             My <span className='gradient-sunrise-text'>Projects</span>
           </h1>
-          <p className='text-lg text-gray-600'>
+          <p className='text-lg text-gray-600 dark:text-slate-300'>
             View and access all of your podcast projects
           </p>
         </div>
         <Link href='/dashboard/upload'>
           <Button className='gradient-sunrise text-white hover-glow shadow-lg px-6 py-6 text-base'>
-            <FileUp className='mr-2 h-5 w-5' />
+            <FileUp className='h-5 w-5' />
             New Upload
           </Button>
         </Link>

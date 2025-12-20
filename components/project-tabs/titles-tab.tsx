@@ -50,9 +50,9 @@ export const TitlesTab = ({ titles }: TitlesTabProps) => {
               {titles[category.key].map((title) => (
                 <li
                   key={title}
-                  className='p-3 md:p-4 glass-card rounded-xl border-l-4 border-l-blue-400'
+                  className='p-3 md:p-4 glass-card rounded-xl border-l-4 border-l-blue-400 dark:border-l-blue-500/60'
                 >
-                  <p className='text-sm md:text-base text-gray-700 font-medium wrap-break-word'>
+                  <p className='text-sm md:text-base text-gray-700 dark:text-slate-200 font-medium wrap-break-word'>
                     {title}
                   </p>
                 </li>

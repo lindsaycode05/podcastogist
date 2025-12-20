@@ -159,33 +159,35 @@ const ProjectDetailPage = () => {
   return (
     <div className='container max-w-6xl mx-auto py-10 px-4 '>
       {/* Header with title and actions */}
-      <div className='mb-8 flex items-start justify-between gap-4'>
-        <div className='flex-1 min-w-0'>
+      <div className='mb-8 flex flex-col items-start gap-4 sm:flex-row sm:items-start sm:justify-between'>
+        <div className='w-full min-w-0 sm:flex-1'>
           {isEditing ? (
-            <div className='flex items-center gap-2'>
+            <div className='flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-2'>
               <Input
                 value={editedName}
                 onChange={(e) => setEditedName(e.target.value)}
-                className='text-2xl font-bold h-auto py-2'
+                className='text-2xl font-bold h-auto py-2 w-full'
                 placeholder='Project name'
                 autoFocus
                 disabled={isSaving}
               />
-              <Button size='sm' onClick={handleSaveEdit} disabled={isSaving}>
-                {isSaving ? (
-                  <Loader2 className='h-4 w-4 animate-spin' />
-                ) : (
-                  <Save className='h-4 w-4' />
-                )}
-              </Button>
-              <Button
-                size='sm'
-                variant='outline'
-                onClick={handleCancelEdit}
-                disabled={isSaving}
-              >
-                <X className='h-4 w-4' />
-              </Button>
+              <div className='flex items-center gap-2'>
+                <Button size='sm' onClick={handleSaveEdit} disabled={isSaving}>
+                  {isSaving ? (
+                    <Loader2 className='h-4 w-4 animate-spin' />
+                  ) : (
+                    <Save className='h-4 w-4' />
+                  )}
+                </Button>
+                <Button
+                  size='sm'
+                  variant='outline'
+                  onClick={handleCancelEdit}
+                  disabled={isSaving}
+                >
+                  <X className='h-4 w-4' />
+                </Button>
+              </div>
             </div>
           ) : (
             <div className='flex items-center gap-2'>
@@ -195,16 +197,18 @@ const ProjectDetailPage = () => {
             </div>
           )}
         </div>
-        <div className='flex items-center gap-3 shrink-0'>
+        <div className='flex w-full flex-wrap items-center gap-3 sm:w-auto sm:justify-end shrink-0'>
           {!isEditing && (
             <Button
               variant='outline'
               size='lg'
               onClick={handleStartEdit}
-              className='glass-card hover-lift border-2 border-blue-200 hover:border-blue-400 px-6 bg-white'
+              className='glass-card hover-lift border-2 border-blue-200 hover:border-blue-400 px-6 bg-white dark:border-blue-500/40 dark:bg-slate-900/80 dark:hover:border-blue-400'
             >
-              <SquarePen className='h-4 w-4 mr-2 text-blue-600' />
-              <span className='font-semibold text-blue-700'>Edit</span>
+              <SquarePen className='h-4 w-4 mr-2 text-blue-600 dark:text-blue-300' />
+              <span className='font-semibold text-blue-700 dark:text-blue-200'>
+                Edit
+              </span>
             </Button>
           )}
           <AlertDialog>
@@ -283,7 +287,7 @@ const ProjectDetailPage = () => {
             {/* Mobile Dropdown */}
             <div className='glass-card rounded-2xl p-4 mb-6 lg:hidden'>
               <Select value={activeTab} onValueChange={setActiveTab}>
-                <SelectTrigger className='w-full px-4 py-3 rounded-xl bg-linear-to-r from-blue-500 to-orange-400 text-white font-semibold text-base border-none outline-none focus:ring-2 focus:ring-blue-300 transition-all h-auto'>
+                <SelectTrigger className='w-full px-4 py-3 rounded-xl bg-linear-to-r from-blue-500 to-orange-400 text-white font-semibold text-base border-none outline-none focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-400/40 transition-all h-auto'>
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>

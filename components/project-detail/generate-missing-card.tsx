@@ -35,10 +35,10 @@ export const GenerateMissingCard = ({
     <div
       className={`glass-card rounded-2xl p-12 text-center space-y-6 ${className}`}
     >
-      <p className='text-gray-600 text-lg'>
+      <p className='text-gray-600 dark:text-slate-300 text-lg'>
         {message || 'No content available'}
       </p>
-      <p className='text-sm text-gray-500'>
+      <p className='text-sm text-gray-500 dark:text-slate-400'>
         It looks like this project was processed before you upgraded.
       </p>
       <Button
@@ -48,7 +48,7 @@ export const GenerateMissingCard = ({
       >
         {isGenerating ? 'Generating...' : 'Generate All Missing Features'}
       </Button>
-      <p className='text-xs text-gray-500'>
+      <p className='text-xs text-gray-500 dark:text-slate-400'>
         This will generate all features available in your current plan
       </p>
     </div>

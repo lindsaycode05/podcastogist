@@ -13,9 +13,9 @@ export const CtaSection = async () => {
       <div className='absolute inset-0 gradient-sunrise'></div>
 
       {/* Decorative elements */}
-      <div className='absolute top-10 right-10 w-72 h-72 bg-white rounded-full mix-blend-overlay filter blur-3xl opacity-20 animate-float'></div>
+      <div className='absolute top-10 right-10 w-72 h-72 bg-white dark:bg-white/15 rounded-full mix-blend-overlay filter blur-3xl opacity-20 dark:opacity-10 animate-float'></div>
       <div
-        className='absolute bottom-10 left-10 w-72 h-72 bg-blue-200 rounded-full mix-blend-overlay filter blur-3xl opacity-30 animate-float'
+        className='absolute bottom-10 left-10 w-72 h-72 bg-blue-200 dark:bg-blue-500/25 rounded-full mix-blend-overlay filter blur-3xl opacity-30 dark:opacity-15 animate-float'
         style={{ animationDelay: '1.5s' }}
       ></div>
 
@@ -33,7 +33,7 @@ export const CtaSection = async () => {
               <Link href='/dashboard/upload'>
                 <Button
                   size='lg'
-                  className='bg-white text-blue-500/90 hover:bg-white/90 hover-glow text-lg px-10 py-7 rounded-xl shadow-2xl font-bold'
+                  className='bg-white text-blue-500/90 hover:bg-white/90 hover-glow text-lg px-10 py-7 rounded-xl shadow-2xl font-bold dark:bg-slate-50 dark:text-blue-600'
                 >
                   <Upload className='mr-2 h-6 w-6' />
                   <p className='hidden md:inline'>
@@ -46,7 +46,7 @@ export const CtaSection = async () => {
               <SignInButton mode='modal'>
                 <Button
                   size='lg'
-                  className='bg-white text-blue-500/90 hover:bg-white/90 hover-glow text-lg px-10 py-7 rounded-xl shadow-2xl font-bold'
+                  className='bg-white text-blue-500/90 hover:bg-white/90 hover-glow text-lg px-10 py-7 rounded-xl shadow-2xl font-bold dark:bg-slate-50 dark:text-blue-600'
                 >
                   Get Started Now
                 </Button>

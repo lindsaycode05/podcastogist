@@ -2,13 +2,13 @@ import { PodcastUploader } from '@/components/upload/podcast-uploader';
 
 const UploadPage = () => {
   return (
-    <div className='min-h-screen mesh-background-subtle'>
+    <div className='min-h-screen mesh-background-subtle -mt-4 xl:-mt-10 pt-4 xl:pt-10'>
       <div className='container max-w-5xl mx-auto py-16 px-4'>
         <div className='mb-12 text-center'>
           <h1 className='text-5xl font-extrabold mb-4'>
             Upload <span className='gradient-sunrise-text'>Your Podcast</span>
           </h1>
-          <p className='text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed'>
+          <p className='text-xl text-gray-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed'>
             Upload your podcast episode audio file to generate AI-powered
             insights, recaps, social media content and more.
           </p>
@@ -25,10 +25,10 @@ const UploadPage = () => {
                   <span className='text-white font-bold text-lg'>1</span>
                 </div>
                 <div>
-                  <p className='font-semibold text-gray-900 mb-1'>
+                  <p className='font-semibold text-gray-900 dark:text-slate-100 mb-1'>
                     Secure Upload
                   </p>
-                  <p className='text-gray-600'>
+                  <p className='text-gray-600 dark:text-slate-300'>
                     Your file will be securely uploaded to our cloud storage
                   </p>
                 </div>
@@ -38,10 +38,10 @@ const UploadPage = () => {
                   <span className='text-white font-bold text-lg'>2</span>
                 </div>
                 <div>
-                  <p className='font-semibold text-gray-900 mb-1'>
+                  <p className='font-semibold text-gray-900 dark:text-slate-100 mb-1'>
                     AI Transcription
                   </p>
-                  <p className='text-gray-600'>
+                  <p className='text-gray-600 dark:text-slate-300'>
                     AI will transcribe your podcast and extract highlight
                     moments
                   </p>
@@ -52,10 +52,10 @@ const UploadPage = () => {
                   <span className='text-white font-bold text-lg'>3</span>
                 </div>
                 <div>
-                  <p className='font-semibold text-gray-900 mb-1'>
+                  <p className='font-semibold text-gray-900 dark:text-slate-100 mb-1'>
                     AI Content Generation
                   </p>
-                  <p className='text-gray-600'>
+                  <p className='text-gray-600 dark:text-slate-300'>
                     AI will generate summaries & recaps, social posts, timestamps,
                     titles and hashtags
                   </p>
@@ -66,10 +66,10 @@ const UploadPage = () => {
                   <span className='text-white font-bold text-lg'>4</span>
                 </div>
                 <div>
-                  <p className='font-semibold text-gray-900 mb-1'>
+                  <p className='font-semibold text-gray-900 dark:text-slate-100 mb-1'>
                     View Results
                   </p>
-                  <p className='text-gray-600'>
+                  <p className='text-gray-600 dark:text-slate-300'>
                     Access your results in the project dashboard momentarily
                   </p>
                 </div>

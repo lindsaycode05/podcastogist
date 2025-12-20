@@ -1,5 +1,4 @@
-import { PricingTable } from '@clerk/nextjs';
-import { Loader2 } from 'lucide-react';
+import { PricingTable } from './pricing-table';
 
 export const PricingSection = () => {
   return (
@@ -14,95 +13,12 @@ export const PricingSection = () => {
               Clear, <span className='gradient-sunrise-text'>Honest</span>{' '}
               Pricing
             </h2>
-            <p className='text-xl text-gray-600 max-w-2xl mx-auto'>
+            <p className='text-xl text-gray-600 dark:text-slate-300 max-w-2xl mx-auto'>
               Pick the plan that works for you. Upgrade, switch, or cancel
               whenever you need.
             </p>
           </div>
-
-          <div className='flex justify-center w-full'>
-            <div className='max-w-6xl w-full'>
-              <PricingTable
-                appearance={{
-                  elements: {
-                    pricingTableCardHeader: {
-                      background:
-                        'linear-gradient(135deg, rgb(59 130 246), rgb(249 115 22))',
-                      color: 'white',
-                      borderRadius: '1rem 1rem 0 0',
-                      padding: '2.5rem',
-                    },
-                    pricingTableCardTitle: {
-                      fontSize: '2.25rem',
-                      fontWeight: '800',
-                      color: 'white',
-                      marginBottom: '0.5rem',
-                    },
-                    pricingTableCardDescription: {
-                      fontSize: '1.1rem',
-                      color: 'rgba(255, 255, 255, 0.95)',
-                      fontWeight: '500',
-                    },
-                    pricingTableCardFee: {
-                      color: 'white',
-                      fontWeight: '800',
-                      fontSize: '3rem',
-                    },
-                    pricingTableCardFeePeriod: {
-                      color: 'rgba(255, 255, 255, 0.85)',
-                      fontSize: '1.1rem',
-                    },
-                    pricingTableCard: {
-                      borderRadius: '1rem',
-                      border: '2px solid rgb(59 130 246 / 0.2)',
-                      boxShadow: '0 10px 40px rgba(59, 130, 246, 0.15)',
-                      transition: 'all 0.3s ease',
-                      overflow: 'hidden',
-                      background: 'rgba(255, 255, 255, 0.9)',
-                      backdropFilter: 'blur(10px)',
-                    },
-                    pricingTableCardBody: {
-                      padding: '2.5rem',
-                    },
-                    pricingTableCardFeatures: {
-                      marginTop: '2rem',
-                      gap: '1rem',
-                    },
-                    pricingTableCardFeature: {
-                      fontSize: '1.05rem',
-                      padding: '0.75rem 0',
-                      fontWeight: '500',
-                    },
-                    pricingTableCardButton: {
-                      marginTop: '2rem',
-                      borderRadius: '0.75rem',
-                      fontWeight: '700',
-                      padding: '1rem 2.5rem',
-                      transition: 'all 0.2s ease',
-                      fontSize: '1.1rem',
-                      background:
-                        'linear-gradient(135deg, rgb(59 130 246), rgb(249 115 22))',
-                      border: 'none',
-                      boxShadow: '0 4px 15px rgba(59, 130, 246, 0.3)',
-                    },
-                    pricingTableCardFeePeriodNotice: {
-                      color: 'white',
-                    },
-                  },
-                }}
-                fallback={
-                  <div className='flex items-center justify-center py-20'>
-                    <div className='text-center space-y-4 glass-card p-12 rounded-2xl'>
-                      <Loader2 className='h-16 w-16 animate-spin text-blue-600 mx-auto' />
-                      <p className='text-gray-600 text-lg font-medium'>
-                        Loading pricing options...
-                      </p>
-                    </div>
-                  </div>
-                }
-              />
-            </div>
-          </div>
+          <PricingTable />
         </div>
       </div>
     </section>
