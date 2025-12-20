@@ -4,7 +4,7 @@ import Link from 'next/link';
 export const Footer = () => {
   return (
     <footer className='border-t bg-gradient-to-br from-gray-50 to-blue-50/30'>
-      <div className='container mx-auto px-4 py-12'>
+      <div className='container mx-auto px-4 py-8'>
         <div className='max-w-6xl mx-auto'>
           <div className='grid md:grid-cols-3 gap-8 mb-8'>
             <div>

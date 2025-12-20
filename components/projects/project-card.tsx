@@ -65,9 +65,9 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
               <FileVolume className='h-10 w-10 md:h-12 md:w-12 text-white' />
             </div>
 
-            <div className='flex-1 min-w-0 overflow-hidden space-y-3'>
-              <div className='flex items-start justify-between gap-4'>
-                <div className='flex-1 min-w-0 overflow-hidden'>
+            <div className='flex-1 min-w-0 overflow-hidden'>
+              <div className='flex flex-col gap-3 md:flex-row md:flex-wrap md:items-start md:justify-between'>
+                <div className='flex-1 min-w-0 overflow-hidden order-1 md:order-1'>
                   <h3 className='font-extrabold text-lg md:text-xl lg:text-2xl wrap-break-word hyphens-auto group-hover:text-blue-600 transition-colors leading-snug'>
                     {project.displayName || project.fileName}
                   </h3>
@@ -75,7 +75,7 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
                     {formatSmartDate(project.createdAt)}
                   </p>
                 </div>
-                <div className='flex items-center gap-3 shrink-0'>
+                <div className='flex items-center gap-3 order-3 md:order-2 md:shrink-0'>
                   {project.status !== 'completed' && (
                     <Badge
                       variant={getStatusVariant(project.status)}
@@ -90,45 +90,39 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
                           project.status === 'processing' ? 'animate-spin' : ''
                         }`}
                       />
-                      <span className='hidden md:inline'>
-                        {processingPhase}
-                      </span>
-                      <span className='md:hidden'>
-                        {project.status === 'processing'
-                          ? project.jobStatus?.transcription === 'running'
-                            ? 'Trans'
-                            : 'Gen'
-                          : project.status}
-                      </span>
+                      <span>{processingPhase}</span>
                     </Badge>
                   )}
                   <button
                     type='button'
                     onClick={handleDelete}
                     disabled={isDeleting}
-                    className='h-10 w-10 rounded-full bg-red-50 hover:bg-red-100 flex items-center justify-center transition-all hover:scale-110 disabled:opacity-50 cursor-pointer'
+                    className='h-10 w-auto md:w-10 px-3 md:px-0 rounded-full bg-red-50 hover:bg-red-100 flex items-center justify-center gap-2 transition-all hover:scale-110 disabled:opacity-50 cursor-pointer'
                   >
                     {isDeleting ? (
                       <Loader2 className='h-5 w-5 animate-spin text-red-600' />
                     ) : (
                       <Trash2 className='h-5 w-5 text-red-600' />
                     )}
+                    <span className='text-sm font-semibold text-red-700 md:hidden'>
+                      Delete
+                    </span>
                   </button>
                 </div>
-              </div>
 
-              <div className='flex items-center gap-3 flex-wrap'>
-                <Badge className='text-xs font-semibold bg-blue-100 text-blue-700 border-blue-200'>
-                  {formatFileSize(project.fileSize)}
-                </Badge>
-                <Badge className='text-xs font-semibold bg-blue-100 text-blue-700 border-blue-200 uppercase'>
-                  {project.fileFormat}
-                </Badge>
-                {project.fileDuration && (
+                <div className='flex items-center gap-3 flex-wrap order-2 md:order-3 md:basis-full'>
                   <Badge className='text-xs font-semibold bg-blue-100 text-blue-700 border-blue-200'>
-                    {formatDuration(project.fileDuration)}
+                    {formatFileSize(project.fileSize)}
                   </Badge>
-                )}
+                  <Badge className='text-xs font-semibold bg-blue-100 text-blue-700 border-blue-200 uppercase'>
+                    {project.fileFormat}
+                  </Badge>
+                  {project.fileDuration && (
+                    <Badge className='text-xs font-semibold bg-blue-100 text-blue-700 border-blue-200'>
+                      {formatDuration(project.fileDuration)}
+                    </Badge>
+                  )}
+                </div>
               </div>
 
               {project.status === 'processing' && project.jobStatus && (

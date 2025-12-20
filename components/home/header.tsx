@@ -33,8 +33,8 @@ export const Header = () => {
               <div
                 className={
                   isDashboard
-                    ? 'p-2 rounded-xl bg-white/95 group-hover:bg-white group-hover:scale-110 group-hover:shadow-xl transition-all duration-300'
-                    : 'p-2 rounded-xl gradient-sunrise group-hover:scale-110 group-hover:shadow-xl transition-all duration-300'
+                    ? 'hidden md:inline p-2 rounded-xl bg-white/95 group-hover:bg-white group-hover:scale-110 group-hover:shadow-xl transition-all duration-300'
+                    : 'hidden md:inline p-2 rounded-xl gradient-sunrise group-hover:scale-110 group-hover:shadow-xl transition-all duration-300'
                 }
               >
                 <MicVocal
@@ -82,7 +82,7 @@ export const Header = () => {
                           : 'gradient-sunrise text-white hover-glow hover:scale-105 gap-2 shadow-lg transition-all duration-300'
                       }
                     >
-                      <Plus className='h-4 w-4' />
+                      <Plus className='hidden md:inline h-4 w-4' />
                       <span className='hidden lg:inline'>Upgrade to Plus</span>
                       <span className='lg:hidden'>Go Plus</span>
                     </Button>
@@ -105,7 +105,7 @@ export const Header = () => {
                           : 'gradient-sunrise text-white hover-glow hover:scale-105 gap-2 shadow-lg transition-all duration-300'
                       }
                     >
-                      <ArrowBigUpDash className='h-4 w-4' />
+                      <ArrowBigUpDash className='hidden md:inline h-4 w-4' />
                       <span className='hidden lg:inline'>Upgrade to Max</span>
                       <span className='lg:hidden'>Go Max</span>
                     </Button>
@@ -163,7 +163,7 @@ export const Header = () => {
                     </Button>
                   </Link>
                 )}
-                <div className='scale-110 hover:scale-125 transition-transform duration-300'>
+                <div className='mt-1.5 scale-110 hover:scale-125 transition-transform duration-300'>
                   <UserButton afterSignOutUrl='/' />
                 </div>
               </>

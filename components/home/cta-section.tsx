@@ -36,7 +36,10 @@ export const CtaSection = async () => {
                   className='bg-white text-blue-500/90 hover:bg-white/90 hover-glow text-lg px-10 py-7 rounded-xl shadow-2xl font-bold'
                 >
                   <Upload className='mr-2 h-6 w-6' />
-                  Upload Your Podcast Episode
+                  <p className='hidden md:inline'>
+                    Upload Your Podcast Episode
+                  </p>
+                  <p className='inline md:hidden'>Upload Your Podcast</p>
                 </Button>
               </Link>
             ) : (
