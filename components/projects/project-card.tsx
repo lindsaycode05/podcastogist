@@ -7,6 +7,16 @@ import { toast } from 'sonner';
 import { deleteProjectAction } from '@/actions/projects';
 import { CompactProgress } from '@/components/projects/compact-progress';
 import { Badge } from '@/components/ui/badge';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from '@/components/ui/alert-dialog';
 import type { Doc } from '@/convex/_generated/dataModel';
 import { formatDuration, formatFileSize, formatSmartDate } from '@/lib/format';
 import {
@@ -22,21 +32,12 @@ interface ProjectCardProps {
 
 export const ProjectCard = ({ project }: ProjectCardProps) => {
   const [isDeleting, setIsDeleting] = useState(false);
+  const [isConfirmOpen, setIsConfirmOpen] = useState(false);
 
   const StatusIcon = getStatusIcon(project.status);
   const processingPhase = getProcessingPhaseLabel(project);
 
-  const handleDelete = async (e: React.MouseEvent) => {
-    // Prevent navigation to detail page
-    e.preventDefault();
-    e.stopPropagation();
-
-    const confirmed = window.confirm(
-      'Are you sure you want to delete this project? This action cannot be undone.'
-    );
-
-    if (!confirmed) return;
-
+  const handleDelete = async () => {
     setIsDeleting(true);
     try {
       await deleteProjectAction(project._id);
@@ -93,21 +94,52 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
                       <span>{processingPhase}</span>
                     </Badge>
                   )}
-                  <button
-                    type='button'
-                    onClick={handleDelete}
-                    disabled={isDeleting}
-                    className='h-10 w-auto md:w-10 px-3 md:px-0 rounded-full bg-red-50 hover:bg-red-100 flex items-center justify-center gap-2 transition-all hover:scale-110 disabled:opacity-50 cursor-pointer'
+                  <AlertDialog
+                    open={isConfirmOpen}
+                    onOpenChange={setIsConfirmOpen}
                   >
-                    {isDeleting ? (
-                      <Loader2 className='h-5 w-5 animate-spin text-red-600' />
-                    ) : (
-                      <Trash2 className='h-5 w-5 text-red-600' />
-                    )}
-                    <span className='text-sm font-semibold text-red-700 md:hidden'>
-                      Delete
-                    </span>
-                  </button>
+                    <button
+                      type='button'
+                      onClick={(event) => {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        setIsConfirmOpen(true);
+                      }}
+                      disabled={isDeleting}
+                      className='h-10 w-auto md:w-10 px-3 md:px-0 rounded-full bg-red-50 hover:bg-red-100 flex items-center justify-center gap-2 transition-all hover:scale-110 disabled:opacity-50 cursor-pointer'
+                    >
+                      {isDeleting ? (
+                        <Loader2 className='h-5 w-5 animate-spin text-red-600' />
+                      ) : (
+                        <Trash2 className='h-5 w-5 text-red-600' />
+                      )}
+                      <span className='text-sm font-semibold text-red-700 md:hidden'>
+                        Delete
+                      </span>
+                    </button>
+                    <AlertDialogContent>
+                      <AlertDialogHeader>
+                        <AlertDialogTitle>
+                          Delete this project?
+                        </AlertDialogTitle>
+                        <AlertDialogDescription>
+                          This permanently removes &ldquo;
+                          {project.displayName || project.fileName}
+                          &rdquo; and all generated outputs. This action cannot
+                          be undone.
+                        </AlertDialogDescription>
+                      </AlertDialogHeader>
+                      <AlertDialogFooter>
+                        <AlertDialogCancel>Cancel</AlertDialogCancel>
+                        <AlertDialogAction
+                          className='bg-destructive text-white hover:bg-destructive/90'
+                          onClick={handleDelete}
+                        >
+                          Delete
+                        </AlertDialogAction>
+                      </AlertDialogFooter>
+                    </AlertDialogContent>
+                  </AlertDialog>
                 </div>
 
                 <div className='flex items-center gap-3 flex-wrap order-2 md:order-3 md:basis-full'>

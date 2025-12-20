@@ -28,6 +28,17 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from '@/components/ui/alert-dialog';
+import {
   Select,
   SelectContent,
   SelectTrigger,
@@ -101,12 +112,6 @@ const ProjectDetailPage = () => {
 
   // Handle delete
   const handleDelete = async () => {
-    const confirmed = window.confirm(
-      'Are you sure you want to delete this project? This action cannot be undone.'
-    );
-
-    if (!confirmed) return;
-
     setIsDeleting(true);
     try {
       await deleteProjectAction(projectId);
@@ -202,19 +207,42 @@ const ProjectDetailPage = () => {
               <span className='font-semibold text-blue-700'>Edit</span>
             </Button>
           )}
-          <Button
-            size='lg'
-            onClick={handleDelete}
-            disabled={isDeleting}
-            className='gradient-sunrise text-white hover-glow px-6 transition-all'
-          >
-            {isDeleting ? (
-              <Loader2 className='h-4 w-4 animate-spin mr-2' />
-            ) : (
-              <Trash2 className='h-4 w-4 mr-2' />
-            )}
-            <span className='font-semibold'>Delete</span>
-          </Button>
+          <AlertDialog>
+            <AlertDialogTrigger asChild>
+              <Button
+                size='lg'
+                disabled={isDeleting}
+                className='gradient-sunrise text-white hover-glow px-6 transition-all'
+              >
+                {isDeleting ? (
+                  <Loader2 className='h-4 w-4 animate-spin mr-2' />
+                ) : (
+                  <Trash2 className='h-4 w-4 mr-2' />
+                )}
+                <span className='font-semibold'>Delete</span>
+              </Button>
+            </AlertDialogTrigger>
+            <AlertDialogContent>
+              <AlertDialogHeader>
+                <AlertDialogTitle>Delete this project?</AlertDialogTitle>
+                <AlertDialogDescription>
+                  This permanently removes &ldquo;
+                  {project.displayName || project.fileName}
+                  &rdquo; and all generated outputs. This action cannot be
+                  undone.
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                <AlertDialogAction
+                  className='bg-destructive text-white hover:bg-destructive/90'
+                  onClick={handleDelete}
+                >
+                  Delete
+                </AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
         </div>
       </div>
 
