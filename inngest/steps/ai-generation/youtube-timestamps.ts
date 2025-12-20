@@ -184,7 +184,8 @@ Remember: Create TITLES, not transcript excerpts!`;
           content: prompt,
         },
       ],
-      max_completion_tokens: 1500, // Enough for 100 titles
+      reasoning_effort: 'low',
+      max_completion_tokens: 3500,
     }
   )) as OpenAI.Chat.Completions.ChatCompletion;
 
