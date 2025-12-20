@@ -22,7 +22,7 @@ import {
   FolderKanban,
   Star,
   Rocket,
-  ArrowBigUpDash,
+  ArrowBigUpDash
 } from 'lucide-react';
 import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
@@ -47,35 +47,35 @@ const getUpgradeMessage = (reason?: string, feature?: string) => {
         title: 'Upgrade for Larger Files',
         description:
           "Your file exceeds your plan's size limit. Upgrade to Plus for 200MB uploads or Max for 3GB uploads.",
-        icon: HardDrive,
+        icon: HardDrive
       };
     case 'duration':
       return {
         title: 'Upgrade for Longer Podcasts',
         description:
           "Your podcast exceeds your plan's duration limit. Upgrade to Plus for 2-hour podcasts or Max for unlimited duration.",
-        icon: Clock3,
+        icon: Clock3
       };
     case 'projects':
       return {
         title: "You've Reached Your Project Limit",
         description:
           'Upgrade to create more projects. Plus: 30 projects, Max: unlimited projects.',
-        icon: FolderKanban,
+        icon: FolderKanban
       };
     case 'feature':
       return {
         title: `Unlock ${feature || 'Premium Features'}`,
         description:
           'Access advanced AI features like social posts, YouTube timestamps, and highlight moments by upgrading your plan.',
-        icon: Star,
+        icon: Star
       };
     default:
       return {
         title: 'Upgrade Your Plan',
         description:
           'Get access to more projects, larger files, and advanced AI features.',
-        icon: Rocket,
+        icon: Rocket
       };
   }
 };

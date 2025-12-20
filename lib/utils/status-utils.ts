@@ -7,7 +7,7 @@ import {
   Clock,
   Loader2,
   type LucideIcon,
-  XCircle,
+  XCircle
 } from 'lucide-react';
 import type { Doc } from '@/convex/_generated/dataModel';
 import { capitalize } from './utils';

@@ -58,7 +58,7 @@ export default defineSchema({
             v.literal('completed'),
             v.literal('failed')
           )
-        ),
+        )
       })
     ),
 
@@ -71,9 +71,9 @@ export default defineSchema({
         details: v.optional(
           v.object({
             statusCode: v.optional(v.number()), // HTTP status if applicable
-            stack: v.optional(v.string()), // Stack trace for debugging
+            stack: v.optional(v.string()) // Stack trace for debugging
           })
-        ),
+        )
       })
     ),
 
@@ -85,7 +85,7 @@ export default defineSchema({
         socialPosts: v.optional(v.string()),
         titles: v.optional(v.string()),
         hashtags: v.optional(v.string()),
-        youtubeTimestamps: v.optional(v.string()),
+        youtubeTimestamps: v.optional(v.string())
       })
     ),
 
@@ -104,10 +104,10 @@ export default defineSchema({
                 v.object({
                   word: v.string(),
                   start: v.number(),
-                  end: v.number(),
+                  end: v.number()
                 })
               )
-            ),
+            )
           })
         ),
         // Speaker diarization - who said what and when
@@ -118,7 +118,7 @@ export default defineSchema({
               start: v.number(),
               end: v.number(),
               text: v.string(),
-              confidence: v.number(), // Detection confidence (0-1)
+              confidence: v.number() // Detection confidence (0-1)
             })
           )
         ),
@@ -130,10 +130,10 @@ export default defineSchema({
               end: v.number(), // End time in milliseconds
               headline: v.string(), // Chapter title
               summary: v.string(), // Chapter summary
-              gist: v.string(), // Short gist
+              gist: v.string() // Short gist
             })
           )
-        ),
+        )
       })
     ),
 
@@ -144,7 +144,7 @@ export default defineSchema({
           time: v.string(), // Human-readable time (e.g., "12:34")
           timestamp: v.number(), // Seconds for programmatic use
           text: v.string(), // What was said at this moment
-          description: v.string(), // Why this moment is interesting
+          description: v.string() // Why this moment is interesting
         })
       )
     ),
@@ -155,7 +155,7 @@ export default defineSchema({
         full: v.string(), // 200-300 word overview
         bullets: v.array(v.string()), // 5-7 key points
         insights: v.array(v.string()), // 3-5 actionable takeaways
-        tldr: v.string(), // One sentence hook
+        tldr: v.string() // One sentence hook
       })
     ),
 
@@ -168,7 +168,7 @@ export default defineSchema({
         instagram: v.string(), // Visual description + engagement hooks
         tiktok: v.string(), // Casual, trend-aware
         youtube: v.string(), // Description with timestamps and CTAs
-        facebook: v.string(), // Community-focused, conversation starters
+        facebook: v.string() // Community-focused, conversation starters
       })
     ),
 
@@ -178,7 +178,7 @@ export default defineSchema({
         youtubeShort: v.array(v.string()), // Catchy, clickable (60 chars)
         youtubeLong: v.array(v.string()), // Descriptive, SEO-friendly
         podcastTitles: v.array(v.string()), // Episode titles
-        seoKeywords: v.array(v.string()), // Keywords for discoverability
+        seoKeywords: v.array(v.string()) // Keywords for discoverability
       })
     ),
 
@@ -189,7 +189,7 @@ export default defineSchema({
         instagram: v.array(v.string()),
         tiktok: v.array(v.string()),
         linkedin: v.array(v.string()),
-        twitter: v.array(v.string()),
+        twitter: v.array(v.string())
       })
     ),
 
@@ -198,7 +198,7 @@ export default defineSchema({
       v.array(
         v.object({
           timestamp: v.string(), // Format: "12:34"
-          description: v.string(), // Timestamp title/description
+          description: v.string() // Timestamp title/description
         })
       )
     ),
@@ -206,11 +206,11 @@ export default defineSchema({
     // Timestamp metadata/audit logs
     createdAt: v.number(), // Project creation time
     updatedAt: v.number(), // Last modification time
-    completedAt: v.optional(v.number()), // When processing finished
+    completedAt: v.optional(v.number()) // When processing finished
   })
     // Indexes for efficient queries
     .index('by_user', ['userId']) // List all projects for a user
     .index('by_status', ['status']) // Filter by processing status
     .index('by_user_and_status', ['userId', 'status']) // User's active/completed projects
-    .index('by_created_at', ['createdAt']), // Sort by newest first
+    .index('by_created_at', ['createdAt']) // Sort by newest first
 });

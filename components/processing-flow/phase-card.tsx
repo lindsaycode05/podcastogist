@@ -25,7 +25,7 @@ export const PhaseCard = ({
   isActive,
   progress,
   timeEstimate,
-  children,
+  children
 }: PhaseCardProps) => {
   const isRunning = status === PODCAST_PROCESSING_PHASE_STATUS.RUNNING;
   const isCompleted = status === PODCAST_PROCESSING_PHASE_STATUS.COMPLETED;

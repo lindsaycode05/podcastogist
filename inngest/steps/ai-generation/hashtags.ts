@@ -120,9 +120,9 @@ export async function generateHashtags(
         model: BASE_OPENAI_MODEL,
         messages: [
           { role: 'system', content: HASHTAGS_SYSTEM_PROMPT },
-          { role: 'user', content: buildHashtagsPrompt(transcript) },
+          { role: 'user', content: buildHashtagsPrompt(transcript) }
         ],
-        response_format: zodResponseFormat(hashtagsSchema, 'hashtags'),
+        response_format: zodResponseFormat(hashtagsSchema, 'hashtags')
       }
     )) as OpenAI.Chat.Completions.ChatCompletion;
 
@@ -136,7 +136,7 @@ export async function generateHashtags(
           instagram: ['#Podcast', '#Content'],
           tiktok: ['#Podcast'],
           linkedin: ['#Podcast'],
-          twitter: ['#Podcast'],
+          twitter: ['#Podcast']
         };
 
     return hashtags;
@@ -149,7 +149,7 @@ export async function generateHashtags(
       instagram: ['⚠️ Hashtag generation failed'],
       tiktok: ['⚠️ Hashtag generation failed'],
       linkedin: ['⚠️ Hashtag generation failed'],
-      twitter: ['⚠️ Hashtag generation failed'],
+      twitter: ['⚠️ Hashtag generation failed']
     };
   }
 }

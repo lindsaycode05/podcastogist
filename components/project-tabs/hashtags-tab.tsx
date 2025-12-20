@@ -17,7 +17,7 @@ const PLATFORMS = [
   { key: 'instagram' as const, title: 'Instagram' },
   { key: 'tiktok' as const, title: 'TikTok' },
   { key: 'linkedin' as const, title: 'LinkedIn' },
-  { key: 'twitter' as const, title: 'Twitter' },
+  { key: 'twitter' as const, title: 'Twitter' }
 ];
 
 export const HashtagsTab = ({ hashtags }: HashtagsTabProps) => {

@@ -10,18 +10,18 @@ import {
   ANIMATION_INTERVAL_MS,
   GENERATION_OUTPUTS,
   PODCAST_PROCESSING_PHASE_STATUS,
-  PROGRESS_CAP_PERCENTAGE,
+  PROGRESS_CAP_PERCENTAGE
 } from '@/lib/constants';
 import {
   estimateAssemblyAITime,
-  formatTimeRange,
+  formatTimeRange
 } from '@/lib/processing-time-estimator';
 import type { PhaseStatus } from '@/lib/types';
 import {
   PLAN_FEATURES,
   FEATURES,
   type FeatureName,
-  PODCASTOGIST_USER_PLANS,
+  PODCASTOGIST_USER_PLANS
 } from '@/lib/tier-config';
 import { getMinimumPlanForFeature } from '@/lib/utils/tier-utils';
 
@@ -36,7 +36,7 @@ export const ProcessingFlow = ({
   transcriptionStatus,
   generationStatus,
   fileDuration,
-  createdAt,
+  createdAt
 }: ProcessingFlowProps) => {
   // Get user's current plan from Clerk
   const { has } = useAuth();
@@ -74,7 +74,7 @@ export const ProcessingFlow = ({
       'Social Posts': FEATURES.SOCIAL_POSTS,
       Titles: FEATURES.TITLES,
       Hashtags: FEATURES.HASHTAGS,
-      'YouTube Timestamps': FEATURES.YOUTUBE_TIMESTAMPS,
+      'YouTube Timestamps': FEATURES.YOUTUBE_TIMESTAMPS
     };
 
     return GENERATION_OUTPUTS.map((output) => {
@@ -89,7 +89,7 @@ export const ProcessingFlow = ({
       return {
         ...output,
         isLocked,
-        requiredPlan,
+        requiredPlan
       };
     });
   }, [availableFeatures]);
@@ -163,7 +163,7 @@ export const ProcessingFlow = ({
     transcriptionComplete,
     isGenerating,
     generationComplete,
-    unlockedOutputs.length,
+    unlockedOutputs.length
   ]);
 
   return (

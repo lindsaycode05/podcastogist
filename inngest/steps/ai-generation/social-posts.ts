@@ -142,9 +142,9 @@ export async function generateSocialPosts(
         model: BASE_OPENAI_MODEL,
         messages: [
           { role: 'system', content: SOCIAL_SYSTEM_PROMPT },
-          { role: 'user', content: buildSocialPrompt(transcript) },
+          { role: 'user', content: buildSocialPrompt(transcript) }
         ],
-        response_format: zodResponseFormat(socialPostsSchema, 'social_posts'),
+        response_format: zodResponseFormat(socialPostsSchema, 'social_posts')
       }
     )) as OpenAI.Chat.Completions.ChatCompletion;
 
@@ -158,7 +158,7 @@ export async function generateSocialPosts(
           instagram: 'New episode out now! 🎙️',
           tiktok: 'New podcast!',
           youtube: 'Watch our latest episode.',
-          facebook: 'New podcast available!',
+          facebook: 'New podcast available!'
         };
 
     // Safety check: Enforce Twitter's 280-character limit
@@ -181,7 +181,7 @@ export async function generateSocialPosts(
       instagram: '⚠️ Error generating social post. Check logs for details.',
       tiktok: '⚠️ Error generating social post. Check logs for details.',
       youtube: '⚠️ Error generating social post. Check logs for details.',
-      facebook: '⚠️ Error generating social post. Check logs for details.',
+      facebook: '⚠️ Error generating social post. Check logs for details.'
     };
   }
 }

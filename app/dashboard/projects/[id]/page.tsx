@@ -8,13 +8,13 @@ import { useState } from 'react';
 import { toast } from 'sonner';
 import {
   deleteProjectAction,
-  updateDisplayNameAction,
+  updateDisplayNameAction
 } from '@/actions/projects';
 import { ProcessingFlow } from '@/components/projects/processing-flow';
 import { TabContent } from '@/components/project-detail/tab-content';
 import {
   MobileTabItem,
-  DesktopTabTrigger,
+  DesktopTabTrigger
 } from '@/components/project-detail/tab-triggers';
 import { ProjectStatusCard } from '@/components/projects/project-status-card';
 import { HashtagsTab } from '@/components/project-tabs/hashtags-tab';
@@ -36,13 +36,13 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger,
+  AlertDialogTrigger
 } from '@/components/ui/alert-dialog';
 import {
   Select,
   SelectContent,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 } from '@/components/ui/select';
 import { Tabs, TabsContent, TabsList } from '@/components/ui/tabs';
 import { api } from '@/convex/_generated/api';

@@ -22,43 +22,43 @@ export const PROJECT_TABS: TabConfig[] = [
   {
     value: 'recaps',
     label: 'Recaps',
-    errorKey: 'recaps',
+    errorKey: 'recaps'
     // No 'feature' - available to all
   },
   {
     value: 'moments',
     label: 'Highlight Moments',
     errorKey: 'highlightMoments',
-    feature: FEATURES.HIGHLIGHT_MOMENTS,
+    feature: FEATURES.HIGHLIGHT_MOMENTS
   },
   {
     value: 'youtube-timestamps',
     label: 'YouTube Timestamps',
     errorKey: 'youtubeTimestamps',
-    feature: FEATURES.YOUTUBE_TIMESTAMPS,
+    feature: FEATURES.YOUTUBE_TIMESTAMPS
   },
   {
     value: 'social',
     label: 'Social Posts',
     errorKey: 'socialPosts',
-    feature: FEATURES.SOCIAL_POSTS,
+    feature: FEATURES.SOCIAL_POSTS
   },
   {
     value: 'hashtags',
     label: 'Hashtags',
     errorKey: 'hashtags',
-    feature: FEATURES.HASHTAGS,
+    feature: FEATURES.HASHTAGS
   },
   {
     value: 'titles',
     label: 'Titles',
     errorKey: 'titles',
-    feature: FEATURES.TITLES,
+    feature: FEATURES.TITLES
   },
   {
     value: 'speakers',
     label: 'Speaker Dialogue',
     // No errorKey - this uses transcript data
-    feature: FEATURES.SPEAKER_DIARIZATION,
-  },
+    feature: FEATURES.SPEAKER_DIARIZATION
+  }
 ];

@@ -35,7 +35,10 @@ import { createProjectAction, validateUploadAction } from '@/actions/projects';
 import { Button } from '@/components/ui/button';
 import { UploadDropzone } from '@/components/upload/upload-dropzone';
 import { UploadProgress } from '@/components/upload/upload-progress';
-import { estimateDurationFromSize, getAudioDuration } from '@/lib/utils/audio-utils';
+import {
+  estimateDurationFromSize,
+  getAudioDuration
+} from '@/lib/utils/audio-utils';
 import type { UploadStatus } from '@/lib/types';
 import { PODCAST_UPLOAD_STATUS } from '@/lib/constants';
 
@@ -103,7 +106,7 @@ export const PodcastUploader = () => {
       // Step 1: Pre-validate upload using server action
       const validation = await validateUploadAction({
         fileSize: selectedFile.size,
-        duration: fileDuration,
+        duration: fileDuration
       });
 
       if (!validation.success) {
@@ -116,7 +119,7 @@ export const PodcastUploader = () => {
         handleUploadUrl: '/api/upload',
         onUploadProgress: ({ percentage }) => {
           setUploadProgress(percentage);
-        },
+        }
       });
 
       // Step 3: Create project and trigger workflow
@@ -128,7 +131,7 @@ export const PodcastUploader = () => {
         fileName: selectedFile.name,
         fileSize: selectedFile.size,
         mimeType: selectedFile.type,
-        fileDuration,
+        fileDuration
       });
 
       toast.success('Upload completed! Processing your podcast...');

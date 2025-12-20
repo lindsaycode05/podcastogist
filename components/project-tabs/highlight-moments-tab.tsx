@@ -11,7 +11,7 @@ interface HighlightMomentsTabProps {
 }
 
 export const HighlightMomentsTab = ({
-  highlightMoments,
+  highlightMoments
 }: HighlightMomentsTabProps) => {
   // TabContent ensures this is never undefined at runtime
   if (!highlightMoments) return null;

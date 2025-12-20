@@ -39,7 +39,7 @@ interface UploadDropzoneProps {
 
 export const UploadDropzone = ({
   onFileSelect,
-  disabled = false,
+  disabled = false
 }: UploadDropzoneProps) => {
   const { has } = useAuth();
 
@@ -76,7 +76,7 @@ export const UploadDropzone = ({
       accept: ALLOWED_AUDIO_TYPES_EXTENSION_MAP,
       maxSize: maxFileSize, // File size limit (validates before upload)
       maxFiles: 1, // Only allow single file selection
-      disabled, // Disable dropzone during upload
+      disabled // Disable dropzone during upload
     });
 
   // Extract first rejection error for display

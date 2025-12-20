@@ -27,6 +27,6 @@ export const INNGEST_STEPS = {
     GENERATE_HASHTAGS: 'generate-hashtags-with-gpt',
     GENERATE_RECAPS: 'generate-recaps-with-gpt',
     GENERATE_SOCIAL_POSTS: 'generate-social-posts-with-gpt',
-    GENERATE_TITLES: 'generate-titles-with-gpt',
-  },
+    GENERATE_TITLES: 'generate-titles-with-gpt'
+  }
 };

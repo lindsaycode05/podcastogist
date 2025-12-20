@@ -39,7 +39,7 @@ export const TabContent = ({
   feature,
   featureName,
   jobName,
-  emptyMessage = 'No data available',
+  emptyMessage = 'No data available'
 }: TabContentProps) => {
   // Helper to wrap content with feature gating if needed
   const wrapWithProtect = (content: React.ReactNode) => {

@@ -15,23 +15,23 @@ const TITLE_CATEGORIES = [
   {
     key: 'youtubeShort' as const,
     title: 'YouTube Short Titles',
-    type: 'list' as const,
+    type: 'list' as const
   },
   {
     key: 'youtubeLong' as const,
     title: 'YouTube Long Titles',
-    type: 'list' as const,
+    type: 'list' as const
   },
   {
     key: 'podcastTitles' as const,
     title: 'Podcast Titles',
-    type: 'list' as const,
+    type: 'list' as const
   },
   {
     key: 'seoKeywords' as const,
     title: 'SEO Keywords',
-    type: 'badges' as const,
-  },
+    type: 'badges' as const
+  }
 ];
 
 export const TitlesTab = ({ titles }: TitlesTabProps) => {

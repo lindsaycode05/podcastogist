@@ -16,7 +16,7 @@ import {
   PLAN_LIMITS,
   PODCASTOGIST_USER_PLANS,
   type FeatureName,
-  type PlanName,
+  type PlanName
 } from '../tier-config';
 
 export interface UploadValidationResult {
@@ -66,9 +66,8 @@ export const checkUploadLimits = async (
       message: `File size (${(fileSize / (1024 * 1024)).toFixed(
         1
       )}MB) exceeds your plan limit of ${(
-        limits.maxFileSize /
-        (1024 * 1024)
-      ).toFixed(0)}MB`,
+        limits.maxFileSize / (1024 * 1024)
+      ).toFixed(0)}MB`
     };
   }
 
@@ -81,7 +80,7 @@ export const checkUploadLimits = async (
     return {
       allowed: false,
       reason: 'duration',
-      message: `Duration (${durationMinutesAndSeconds}) exceeds your plan limit of ${limitMinutes} minutes`,
+      message: `Duration (${durationMinutesAndSeconds}) exceeds your plan limit of ${limitMinutes} minutes`
     };
   }
 
@@ -92,7 +91,7 @@ export const checkUploadLimits = async (
     const includeDeleted = plan === PODCASTOGIST_USER_PLANS.FREE;
     const projectCount = await convex.query(api.projects.getUserProjectCount, {
       userId,
-      includeDeleted,
+      includeDeleted
     });
 
     if (projectCount >= limits.maxProjects) {
@@ -103,7 +102,7 @@ export const checkUploadLimits = async (
           plan === PODCASTOGIST_USER_PLANS.FREE ? 'total' : 'active'
         } projects`,
         currentCount: projectCount,
-        limit: limits.maxProjects,
+        limit: limits.maxProjects
       };
     }
   }

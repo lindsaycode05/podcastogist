@@ -79,7 +79,7 @@ export async function generateYouTubeTimestamps(
     timestamp: Math.floor(chapter.start / 1000), // Convert ms to seconds
     headline: chapter.headline, // AssemblyAI's auto-generated title
     summary: chapter.summary, // Chapter description for context
-    gist: chapter.gist, // Brief recaps
+    gist: chapter.gist // Brief recaps
   }));
 
   // Prompt GPT to create YouTube-optimized chapter titles
@@ -156,36 +156,36 @@ Remember: Create TITLES, not transcript excerpts!`;
                   properties: {
                     index: {
                       type: 'number',
-                      description: 'Chapter index',
+                      description: 'Chapter index'
                     },
                     title: {
                       type: 'string',
-                      description: 'Short, catchy chapter title (3-6 words)',
-                    },
+                      description: 'Short, catchy chapter title (3-6 words)'
+                    }
                   },
                   required: ['index', 'title'],
-                  additionalProperties: false,
-                },
-              },
+                  additionalProperties: false
+                }
+              }
             },
             required: ['titles'],
-            additionalProperties: false,
-          },
-        },
+            additionalProperties: false
+          }
+        }
       },
       messages: [
         {
           role: 'system',
           content:
-            "You are a YouTube content expert who creates SHORT, DESCRIPTIVE TITLES for video chapters. CRITICAL: You create TITLES (like 'Introduction to AI'), NOT transcript text or full sentences. Always respond with valid JSON.",
+            "You are a YouTube content expert who creates SHORT, DESCRIPTIVE TITLES for video chapters. CRITICAL: You create TITLES (like 'Introduction to AI'), NOT transcript text or full sentences. Always respond with valid JSON."
         },
         {
           role: 'user',
-          content: prompt,
-        },
+          content: prompt
+        }
       ],
       reasoning_effort: 'low',
-      max_completion_tokens: 3500,
+      max_completion_tokens: 3500
     }
   )) as OpenAI.Chat.Completions.ChatCompletion;
 
@@ -222,7 +222,7 @@ Remember: Create TITLES, not transcript excerpts!`;
     return {
       timestamp: chapter.timestamp,
       // Use AI title if available, fallback to AssemblyAI headline
-      description: aiTitle?.title || chapter.headline,
+      description: aiTitle?.title || chapter.headline
     };
   });
 
@@ -234,7 +234,7 @@ Remember: Create TITLES, not transcript excerpts!`;
   // Format timestamps in YouTube's required format (MM:SS or HH:MM:SS)
   const youtubeTimestamps = aiTimestamps.map((item) => ({
     timestamp: formatTimestamp(item.timestamp, { padHours: false }),
-    description: item.description,
+    description: item.description
   }));
 
   console.log(`Generated ${youtubeTimestamps.length} YouTube timestamps`);

@@ -5,7 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import type { Doc } from '@/convex/_generated/dataModel';
 import {
   PROGRESS_CAP_PERCENTAGE,
-  PROGRESS_UPDATE_INTERVAL_MS,
+  PROGRESS_UPDATE_INTERVAL_MS
 } from '@/lib/constants';
 import { estimateAssemblyAITime } from '@/lib/processing-time-estimator';
 
@@ -18,7 +18,7 @@ interface CompactProgressProps {
 export const CompactProgress = ({
   jobStatus,
   fileDuration,
-  createdAt,
+  createdAt
 }: CompactProgressProps) => {
   const [progress, setProgress] = useState(0);
   const isTranscribing = jobStatus?.transcription === 'running';

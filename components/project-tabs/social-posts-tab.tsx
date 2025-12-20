@@ -22,43 +22,43 @@ const PLATFORMS = [
     title: 'Twitter / X',
     url: 'https://twitter.com',
     bgColor: 'bg-black/5 dark:bg-white/5',
-    hoverColor: 'hover:bg-black/10',
+    hoverColor: 'hover:bg-black/10'
   },
   {
     key: 'linkedin' as const,
     title: 'LinkedIn',
     url: 'https://linkedin.com',
     bgColor: 'bg-blue-50 dark:bg-blue-500/10',
-    hoverColor: 'hover:bg-blue-100',
+    hoverColor: 'hover:bg-blue-100'
   },
   {
     key: 'instagram' as const,
     title: 'Instagram',
     url: 'https://instagram.com',
     bgColor: 'bg-pink-50 dark:bg-pink-500/10',
-    hoverColor: 'hover:bg-pink-100',
+    hoverColor: 'hover:bg-pink-100'
   },
   {
     key: 'tiktok' as const,
     title: 'TikTok',
     url: 'https://tiktok.com',
     bgColor: 'bg-slate-50 dark:bg-slate-800/60',
-    hoverColor: 'hover:bg-slate-100',
+    hoverColor: 'hover:bg-slate-100'
   },
   {
     key: 'youtube' as const,
     title: 'YouTube',
     url: 'https://youtube.com',
     bgColor: 'bg-red-50 dark:bg-red-500/10',
-    hoverColor: 'hover:bg-red-100',
+    hoverColor: 'hover:bg-red-100'
   },
   {
     key: 'facebook' as const,
     title: 'Facebook',
     url: 'https://facebook.com',
     bgColor: 'bg-blue-50 dark:bg-blue-500/10',
-    hoverColor: 'hover:bg-blue-100',
-  },
+    hoverColor: 'hover:bg-blue-100'
+  }
 ];
 
 export const SocialPostsTab = ({ socialPosts }: SocialPostsTabProps) => {

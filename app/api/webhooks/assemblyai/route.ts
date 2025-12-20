@@ -52,8 +52,8 @@ export async function POST(request: Request) {
         projectId,
         transcriptId,
         status,
-        error,
-      },
+        error
+      }
     });
   } catch (sendError) {
     console.error('Failed to forward AssemblyAI webhook to Inngest', sendError);

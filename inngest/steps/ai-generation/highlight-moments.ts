@@ -65,7 +65,7 @@ export async function generateHighlightMoments(
       time: formatTimestamp(startSeconds, { padHours: true, forceHours: true }),
       timestamp: startSeconds,
       text: chapter.headline, // Use chapter headline as moment title
-      description: chapter.summary, // Use chapter summary as description
+      description: chapter.summary // Use chapter summary as description
     };
   });
 

@@ -114,10 +114,10 @@ export async function generateRecaps(
         model: BASE_OPENAI_MODEL,
         messages: [
           { role: 'system', content: RECAPS_SYSTEM_PROMPT },
-          { role: 'user', content: buildRecapsPrompt(transcript) },
+          { role: 'user', content: buildRecapsPrompt(transcript) }
         ],
         // zodResponseFormat ensures response matches recapsSchema
-        response_format: zodResponseFormat(recapsSchema, 'recaps'),
+        response_format: zodResponseFormat(recapsSchema, 'recaps')
       }
     )) as OpenAI.Chat.Completions.ChatCompletion;
 
@@ -130,7 +130,7 @@ export async function generateRecaps(
           full: transcript.text.substring(0, 500),
           bullets: ['Full transcript available'],
           insights: ['See transcript'],
-          tldr: transcript.text.substring(0, 200),
+          tldr: transcript.text.substring(0, 200)
         };
 
     return recaps;
@@ -142,7 +142,7 @@ export async function generateRecaps(
       full: '⚠️ Error generating recaps with GPT-5. Please check logs or try again.',
       bullets: ['Recaps generation failed - see full transcript'],
       insights: ['Error occurred during AI generation'],
-      tldr: 'Recaps generation failed',
+      tldr: 'Recaps generation failed'
     };
   }
 }

@@ -47,11 +47,11 @@ export async function POST(request: Request): Promise<NextResponse> {
       onBeforeGenerateToken: async () => ({
         allowedContentTypes: ALLOWED_AUDIO_TYPES_LIST,
         addRandomSuffix: true,
-        maximumSizeInBytes: maxFileSize,
+        maximumSizeInBytes: maxFileSize
       }),
       onUploadCompleted: async ({ blob }) => {
         console.log('Upload completed:', blob.url);
-      },
+      }
     });
 
     return NextResponse.json(jsonResponse);

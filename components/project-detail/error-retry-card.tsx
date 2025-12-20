@@ -18,7 +18,7 @@ interface ErrorRetryCardProps {
 export const ErrorRetryCard = ({
   projectId,
   job,
-  errorMessage,
+  errorMessage
 }: ErrorRetryCardProps) => {
   const [isRetrying, setIsRetrying] = useState(false);
 

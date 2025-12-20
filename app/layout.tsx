@@ -8,21 +8,21 @@ import { ThemeProvider } from '@/components/theme-provider';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
-  subsets: ['latin'],
+  subsets: ['latin']
 });
 
 const geistMono = Geist_Mono({
   variable: '--font-geist-mono',
-  subsets: ['latin'],
+  subsets: ['latin']
 });
 
 export const metadata: Metadata = {
   title: 'Podcastogist',
-  description: 'AI-Powered Podcast Post-Production Platform',
+  description: 'AI-Powered Podcast Post-Production Platform'
 };
 
 const RootLayout = ({
-  children,
+  children
 }: Readonly<{
   children: React.ReactNode;
 }>) => {

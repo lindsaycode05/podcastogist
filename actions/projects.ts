@@ -57,7 +57,7 @@ export async function validateUploadAction(input: {
     console.log('[VALIDATE] Failed:', {
       userId,
       reason: validation.reason,
-      message: validation.message,
+      message: validation.message
     });
     return { success: false, error: validation.message };
   }
@@ -153,7 +153,7 @@ export async function createProjectAction(input: CreateProjectInput) {
       fileSize: fileSize || 0,
       fileDuration,
       fileFormat: fileExtension,
-      mimeType: mimeType,
+      mimeType: mimeType
     });
 
     // Trigger Inngest workflow asynchronously with user's current plan
@@ -167,8 +167,8 @@ export async function createProjectAction(input: CreateProjectInput) {
         fileUrl, // URL to audio file in Blob
         fileName,
         fileSize: fileSize || 0,
-        mimeType: mimeType,
-      },
+        mimeType: mimeType
+      }
     });
 
     return { success: true, projectId };
@@ -206,7 +206,7 @@ export async function deleteProjectAction(projectId: Id<'projects'>) {
     // Delete from Convex (validates ownership, returns inputUrl)
     const result = await convex.mutation(api.projects.deleteProject, {
       projectId,
-      userId,
+      userId
     });
 
     // Delete file from Vercel Blob
@@ -264,7 +264,7 @@ export async function updateDisplayNameAction(
     await convex.mutation(api.projects.updateProjectDisplayName, {
       projectId,
       userId,
-      displayName: displayName.trim(),
+      displayName: displayName.trim()
     });
 
     return { success: true };

@@ -42,7 +42,7 @@ export const createProject = mutation({
     fileSize: v.number(),
     fileDuration: v.optional(v.number()),
     fileFormat: v.string(),
-    mimeType: v.string(),
+    mimeType: v.string()
   },
   handler: async (ctx, args) => {
     const now = Date.now();
@@ -60,14 +60,14 @@ export const createProject = mutation({
       status: 'uploaded',
       jobStatus: {
         transcription: PODCAST_PROCESSING_PHASE_STATUS.PENDING,
-        contentGeneration: PODCAST_PROCESSING_PHASE_STATUS.PENDING,
+        contentGeneration: PODCAST_PROCESSING_PHASE_STATUS.PENDING
       },
       createdAt: now,
-      updatedAt: now,
+      updatedAt: now
     });
 
     return projectId;
-  },
+  }
 });
 
 /**
@@ -88,12 +88,12 @@ export const updateProjectStatus = mutation({
       v.literal('processing'),
       v.literal('completed'),
       v.literal('failed')
-    ),
+    )
   },
   handler: async (ctx, args) => {
     const updates: Partial<Doc<'projects'>> = {
       status: args.status,
-      updatedAt: Date.now(),
+      updatedAt: Date.now()
     };
 
     // Track completion time for analytics and billing
@@ -102,7 +102,7 @@ export const updateProjectStatus = mutation({
     }
 
     await ctx.db.patch(args.projectId, updates);
-  },
+  }
 });
 
 /**
@@ -136,10 +136,10 @@ export const saveTranscript = mutation({
               v.object({
                 word: v.string(),
                 start: v.number(),
-                end: v.number(),
+                end: v.number()
               })
             )
-          ),
+          )
         })
       ),
       speakers: v.optional(
@@ -149,7 +149,7 @@ export const saveTranscript = mutation({
             start: v.number(),
             end: v.number(),
             text: v.string(),
-            confidence: v.number(),
+            confidence: v.number()
           })
         )
       ),
@@ -160,19 +160,19 @@ export const saveTranscript = mutation({
             end: v.number(),
             headline: v.string(),
             summary: v.string(),
-            gist: v.string(),
+            gist: v.string()
           })
         )
-      ),
-    }),
+      )
+    })
   },
   handler: async (ctx, args) => {
     // Store transcript directly in Convex for instant access
     await ctx.db.patch(args.projectId, {
       transcript: args.transcript,
-      updatedAt: Date.now(),
+      updatedAt: Date.now()
     });
-  },
+  }
 });
 
 /**
@@ -202,7 +202,7 @@ export const updateJobStatus = mutation({
         v.literal('completed'),
         v.literal('failed')
       )
-    ),
+    )
   },
   handler: async (ctx, args) => {
     const project = await ctx.db.get(args.projectId);
@@ -215,14 +215,14 @@ export const updateJobStatus = mutation({
         ...project.jobStatus,
         ...(args.transcription && { transcription: args.transcription }),
         ...(args.contentGeneration && {
-          contentGeneration: args.contentGeneration,
-        }),
+          contentGeneration: args.contentGeneration
+        })
       },
-      updatedAt: Date.now(),
+      updatedAt: Date.now()
     };
 
     await ctx.db.patch(args.projectId, updates);
-  },
+  }
 });
 
 /**
@@ -250,7 +250,7 @@ export const saveGeneratedContent = mutation({
           time: v.string(),
           timestamp: v.number(),
           text: v.string(),
-          description: v.string(),
+          description: v.string()
         })
       )
     ),
@@ -259,7 +259,7 @@ export const saveGeneratedContent = mutation({
         full: v.string(),
         bullets: v.array(v.string()),
         insights: v.array(v.string()),
-        tldr: v.string(),
+        tldr: v.string()
       })
     ),
     socialPosts: v.optional(
@@ -269,7 +269,7 @@ export const saveGeneratedContent = mutation({
         instagram: v.string(),
         tiktok: v.string(),
         youtube: v.string(),
-        facebook: v.string(),
+        facebook: v.string()
       })
     ),
     titles: v.optional(
@@ -277,7 +277,7 @@ export const saveGeneratedContent = mutation({
         youtubeShort: v.array(v.string()),
         youtubeLong: v.array(v.string()),
         podcastTitles: v.array(v.string()),
-        seoKeywords: v.array(v.string()),
+        seoKeywords: v.array(v.string())
       })
     ),
     hashtags: v.optional(
@@ -286,17 +286,17 @@ export const saveGeneratedContent = mutation({
         instagram: v.array(v.string()),
         tiktok: v.array(v.string()),
         linkedin: v.array(v.string()),
-        twitter: v.array(v.string()),
+        twitter: v.array(v.string())
       })
     ),
     youtubeTimestamps: v.optional(
       v.array(
         v.object({
           timestamp: v.string(),
-          description: v.string(),
+          description: v.string()
         })
       )
-    ),
+    )
   },
   handler: async (ctx, args) => {
     const { projectId, ...content } = args;
@@ -305,9 +305,9 @@ export const saveGeneratedContent = mutation({
     // Only provided fields are updated, others remain unchanged
     await ctx.db.patch(projectId, {
       ...content,
-      updatedAt: Date.now(),
+      updatedAt: Date.now()
     });
-  },
+  }
 });
 
 /**
@@ -330,9 +330,9 @@ export const recordError = mutation({
     details: v.optional(
       v.object({
         statusCode: v.optional(v.number()),
-        stack: v.optional(v.string()),
+        stack: v.optional(v.string())
       })
-    ),
+    )
   },
   handler: async (ctx, args) => {
     // Mark project as failed and store error details
@@ -342,11 +342,11 @@ export const recordError = mutation({
         message: args.message,
         step: args.step,
         timestamp: Date.now(),
-        details: args.details,
+        details: args.details
       },
-      updatedAt: Date.now(),
+      updatedAt: Date.now()
     });
-  },
+  }
 });
 
 /**
@@ -364,15 +364,15 @@ export const saveJobErrors = mutation({
       socialPosts: v.optional(v.string()),
       titles: v.optional(v.string()),
       hashtags: v.optional(v.string()),
-      youtubeTimestamps: v.optional(v.string()),
-    }),
+      youtubeTimestamps: v.optional(v.string())
+    })
   },
   handler: async (ctx, args) => {
     await ctx.db.patch(args.projectId, {
       jobErrors: args.jobErrors,
-      updatedAt: Date.now(),
+      updatedAt: Date.now()
     });
-  },
+  }
 });
 
 /**
@@ -388,12 +388,12 @@ export const saveJobErrors = mutation({
  */
 export const getProject = query({
   args: {
-    projectId: v.id('projects'),
+    projectId: v.id('projects')
   },
   handler: async (ctx, args) => {
     // Simple ID lookup - Convex makes this extremely fast
     return await ctx.db.get(args.projectId);
-  },
+  }
 });
 
 /**
@@ -417,9 +417,9 @@ export const listUserProjects = query({
     paginationOpts: v.optional(
       v.object({
         numItems: v.number(),
-        cursor: v.optional(v.string()),
+        cursor: v.optional(v.string())
       })
-    ),
+    )
   },
   handler: async (ctx, args) => {
     const numItems = args.paginationOpts?.numItems ?? 20;
@@ -436,9 +436,9 @@ export const listUserProjects = query({
     // Built-in pagination with cursor support
     return await query.paginate({
       numItems,
-      cursor: args.paginationOpts?.cursor ?? null,
+      cursor: args.paginationOpts?.cursor ?? null
     });
-  },
+  }
 });
 
 /**
@@ -456,7 +456,7 @@ export const listUserProjects = query({
 export const getUserProjectCount = query({
   args: {
     userId: v.string(),
-    includeDeleted: v.boolean(),
+    includeDeleted: v.boolean()
   },
   handler: async (ctx, args) => {
     // Query all projects by this user
@@ -473,7 +473,7 @@ export const getUserProjectCount = query({
       // Count only active projects (exclude soft-deleted)
       return projects.filter((p) => !p.deletedAt).length;
     }
-  },
+  }
 });
 
 /**
@@ -493,7 +493,7 @@ export const getUserProjectCount = query({
 export const deleteProject = mutation({
   args: {
     projectId: v.id('projects'),
-    userId: v.string(),
+    userId: v.string()
   },
   handler: async (ctx, args) => {
     // Fetch project to validate ownership and get inputUrl
@@ -512,12 +512,12 @@ export const deleteProject = mutation({
     // This preserves the record for FREE tier counting
     await ctx.db.patch(args.projectId, {
       deletedAt: Date.now(),
-      updatedAt: Date.now(),
+      updatedAt: Date.now()
     });
 
     // Return inputUrl so server action can delete from Blob storage
     return { inputUrl: project.inputUrl };
-  },
+  }
 });
 
 /**
@@ -535,7 +535,7 @@ export const updateProjectDisplayName = mutation({
   args: {
     projectId: v.id('projects'),
     userId: v.string(),
-    displayName: v.string(),
+    displayName: v.string()
   },
   handler: async (ctx, args) => {
     // Fetch project to validate ownership
@@ -553,7 +553,7 @@ export const updateProjectDisplayName = mutation({
     // Update display name
     await ctx.db.patch(args.projectId, {
       displayName: args.displayName.trim(),
-      updatedAt: Date.now(),
+      updatedAt: Date.now()
     });
-  },
+  }
 });

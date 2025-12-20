@@ -13,7 +13,7 @@ import {
   PODCASTOGIST_USER_PLANS,
   PLAN_PRICES,
   type PlanName,
-  FeatureName,
+  FeatureName
 } from '@/lib/tier-config';
 import { getMinimumPlanForFeature } from '@/lib/utils/tier-utils';
 import { capitalize } from '@/lib/utils/utils';
@@ -29,7 +29,7 @@ export const UpgradePrompt = ({
   feature,
   featureKey,
   requiredPlan,
-  className = '',
+  className = ''
 }: UpgradePromptProps) => {
   // Determine the required plan for this feature
   const minPlan =
@@ -60,7 +60,9 @@ export const UpgradePrompt = ({
         </h3>
         <p className='text-base md:text-lg text-gray-600 dark:text-slate-300 mb-8'>
           This feature is available on the{' '}
-          <strong className='text-blue-600 dark:text-blue-300'>{planName}</strong>{' '}
+          <strong className='text-blue-600 dark:text-blue-300'>
+            {planName}
+          </strong>{' '}
           plan
         </p>
 
@@ -79,7 +81,9 @@ export const UpgradePrompt = ({
               <ul className='space-y-3 text-sm md:text-base text-gray-700 dark:text-slate-200'>
                 {planFeatures.map((feat, idx) => (
                   <li key={idx} className='flex items-center gap-3'>
-                    <span className='text-blue-600 dark:text-blue-300 font-bold text-lg'>✓</span>
+                    <span className='text-blue-600 dark:text-blue-300 font-bold text-lg'>
+                      ✓
+                    </span>
                     <span className='font-medium'>
                       {feat
                         .replace(/_/g, ' ')

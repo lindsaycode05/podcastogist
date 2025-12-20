@@ -21,7 +21,7 @@ interface TranscriptTabProps {
 
 export const TranscriptTab = ({
   projectId,
-  transcript,
+  transcript
 }: TranscriptTabProps) => {
   const hasSpeakers = transcript.speakers && transcript.speakers.length > 0;
 
@@ -35,7 +35,7 @@ export const TranscriptTab = ({
     'bg-cyan-500 text-white', // Cyan
     'bg-pink-500 text-white', // Pink
     'bg-indigo-500 text-white', // Indigo
-    'bg-teal-500 text-white', // Teal
+    'bg-teal-500 text-white' // Teal
   ];
 
   // Get unique speakers and create a color mapping

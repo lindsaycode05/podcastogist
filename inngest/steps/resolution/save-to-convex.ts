@@ -30,7 +30,7 @@ import type {
   Hashtags,
   SocialPosts,
   Recaps,
-  Titles,
+  Titles
 } from '@/schemas/ai-outputs';
 
 type HighlightMoment = {
@@ -89,14 +89,14 @@ export async function saveResultsToConvex(
     socialPosts: results.socialPosts,
     titles: results.titles,
     hashtags: results.hashtags,
-    youtubeTimestamps: results.youtubeTimestamps,
+    youtubeTimestamps: results.youtubeTimestamps
   });
 
   // Mark project as completed
   // This triggers UI state change: "Processing..." -> "Completed"
   await convex.mutation(api.projects.updateProjectStatus, {
     projectId,
-    status: 'completed',
+    status: 'completed'
   });
 
   console.log('Podcast processing completed for project:', projectId);

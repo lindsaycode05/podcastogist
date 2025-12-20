@@ -23,7 +23,13 @@
  */
 'use client';
 
-import { CheckCircle2, Clock, FileVolume, Loader2, XCircle } from 'lucide-react';
+import {
+  CheckCircle2,
+  Clock,
+  FileVolume,
+  Loader2,
+  XCircle
+} from 'lucide-react';
 import { formatDuration, formatFileSize } from '@/lib/format';
 import type { UploadStatus } from '@/lib/types';
 import { PODCAST_UPLOAD_STATUS } from '@/lib/constants';
@@ -43,7 +49,7 @@ export const UploadProgress = ({
   fileDuration,
   progress,
   status,
-  error,
+  error
 }: UploadProgressProps) => {
   return (
     <div className='glass-card-strong rounded-2xl p-6 hover-lift'>
@@ -129,7 +135,9 @@ export const UploadProgress = ({
             <div className='flex items-start gap-4'>
               <XCircle className='h-6 w-6 text-red-600 dark:text-red-300 shrink-0 mt-0.5' />
               <div className='space-y-2 flex-1'>
-                <p className='font-bold text-red-900 dark:text-red-200'>Upload Failed</p>
+                <p className='font-bold text-red-900 dark:text-red-200'>
+                  Upload Failed
+                </p>
                 <p className='text-sm text-red-700 dark:text-red-200 leading-relaxed'>
                   {error}
                 </p>

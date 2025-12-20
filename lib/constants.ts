@@ -33,7 +33,7 @@ export const ALLOWED_AUDIO_TYPES_LIST = [
   'audio/flac', // FLAC (standard)
   'audio/x-flac', // FLAC (alternate)
   'audio/3gpp', // 3GP
-  'audio/3gpp2', // 3G2
+  'audio/3gpp2' // 3G2
 ];
 
 export const ALLOWED_AUDIO_TYPES_EXTENSION_MAP = {
@@ -53,7 +53,7 @@ export const ALLOWED_AUDIO_TYPES_EXTENSION_MAP = {
   'audio/flac': ['.flac'], // FLAC (standard)
   'audio/x-flac': ['.flac'], // FLAC (alternate)
   'audio/3gpp': ['.3gp'], // 3GP
-  'audio/3gpp2': ['.3g2'], // 3G2
+  'audio/3gpp2': ['.3g2'] // 3G2
 };
 
 /**
@@ -98,38 +98,38 @@ export const GENERATION_OUTPUTS: GenerationOutput[] = [
     name: 'Recaps',
     icon: FileText,
     description:
-      'Producing rich episode overviews packed with key insights and takeaways',
+      'Producing rich episode overviews packed with key insights and takeaways'
   },
   {
     name: 'Highlight Moments',
     icon: Crosshair,
     description:
-      'Spotting standout segments, key timestamps, and quotable moments',
+      'Spotting standout segments, key timestamps, and quotable moments'
   },
   {
     name: 'Social Posts',
     icon: Share2,
     description:
-      'Writing channel-ready social copy for Twitter, LinkedIn, Instagram, TikTok, YouTube, and Facebook',
+      'Writing channel-ready social copy for Twitter, LinkedIn, Instagram, TikTok, YouTube, and Facebook'
   },
   {
     name: 'Titles',
     icon: Type,
     description:
-      'Creating scroll-stopping, SEO-friendly titles and keywords to boost reach',
+      'Creating scroll-stopping, SEO-friendly titles and keywords to boost reach'
   },
   {
     name: 'Hashtags',
     icon: Hash,
     description:
-      'Creating trending platform-specific hashtag strategies for better discoverability',
+      'Creating trending platform-specific hashtag strategies for better discoverability'
   },
   {
     name: 'YouTube Timestamps',
     icon: Youtube,
     description:
-      'Formatting clickable chapter markers for YouTube video descriptions',
-  },
+      'Formatting clickable chapter markers for YouTube video descriptions'
+  }
 ];
 
 export const PODCAST_UPLOAD_STATUS: {
@@ -143,7 +143,7 @@ export const PODCAST_UPLOAD_STATUS: {
   UPLOADING: 'uploading',
   PROCESSING: 'processing',
   COMPLETED: 'completed',
-  ERROR: 'error',
+  ERROR: 'error'
 };
 
 export const PODCAST_PROCESSING_PHASE_STATUS: {
@@ -155,5 +155,5 @@ export const PODCAST_PROCESSING_PHASE_STATUS: {
   PENDING: 'pending',
   RUNNING: 'running',
   COMPLETED: 'completed',
-  FAILED: 'failed',
+  FAILED: 'failed'
 };

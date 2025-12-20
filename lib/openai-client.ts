@@ -21,5 +21,5 @@ import OpenAI from 'openai';
 export const BASE_OPENAI_MODEL = 'gpt-5-mini';
 
 export const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
+  apiKey: process.env.OPENAI_API_KEY
 });

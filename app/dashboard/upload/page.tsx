@@ -56,8 +56,8 @@ const UploadPage = () => {
                     AI Content Generation
                   </p>
                   <p className='text-gray-600 dark:text-slate-300'>
-                    AI will generate summaries & recaps, social posts, timestamps,
-                    titles and hashtags
+                    AI will generate summaries & recaps, social posts,
+                    timestamps, titles and hashtags
                   </p>
                 </div>
               </li>

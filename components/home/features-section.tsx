@@ -5,7 +5,7 @@ import {
   Clapperboard,
   UsersRound,
   Hash,
-  type LucideIcon,
+  type LucideIcon
 } from 'lucide-react';
 
 interface Feature {
@@ -19,38 +19,38 @@ const FEATURES: Feature[] = [
     icon: BrainCircuit,
     title: 'AI-Driven Insights',
     description:
-      'Industry-grade AI audio intelligence that deeply understands your episodes and powers every AI workflow.',
+      'Industry-grade AI audio intelligence that deeply understands your episodes and powers every AI workflow.'
   },
   {
     icon: ScrollText,
     title: 'Intelligent Summaries',
     description:
-      'Create rich episode overviews packed with key takeaways and actionable insights from your podcast.',
+      'Create rich episode overviews packed with key takeaways and actionable insights from your podcast.'
   },
   {
     icon: Share2,
     title: 'Social Content Generation',
     description:
-      'Auto-generate channel-ready social copy for Twitter, LinkedIn, Instagram, TikTok, YouTube, Facebook, and more.',
+      'Auto-generate channel-ready social copy for Twitter, LinkedIn, Instagram, TikTok, YouTube, Facebook, and more.'
   },
   {
     icon: Hash,
     title: 'Titles & Tags',
     description:
-      'Automatically craft SEO-friendly titles and platform-specific tags and hashtags to maximize discoverability.',
+      'Automatically craft SEO-friendly titles and platform-specific tags and hashtags to maximize discoverability.'
   },
   {
     icon: Clapperboard,
     title: 'Highlights & Timestamps',
     description:
-      'Detect highlight-worthy segments and generate YouTube-ready timestamps for better engagement.',
+      'Detect highlight-worthy segments and generate YouTube-ready timestamps for better engagement.'
   },
   {
     icon: UsersRound,
     title: 'Speaker-Level Transcript',
     description:
-      'Full transcript with clear speaker labels so you can see who said what and when.',
-  },
+      'Full transcript with clear speaker labels so you can see who said what and when.'
+  }
 ];
 
 export const FeaturesSection = () => {

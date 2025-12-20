@@ -14,7 +14,7 @@ const ProjectsPage = async () => {
 
   // Preload projects data on the server
   const preloadedProjects = await preloadQuery(api.projects.listUserProjects, {
-    userId,
+    userId
   });
 
   return <ProjectsList preloadedProjects={preloadedProjects} />;

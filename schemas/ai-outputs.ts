@@ -40,7 +40,7 @@ export const recapsSchema = z.object({
     .min(3)
     .max(5)
     .describe('3-5 actionable insights or takeaways'),
-  tldr: z.string().describe('One-sentence recaps'),
+  tldr: z.string().describe('One-sentence recaps')
 });
 
 export type Recaps = z.infer<typeof recapsSchema>;
@@ -71,7 +71,7 @@ export const titlesSchema = z.object({
     .array(z.string())
     .min(5)
     .max(10)
-    .describe('5-10 SEO keywords for discoverability'),
+    .describe('5-10 SEO keywords for discoverability')
 });
 
 export type Titles = z.infer<typeof titlesSchema>;
@@ -95,7 +95,7 @@ export const socialPostsSchema = z.object({
   instagram: z.string().describe('Instagram caption (engaging, emoji-rich)'),
   tiktok: z.string().describe('TikTok caption (Gen Z tone, short)'),
   youtube: z.string().describe('YouTube description (detailed, timestamps)'),
-  facebook: z.string().describe('Facebook post (conversational, shareable)'),
+  facebook: z.string().describe('Facebook post (conversational, shareable)')
 });
 
 export type SocialPosts = z.infer<typeof socialPostsSchema>;
@@ -132,7 +132,7 @@ export const hashtagsSchema = z.object({
   twitter: z
     .array(z.string())
     .length(5)
-    .describe('5 Twitter hashtags (concise)'),
+    .describe('5 Twitter hashtags (concise)')
 });
 
 export type Hashtags = z.infer<typeof hashtagsSchema>;

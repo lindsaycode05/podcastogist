@@ -11,7 +11,7 @@ import type { PlanName, FeatureName } from '@/lib/tier-config';
 import {
   FEATURE_TO_JOB_MAP,
   FEATURES,
-  PODCASTOGIST_USER_PLANS,
+  PODCASTOGIST_USER_PLANS
 } from '@/lib/tier-config';
 import { planHasFeature } from '@/lib/utils/tier-utils';
 import { inngest } from '../client';
@@ -101,7 +101,7 @@ export const retryJob = inngest.createFunction(
           await step.run(INNGEST_STEPS.SAVE_HIGHLIGHT_MOMENTS, () =>
             convex.mutation(api.projects.saveGeneratedContent, {
               projectId,
-              highlightMoments: result,
+              highlightMoments: result
             })
           );
           break;
@@ -114,7 +114,7 @@ export const retryJob = inngest.createFunction(
           await step.run(INNGEST_STEPS.SAVE_RECAPS, () =>
             convex.mutation(api.projects.saveGeneratedContent, {
               projectId,
-              recaps: result,
+              recaps: result
             })
           );
           break;
@@ -127,7 +127,7 @@ export const retryJob = inngest.createFunction(
           await step.run(INNGEST_STEPS.SAVE_SOCIAL_POSTS, () =>
             convex.mutation(api.projects.saveGeneratedContent, {
               projectId,
-              socialPosts: result,
+              socialPosts: result
             })
           );
           break;
@@ -140,7 +140,7 @@ export const retryJob = inngest.createFunction(
           await step.run(INNGEST_STEPS.SAVE_TITLES, () =>
             convex.mutation(api.projects.saveGeneratedContent, {
               projectId,
-              titles: result,
+              titles: result
             })
           );
           break;
@@ -153,7 +153,7 @@ export const retryJob = inngest.createFunction(
           await step.run(INNGEST_STEPS.SAVE_HASHTAGS, () =>
             convex.mutation(api.projects.saveGeneratedContent, {
               projectId,
-              hashtags: result,
+              hashtags: result
             })
           );
           break;
@@ -166,7 +166,7 @@ export const retryJob = inngest.createFunction(
           await step.run(INNGEST_STEPS.SAVE_YOUTUBE_TIMESTAMPS, () =>
             convex.mutation(api.projects.saveGeneratedContent, {
               projectId,
-              youtubeTimestamps: result,
+              youtubeTimestamps: result
             })
           );
           break;
@@ -181,7 +181,7 @@ export const retryJob = inngest.createFunction(
 
         await convex.mutation(api.projects.saveJobErrors, {
           projectId,
-          jobErrors: updatedErrors,
+          jobErrors: updatedErrors
         });
       });
 
@@ -194,8 +194,8 @@ export const retryJob = inngest.createFunction(
       await convex.mutation(api.projects.saveJobErrors, {
         projectId,
         jobErrors: {
-          [job]: errorMessage,
-        },
+          [job]: errorMessage
+        }
       });
 
       throw error;

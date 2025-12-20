@@ -56,8 +56,8 @@ export async function retryJob(projectId: Id<'projects'>, job: JobName) {
       job,
       userId,
       originalPlan,
-      currentPlan,
-    },
+      currentPlan
+    }
   });
 
   return { success: true };

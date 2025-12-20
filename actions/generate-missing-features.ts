@@ -22,7 +22,7 @@ import {
   FEATURE_TO_JOB_MAP,
   PlanName,
   PODCASTOGIST_USER_PLANS,
-  JobName,
+  JobName
 } from '@/lib/tier-config';
 import { PODCAST_RETRY_JOB_EVENT } from '@/lib/events';
 import { humanize } from '@/lib/utils/utils';
@@ -103,8 +103,8 @@ export async function generateMissingFeatures(projectId: Id<'projects'>) {
           job,
           userId,
           originalPlan,
-          currentPlan,
-        },
+          currentPlan
+        }
       })
     )
   );
@@ -116,6 +116,6 @@ export async function generateMissingFeatures(projectId: Id<'projects'>) {
       missingJobs.length > 1 ? 's' : ''
     }: ${missingJobs
       .map(humanize)
-      .join(', ')}. They will appear in your project shortly.`,
+      .join(', ')}. They will appear in your project shortly.`
   };
 }

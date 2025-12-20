@@ -15,7 +15,7 @@ export const estimateAssemblyAITime = (durationSeconds?: number) => {
   return {
     bestCase: Math.max(30, bestCaseSeconds),
     conservative: Math.max(60, conservativeSeconds),
-    average: Math.round((bestCaseSeconds + conservativeSeconds) / 2),
+    average: Math.round((bestCaseSeconds + conservativeSeconds) / 2)
   };
 };
 

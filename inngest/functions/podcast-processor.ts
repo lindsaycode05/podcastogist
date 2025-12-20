@@ -59,7 +59,7 @@ export const podcastProcessor = inngest.createFunction(
     // Optimizes parallel step execution (important for the 6 parallel AI jobs)
     optimizeParallelism: true,
     // Retry configuration: 3 attempts with exponential backoff
-    retries: 3,
+    retries: 3
   },
   // Event trigger: sent by server action after upload
   { event: PODCAST_UPLOADED_EVENT },
@@ -75,7 +75,7 @@ export const podcastProcessor = inngest.createFunction(
       await step.run(INNGEST_STEPS.UPDATE_STATUS_PROCESSING, async () => {
         await convex.mutation(api.projects.updateProjectStatus, {
           projectId,
-          status: 'processing',
+          status: 'processing'
         });
       });
 
@@ -85,7 +85,7 @@ export const podcastProcessor = inngest.createFunction(
         async () => {
           await convex.mutation(api.projects.updateJobStatus, {
             projectId,
-            transcription: PODCAST_PROCESSING_PHASE_STATUS.RUNNING,
+            transcription: PODCAST_PROCESSING_PHASE_STATUS.RUNNING
           });
         }
       );
@@ -106,7 +106,7 @@ export const podcastProcessor = inngest.createFunction(
         async () => {
           await convex.mutation(api.projects.updateJobStatus, {
             projectId,
-            transcription: PODCAST_PROCESSING_PHASE_STATUS.COMPLETED,
+            transcription: PODCAST_PROCESSING_PHASE_STATUS.COMPLETED
           });
         }
       );
@@ -117,7 +117,7 @@ export const podcastProcessor = inngest.createFunction(
         async () => {
           await convex.mutation(api.projects.updateJobStatus, {
             projectId,
-            contentGeneration: PODCAST_PROCESSING_PHASE_STATUS.RUNNING,
+            contentGeneration: PODCAST_PROCESSING_PHASE_STATUS.RUNNING
           });
         }
       );
@@ -200,7 +200,7 @@ export const podcastProcessor = inngest.createFunction(
         await step.run(INNGEST_STEPS.SAVE_JOB_ERRORS, () =>
           convex.mutation(api.projects.saveJobErrors, {
             projectId,
-            jobErrors,
+            jobErrors
           })
         );
       }
@@ -211,7 +211,7 @@ export const podcastProcessor = inngest.createFunction(
         async () => {
           await convex.mutation(api.projects.updateJobStatus, {
             projectId,
-            contentGeneration: PODCAST_PROCESSING_PHASE_STATUS.COMPLETED,
+            contentGeneration: PODCAST_PROCESSING_PHASE_STATUS.COMPLETED
           });
         }
       );
@@ -236,7 +236,7 @@ export const podcastProcessor = inngest.createFunction(
           message:
             error instanceof Error ? error.message : 'Unknown error occurred',
           step: 'workflow',
-          details: error instanceof Error ? { stack: error.stack } : undefined,
+          details: error instanceof Error ? { stack: error.stack } : undefined
         });
       } catch (cleanupError) {
         // If cleanup fails, log it but don't prevent the original error from being thrown

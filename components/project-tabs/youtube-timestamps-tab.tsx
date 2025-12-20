@@ -14,7 +14,7 @@ type YouTubeTimestampsTabProps = {
 };
 
 export const YouTubeTimestampsTab = ({
-  timestamps,
+  timestamps
 }: YouTubeTimestampsTabProps) => {
   const { copy, isCopied } = useCopyToClipboard();
 

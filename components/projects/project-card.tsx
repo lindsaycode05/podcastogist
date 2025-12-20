@@ -15,14 +15,14 @@ import {
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
-  AlertDialogTitle,
+  AlertDialogTitle
 } from '@/components/ui/alert-dialog';
 import type { Doc } from '@/convex/_generated/dataModel';
 import { formatDuration, formatFileSize, formatSmartDate } from '@/lib/format';
 import {
   getStatusIcon,
   getStatusVariant,
-  getProcessingPhaseLabel,
+  getProcessingPhaseLabel
 } from '@/lib/utils/status-utils';
 import { cn } from '@/lib/utils/utils';
 

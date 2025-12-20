@@ -46,12 +46,12 @@ import type {
   AssemblyAIUtterance,
   AssemblyAIWebhookEvent,
   AssemblyAIWord,
-  TranscriptWithExtras,
+  TranscriptWithExtras
 } from '@/lib/types';
 
 // Initialize AssemblyAI client with API key from environment
 const assemblyai = new AssemblyAI({
-  apiKey: process.env.ASSEMBLYAI_API_KEY || '',
+  apiKey: process.env.ASSEMBLYAI_API_KEY || ''
 });
 
 function buildAssemblyAIWebhookUrl(projectId: Id<'projects'>): string {
@@ -102,8 +102,7 @@ export async function transcribeWithAssemblyAI(
           webhook_url: webhookUrl,
           // Handles Vercel Automation Bypass authing so AssemblyAI webhook service can reach our webhook API route successfully
           webhook_auth_header_name: 'x-vercel-protection-bypass',
-          webhook_auth_header_value:
-            process.env.VERCEL_AUTOMATION_BYPASS_SECRET,
+          webhook_auth_header_value: process.env.VERCEL_AUTOMATION_BYPASS_SECRET
         })
     );
 
@@ -126,7 +125,7 @@ export async function transcribeWithAssemblyAI(
         // No podcast will realistically exceed 3 hours of transcription, can be increased if needed, no problem on that front
         timeout: '3h',
         // Ensure we only capture the webhook incoming for this specific transcript/project/podcast, matches the projectId param we initiate the whole Inngest job with
-        match: 'data.projectId',
+        match: 'data.projectId'
       }
     )) as AssemblyAIWebhookEvent | null;
 
@@ -195,14 +194,14 @@ export async function transcribeWithAssemblyAI(
       words: (segment.words || []).map((word) => ({
         word: word.text,
         start: word.start,
-        end: word.end,
-      })),
+        end: word.end
+      }))
     }));
 
     // Prepare transcript object for Convex
     const formattedTranscript = {
       text: response.text || '',
-      segments: formattedSegments,
+      segments: formattedSegments
     };
 
     // Transform speaker utterances (convert milliseconds to seconds for consistency)
@@ -212,7 +211,7 @@ export async function transcribeWithAssemblyAI(
         start: utterance.start / 1000, // ms to seconds
         end: utterance.end / 1000, // ms to seconds
         text: utterance.text,
-        confidence: utterance.confidence,
+        confidence: utterance.confidence
       })
     );
 
@@ -222,7 +221,7 @@ export async function transcribeWithAssemblyAI(
       end: chapter.end,
       headline: chapter.headline,
       summary: chapter.summary,
-      gist: chapter.gist,
+      gist: chapter.gist
     }));
 
     // Save complete transcript with speakers AND chapters to Convex
@@ -232,8 +231,8 @@ export async function transcribeWithAssemblyAI(
       transcript: {
         ...formattedTranscript,
         speakers,
-        chapters, // Include chapters so retry can access them
-      },
+        chapters // Include chapters so retry can access them
+      }
     });
 
     // Return enhanced transcript for AI generation steps
@@ -243,7 +242,7 @@ export async function transcribeWithAssemblyAI(
       segments: formattedSegments,
       chapters: assemblyChapters,
       utterances: assemblyUtterances,
-      audio_duration: response.audio_duration, // Include audio duration
+      audio_duration: response.audio_duration // Include audio duration
     };
   } catch (error) {
     console.error('AssemblyAI transcription error:', error);
@@ -252,7 +251,7 @@ export async function transcribeWithAssemblyAI(
     await convex.mutation(api.projects.recordError, {
       projectId,
       message: error instanceof Error ? error.message : 'Transcription failed',
-      step: 'transcription',
+      step: 'transcription'
     });
 
     // Re-throw to stop workflow execution (Inngest will retry based on config)

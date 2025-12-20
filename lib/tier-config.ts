@@ -25,20 +25,20 @@ export const PLAN_LIMITS: Record<PlanName, PlanLimits> = {
     maxProjects: 3, // lifetime, including deleted
     maxFileSize: 10 * 1024 * 1024, // 10MB
     maxFileSizeLabel: '10MB', // human-readable label
-    maxDuration: 600, // 10 minutes
+    maxDuration: 600 // 10 minutes
   },
   plus: {
     maxProjects: 30, // active projects only
     maxFileSize: 200 * 1024 * 1024, // 200MB
     maxFileSizeLabel: '200MB', // human-readable label
-    maxDuration: 7200, // 2 hours
+    maxDuration: 7200 // 2 hours
   },
   max: {
     maxProjects: null, // unlimited
     maxFileSize: 3 * 1024 * 1024 * 1024, // 3GB
     maxFileSizeLabel: '3GB', // human-readable label
-    maxDuration: null, // unlimited
-  },
+    maxDuration: null // unlimited
+  }
 };
 
 /**
@@ -54,7 +54,7 @@ export const FEATURES = {
   HASHTAGS: 'hashtags',
   YOUTUBE_TIMESTAMPS: 'youtube_timestamps',
   HIGHLIGHT_MOMENTS: 'highlight_moments',
-  SPEAKER_DIARIZATION: 'full_transcript_speaker_recognition',
+  SPEAKER_DIARIZATION: 'full_transcript_speaker_recognition'
 } as const;
 
 export type FeatureName = (typeof FEATURES)[keyof typeof FEATURES];
@@ -71,7 +71,7 @@ export const PLAN_FEATURES: Record<PlanName, FeatureName[]> = {
     FEATURES.RECAPS,
     FEATURES.SOCIAL_POSTS,
     FEATURES.TITLES,
-    FEATURES.HASHTAGS,
+    FEATURES.HASHTAGS
   ],
   max: [
     FEATURES.RECAPS,
@@ -80,8 +80,8 @@ export const PLAN_FEATURES: Record<PlanName, FeatureName[]> = {
     FEATURES.HASHTAGS,
     FEATURES.YOUTUBE_TIMESTAMPS,
     FEATURES.HIGHLIGHT_MOMENTS,
-    FEATURES.SPEAKER_DIARIZATION,
-  ],
+    FEATURES.SPEAKER_DIARIZATION
+  ]
 };
 
 /**
@@ -94,7 +94,7 @@ export const PODCASTOGIST_USER_PLANS: {
 } = {
   FREE: 'free',
   PLUS: 'plus',
-  MAX: 'max',
+  MAX: 'max'
 };
 
 /**
@@ -103,7 +103,7 @@ export const PODCASTOGIST_USER_PLANS: {
 export const PLAN_PRICES: Record<PlanName, string> = {
   free: '$0',
   plus: '$21/month',
-  max: '$34/month',
+  max: '$34/month'
 };
 
 /**
@@ -116,7 +116,7 @@ export const FEATURE_TO_JOB_MAP = {
   [FEATURES.HASHTAGS]: 'hashtags',
   [FEATURES.HIGHLIGHT_MOMENTS]: 'highlightMoments',
   [FEATURES.YOUTUBE_TIMESTAMPS]: 'youtubeTimestamps',
-  [FEATURES.RECAPS]: 'recaps',
+  [FEATURES.RECAPS]: 'recaps'
 } as const;
 
 export type JobName =

@@ -117,9 +117,9 @@ export async function generateTitles(
         model: BASE_OPENAI_MODEL,
         messages: [
           { role: 'system', content: TITLES_SYSTEM_PROMPT },
-          { role: 'user', content: buildTitlesPrompt(transcript) },
+          { role: 'user', content: buildTitlesPrompt(transcript) }
         ],
-        response_format: zodResponseFormat(titlesSchema, 'titles'),
+        response_format: zodResponseFormat(titlesSchema, 'titles')
       }
     )) as OpenAI.Chat.Completions.ChatCompletion;
 
@@ -132,7 +132,7 @@ export async function generateTitles(
           youtubeShort: ['Podcast Episode'],
           youtubeLong: ['Podcast Episode - Full Discussion'],
           podcastTitles: ['New Episode'],
-          seoKeywords: ['podcast'],
+          seoKeywords: ['podcast']
         };
 
     return titles;
@@ -144,7 +144,7 @@ export async function generateTitles(
       youtubeShort: ['⚠️ Title generation failed'],
       youtubeLong: ['⚠️ Title generation failed - check logs'],
       podcastTitles: ['⚠️ Title generation failed'],
-      seoKeywords: ['error'],
+      seoKeywords: ['error']
     };
   }
 }

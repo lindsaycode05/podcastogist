@@ -20,7 +20,9 @@ export const ProjectStatusCard = ({ project }: ProjectStatusCardProps) => {
                 <Calendar1 className='h-5 w-5 text-blue-600 dark:text-blue-300' />
               </div>
               <div>
-                <p className='text-xs text-gray-500 dark:text-slate-400 font-medium'>Created</p>
+                <p className='text-xs text-gray-500 dark:text-slate-400 font-medium'>
+                  Created
+                </p>
                 <p className='text-sm font-semibold text-gray-900 dark:text-slate-100'>
                   {formatSmartDate(project.createdAt)}
                 </p>
@@ -31,7 +33,9 @@ export const ProjectStatusCard = ({ project }: ProjectStatusCardProps) => {
                 <Database className='h-5 w-5 text-blue-600 dark:text-blue-300' />
               </div>
               <div>
-                <p className='text-xs text-gray-500 dark:text-slate-400 font-medium'>File Size</p>
+                <p className='text-xs text-gray-500 dark:text-slate-400 font-medium'>
+                  File Size
+                </p>
                 <p className='text-sm font-semibold text-gray-900 dark:text-slate-100'>
                   {formatFileSize(project.fileSize)}
                 </p>
@@ -42,7 +46,9 @@ export const ProjectStatusCard = ({ project }: ProjectStatusCardProps) => {
                 <FileAudio2 className='h-5 w-5 text-blue-600 dark:text-blue-300' />
               </div>
               <div>
-                <p className='text-xs text-gray-500 dark:text-slate-400 font-medium'>Format</p>
+                <p className='text-xs text-gray-500 dark:text-slate-400 font-medium'>
+                  Format
+                </p>
                 <p className='text-sm font-semibold text-gray-900 dark:text-slate-100 uppercase'>
                   {project.fileFormat}
                 </p>
@@ -54,7 +60,9 @@ export const ProjectStatusCard = ({ project }: ProjectStatusCardProps) => {
                   <Clock3 className='h-5 w-5 text-blue-600 dark:text-blue-300' />
                 </div>
                 <div>
-                  <p className='text-xs text-gray-500 dark:text-slate-400 font-medium'>Duration</p>
+                  <p className='text-xs text-gray-500 dark:text-slate-400 font-medium'>
+                    Duration
+                  </p>
                   <p className='text-sm font-semibold text-gray-900 dark:text-slate-100'>
                     {formatDuration(project.fileDuration)}
                   </p>

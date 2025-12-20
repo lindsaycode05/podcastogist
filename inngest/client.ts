@@ -19,5 +19,5 @@ import { Inngest } from 'inngest';
 // Initialize Inngest client
 // The ID must match across all environments (dev, staging, prod)
 export const inngest = new Inngest({
-  id: 'podcastogist',
+  id: 'podcastogist'
 });

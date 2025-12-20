@@ -15,7 +15,7 @@ interface GenerateMissingCardProps {
 export const GenerateMissingCard = ({
   projectId,
   message,
-  className = '',
+  className = ''
 }: GenerateMissingCardProps) => {
   const [isGenerating, setIsGenerating] = useState(false);
 
