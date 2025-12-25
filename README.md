@@ -152,8 +152,6 @@ If you regularly need to:
 
 ---
 
----
-
 <a id="what-this-project-demonstrates"></a>
 
 ## 🧠 What This Project Demonstrates
@@ -1268,5 +1266,3 @@ Billing runs in test mode (Clerk/Stripe), **so no real charges are processed.**
 - GitHub Issues: https://github.com/lindsaycode05/podcastogist/issues
 - Email: lindsaycode05@gmail.com
 - LinkedIn: https://www.linkedin.com/in/lindsaycode/
-
----
