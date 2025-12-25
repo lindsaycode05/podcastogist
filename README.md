@@ -115,7 +115,7 @@
 ## 💡 What Podcastogist Is
 
 Podcastogist is an AI-powered podcast post-production platform.  
-You upload a single podcast audio file and receive a complete distribution pack.  
+You upload a single audio file of a podcast/interview and receive a complete content pack: Recaps, Social Posts, Titles, Hashtags, YouTube Timestamps, Highlight Moments and the Speaker Dialogue of the whole episode, in minutes.  
 It’s built as a full-stack SaaS workflow that emphasizes reliability and real-time UX.  
 The experience is designed to feel instant even though heavy AI work happens in the background.
 
