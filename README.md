@@ -584,7 +584,7 @@ Long transcriptions are handled asynchronously to avoid server timeouts.
 ### 🧵 Webhook-driven flow
 
 ```mermaid
-%%{init: {'theme':'base','themeVariables':{'primaryColor':'#3B82F6','primaryTextColor':'#FFFFFF','primaryBorderColor':'#F97316','lineColor':'#3B82F6','secondaryColor':'#F97316','tertiaryColor':'#FFF7ED','signalColor':'#F97316'}}}%%
+%%{init: {'theme':'base','themeVariables':{'primaryColor':'#3B82F6','primaryTextColor':'#FFFFFF','primaryBorderColor':'#F97316','lineColor':'#3B82F6','secondaryColor':'#F97316','tertiaryColor':'#FFF7ED','signalColor':'#F97316','noteBkgColor':'#3b83f687','noteTextColor':'#FFFFFF'}}}%%
 sequenceDiagram
   participant UI as UI
   participant NX as Next.js
@@ -592,15 +592,24 @@ sequenceDiagram
   participant AS as AssemblyAI
   participant CX as Convex
 
-  UI->>NX: upload audio
-  NX->>CX: create project(status=uploaded)
-  NX->>IN: emit podcast.uploaded(projectId, fileUrl)
-  IN->>CX: update status=processing
-  IN->>AS: start transcription
-  AS-->>NX: webhook status updates(transcriptId, status)
-  NX->>CX: update jobStatus/transcript fields
-  IN->>CX: write AI outputs as ready
-  CX-->>UI: realtime updates (subscription)
+  UI->>NX:
+  note over UI,NX: upload audio
+  NX->>CX:
+  note over NX,CX: create project(status=uploaded)
+  NX->>IN:
+  note over NX,IN: emit podcast.uploaded event
+  IN->>CX:
+  note over IN,CX: update status=processing
+  IN->>AS:
+  note over IN,AS: start transcription
+  AS-->>NX:
+  note over AS,NX: webhook status updates(transcriptId, status)
+  NX->>CX:
+  note over NX,CX: update jobStatus/transcript fields
+  IN->>CX:
+  note over IN,CX: write AI outputs as ready
+  CX-->>UI:
+  note over CX,UI: realtime updates (subscription)
 ```
 
 ---
