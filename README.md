@@ -8,7 +8,7 @@
 
 ![Podcastogist Hero](readme-assets/hero-banner.jpeg)
 
-**Website:** https://podcastogist.vercel.app/  
+**Website:** https://podcastogist.com/  
 **Repository:** https://github.com/lindsaycode05/podcastogist  
 **Issues:** https://github.com/lindsaycode05/podcastogist/issues  
 **LinkedIn:** https://www.linkedin.com/in/lindsaycode/
