@@ -29,9 +29,9 @@
 ![Tailwind](https://img.shields.io/badge/TailwindCSS-v4-38B2AC)
 ![shadcn/ui](https://img.shields.io/badge/shadcn%2Fui-UI-black)
 ![Biome](https://img.shields.io/badge/Biome-Lint%20%2B%20Format-60A5FA)
-[![CI Quality Gate (Biome)](https://github.com/lindsaycode05/podcastogist/actions/workflows/quality-gate-biome.yml/badge.svg)](https://github.com/lindsaycode05/podcastogist/actions/workflows/quality-gate-biome.yml)
-[![CI Quality Gate (Typecheck)](https://github.com/lindsaycode05/podcastogist/actions/workflows/quality-gate-typecheck.yml/badge.svg)](https://github.com/lindsaycode05/podcastogist/actions/workflows/quality-gate-typecheck.yml)
-[![CI Quality Gate (Build)](https://github.com/lindsaycode05/podcastogist/actions/workflows/quality-gate-build.yml/badge.svg)](https://github.com/lindsaycode05/podcastogist/actions/workflows/quality-gate-build.yml)
+[![CI Quality Gate (Biome)](https://github.com/lindsaycode05/podcastogist/actions/workflows/ci-quality-gate-biome.yml/badge.svg)](https://github.com/lindsaycode05/podcastogist/actions/workflows/ci-quality-gate-biome.yml)
+[![CI Quality Gate (Typecheck)](https://github.com/lindsaycode05/podcastogist/actions/workflows/ci-quality-gate-typecheck.yml/badge.svg)](https://github.com/lindsaycode05/podcastogist/actions/workflows/ci-quality-gate-typecheck.yml)
+[![CI Quality Gate (Build)](https://github.com/lindsaycode05/podcastogist/actions/workflows/ci-quality-gate-build.yml/badge.svg)](https://github.com/lindsaycode05/podcastogist/actions/workflows/ci-quality-gate-build.yml)
 
 **CI-enforced quality gate (lint/typecheck/build) on every change.**
 
