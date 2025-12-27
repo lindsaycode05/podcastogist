@@ -29,7 +29,9 @@
 ![Tailwind](https://img.shields.io/badge/TailwindCSS-v4-38B2AC)
 ![shadcn/ui](https://img.shields.io/badge/shadcn%2Fui-UI-black)
 ![Biome](https://img.shields.io/badge/Biome-Lint%20%2B%20Format-60A5FA)
-[![Quality Gate](https://github.com/lindsaycode05/podcastogist/actions/workflows/quality-gate.yml/badge.svg)](https://github.com/lindsaycode05/podcastogist/actions/workflows/quality-gate.yml)
+[![CI Quality Gate (Biome)](https://img.shields.io/github/actions/workflow/status/lindsaycode05/podcastogist/quality-gate.yml?branch=main&job=Biome&label=CI%20Quality%20Gate%20%28Biome%29)](https://github.com/lindsaycode05/podcastogist/actions/workflows/quality-gate.yml)
+[![CI Quality Gate (Typecheck)](https://img.shields.io/github/actions/workflow/status/lindsaycode05/podcastogist/quality-gate.yml?branch=main&job=Typecheck&label=CI%20Quality%20Gate%20%28Typecheck%29)](https://github.com/lindsaycode05/podcastogist/actions/workflows/quality-gate.yml)
+[![CI Quality Gate (Build)](https://img.shields.io/github/actions/workflow/status/lindsaycode05/podcastogist/quality-gate.yml?branch=main&job=Build&label=CI%20Quality%20Gate%20%28Build%29)](https://github.com/lindsaycode05/podcastogist/actions/workflows/quality-gate.yml)
 
 **CI-enforced quality gate (lint/typecheck/build) on every change.**
 
