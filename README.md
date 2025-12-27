@@ -29,6 +29,9 @@
 ![Tailwind](https://img.shields.io/badge/TailwindCSS-v4-38B2AC)
 ![shadcn/ui](https://img.shields.io/badge/shadcn%2Fui-UI-black)
 ![Biome](https://img.shields.io/badge/Biome-Lint%20%2B%20Format-60A5FA)
+[![Quality Gate](https://github.com/lindsaycode05/podcastogist/actions/workflows/ci-quality-gate.yml/badge.svg)](https://github.com/lindsaycode05/podcastogist/actions/workflows/ci-quality-gate.yml)
+
+**CI-enforced quality gate (lint/typecheck/build) on every change.**
 
 **At a glance:**
 
