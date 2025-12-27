@@ -33,8 +33,6 @@
 [![CI Quality Gate (Typecheck)](https://github.com/lindsaycode05/podcastogist/actions/workflows/ci-quality-gate-typecheck.yml/badge.svg)](https://github.com/lindsaycode05/podcastogist/actions/workflows/ci-quality-gate-typecheck.yml)
 [![CI Quality Gate (Build)](https://github.com/lindsaycode05/podcastogist/actions/workflows/ci-quality-gate-build.yml/badge.svg)](https://github.com/lindsaycode05/podcastogist/actions/workflows/ci-quality-gate-build.yml)
 
-**CI-enforced quality gate (lint/typecheck/build) on every change.**
-
 **At a glance:**
 
 - 🚀 Upload podcast audio once, get recaps, social posts, highlights, hashtags, timestamps, and speaker dialogue.
@@ -177,6 +175,7 @@ It highlights practical SaaS architecture patterns and real production tradeoffs
 - ✅ Clean UI/UX: mobile responsive layout + dark mode toggle.
 - ✅ Type-safe boundaries using schema validation (Zod) and strong TS typing.
 - ✅ Developer experience: consistent formatting/linting (Biome), modern UI primitives.
+- ✅ CI quality gate on every push to main (Biome, typecheck, build).
 
 ### 🧠 Why it matters
 
@@ -1121,6 +1120,7 @@ A modern, production-grade stack optimized for SaaS workflows.
 
 - Zod for schema validation.
 - Biome for linting/formatting.
+- CI quality gate on every push to main (Biome, typecheck, build).
 - Typed AI outputs via Structured Outputs.
 
 ---
