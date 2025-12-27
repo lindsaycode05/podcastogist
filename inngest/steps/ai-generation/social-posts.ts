@@ -24,10 +24,10 @@
 import type { step as InngestStep } from 'inngest';
 import type OpenAI from 'openai';
 import { zodResponseFormat } from 'openai/helpers/zod';
-import { BASE_OPENAI_MODEL, openai } from '@/lib/openai-client';
-import { type SocialPosts, socialPostsSchema } from '@/schemas/ai-outputs';
-import type { TranscriptWithExtras } from '@/lib/types';
 import { INNGEST_STEPS } from '@/lib/inngest-steps';
+import { BASE_OPENAI_MODEL, openai } from '@/lib/openai-client';
+import type { TranscriptWithExtras } from '@/lib/types';
+import { type SocialPosts, socialPostsSchema } from '@/schemas/ai-outputs';
 
 // System prompt establishes GPT's expertise in platform-specific marketing
 const SOCIAL_SYSTEM_PROMPT =

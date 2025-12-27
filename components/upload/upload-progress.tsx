@@ -30,9 +30,9 @@ import {
   Loader2,
   XCircle
 } from 'lucide-react';
+import { PODCAST_UPLOAD_STATUS } from '@/lib/constants';
 import { formatDuration, formatFileSize } from '@/lib/format';
 import type { UploadStatus } from '@/lib/types';
-import { PODCAST_UPLOAD_STATUS } from '@/lib/constants';
 
 interface UploadProgressProps {
   fileName: string; // Display name

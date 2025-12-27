@@ -16,19 +16,19 @@
 
 import { auth } from '@clerk/nextjs/server';
 import {
+  ArrowBigUpDash,
   ArrowLeft,
-  HardDrive,
   Clock3,
   FolderKanban,
-  Star,
+  HardDrive,
   Rocket,
-  ArrowBigUpDash
+  Star
 } from 'lucide-react';
 import Link from 'next/link';
+import { PricingTable } from '@/components/home/pricing-table';
 import { Badge } from '@/components/ui/badge';
 import { PODCASTOGIST_USER_PLANS } from '@/lib/tier-config';
 import { capitalize } from '@/lib/utils/utils';
-import { PricingTable } from '@/components/home/pricing-table';
 
 interface UpgradePageProps {
   searchParams: Promise<{

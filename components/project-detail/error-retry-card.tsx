@@ -1,13 +1,13 @@
 'use client';
 
+import { AlertCircle, RefreshCw } from 'lucide-react';
+import { useState } from 'react';
+import { toast } from 'sonner';
 import { retryJob } from '@/actions/retry-job';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import type { Id } from '@/convex/_generated/dataModel';
-import { JobName } from '@/lib/tier-config';
-import { AlertCircle, RefreshCw } from 'lucide-react';
-import { useState } from 'react';
-import { toast } from 'sonner';
+import type { JobName } from '@/lib/tier-config';
 
 interface ErrorRetryCardProps {
   projectId: Id<'projects'>;

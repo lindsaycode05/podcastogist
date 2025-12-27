@@ -24,13 +24,13 @@
  */
 'use client';
 
+import { useAuth } from '@clerk/nextjs';
 import { AudioLines, Upload } from 'lucide-react';
 import { useCallback, useMemo } from 'react';
 import { ErrorCode, useDropzone } from 'react-dropzone';
 import { ALLOWED_AUDIO_TYPES_EXTENSION_MAP } from '@/lib/constants';
-import { cn } from '@/lib/utils/utils';
-import { useAuth } from '@clerk/nextjs';
 import { PLAN_LIMITS, PODCASTOGIST_USER_PLANS } from '@/lib/tier-config';
+import { cn } from '@/lib/utils/utils';
 
 interface UploadDropzoneProps {
   onFileSelect: (file: File) => void; // Callback when valid file is selected

@@ -1,14 +1,14 @@
 'use client';
 
-import { SignInButton, UserButton, useAuth, Protect } from '@clerk/nextjs';
-import { Home, MicVocal, Plus, ArrowBigUpDash } from 'lucide-react';
+import { Protect, SignInButton, UserButton, useAuth } from '@clerk/nextjs';
+import { ArrowBigUpDash, Home, MicVocal, Plus } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { HeaderRoutes } from '@/components/home/header-routes';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { PODCASTOGIST_USER_PLANS } from '@/lib/tier-config';
 import { ThemeToggle } from '@/components/theme-toggle';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { PODCASTOGIST_USER_PLANS } from '@/lib/tier-config';
 
 export const Header = () => {
   const { isSignedIn } = useAuth();

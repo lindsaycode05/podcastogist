@@ -32,14 +32,15 @@
  * - Faster processing: Optimized for speech (vs. Whisper for accuracy)
  * - Async API: Better for long podcasts (no timeout issues)
  */
-import type { step as InngestStep } from 'inngest';
+
 import { AssemblyAI } from 'assemblyai';
+import type { step as InngestStep } from 'inngest';
 import { api } from '@/convex/_generated/api';
 import type { Id } from '@/convex/_generated/dataModel';
 import { convex } from '@/lib/convex-client';
 import { ASSEMBLYAI_TRANSCRIPT_STATUS_EVENT } from '@/lib/events';
 import { INNGEST_STEPS } from '@/lib/inngest-steps';
-import { PODCASTOGIST_USER_PLANS, type PlanName } from '@/lib/tier-config';
+import { type PlanName, PODCASTOGIST_USER_PLANS } from '@/lib/tier-config';
 import type {
   AssemblyAIChapter,
   AssemblyAISegment,

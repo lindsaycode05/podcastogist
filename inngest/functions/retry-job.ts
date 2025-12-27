@@ -7,23 +7,23 @@
  */
 import { api } from '@/convex/_generated/api';
 import { convex } from '@/lib/convex-client';
-import type { PlanName, FeatureName } from '@/lib/tier-config';
+import { PODCAST_RETRY_JOB_EVENT } from '@/lib/events';
+import { INNGEST_STEPS } from '@/lib/inngest-steps';
+import type { FeatureName, PlanName } from '@/lib/tier-config';
 import {
   FEATURE_TO_JOB_MAP,
   FEATURES,
   PODCASTOGIST_USER_PLANS
 } from '@/lib/tier-config';
+import type { TranscriptWithExtras } from '@/lib/types';
 import { planHasFeature } from '@/lib/utils/tier-utils';
 import { inngest } from '../client';
 import { generateHashtags } from '../steps/ai-generation/hashtags';
 import { generateHighlightMoments } from '../steps/ai-generation/highlight-moments';
-import { generateSocialPosts } from '../steps/ai-generation/social-posts';
 import { generateRecaps } from '../steps/ai-generation/recaps';
+import { generateSocialPosts } from '../steps/ai-generation/social-posts';
 import { generateTitles } from '../steps/ai-generation/titles';
 import { generateYouTubeTimestamps } from '../steps/ai-generation/youtube-timestamps';
-import { PODCAST_RETRY_JOB_EVENT } from '@/lib/events';
-import { TranscriptWithExtras } from '@/lib/types';
-import { INNGEST_STEPS } from '@/lib/inngest-steps';
 
 const FUNCTION_NAME = 'retry-job';
 

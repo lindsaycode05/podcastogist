@@ -16,13 +16,13 @@ import {
   estimateAssemblyAITime,
   formatTimeRange
 } from '@/lib/processing-time-estimator';
-import type { PhaseStatus } from '@/lib/types';
 import {
-  PLAN_FEATURES,
   FEATURES,
   type FeatureName,
+  PLAN_FEATURES,
   PODCASTOGIST_USER_PLANS
 } from '@/lib/tier-config';
+import type { PhaseStatus } from '@/lib/types';
 import { getMinimumPlanForFeature } from '@/lib/utils/tier-utils';
 
 interface ProcessingFlowProps {

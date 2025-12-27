@@ -1,10 +1,10 @@
 'use client';
 
-import { CheckCircle2, Clock, Loader2 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
+import { CheckCircle2, Clock, Loader2 } from 'lucide-react';
+import { PODCAST_PROCESSING_PHASE_STATUS } from '@/lib/constants';
 import type { PhaseStatus } from '@/lib/types';
 import { cn } from '@/lib/utils/utils';
-import { PODCAST_PROCESSING_PHASE_STATUS } from '@/lib/constants';
 
 interface PhaseCardProps {
   icon: LucideIcon;

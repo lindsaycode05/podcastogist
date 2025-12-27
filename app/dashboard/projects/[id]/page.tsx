@@ -2,7 +2,7 @@
 
 import { useAuth } from '@clerk/nextjs';
 import { useQuery } from 'convex/react';
-import { SquarePen, Loader2, Save, Trash2, X } from 'lucide-react';
+import { Loader2, Save, SquarePen, Trash2, X } from 'lucide-react';
 import { useParams, useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { toast } from 'sonner';
@@ -10,23 +10,20 @@ import {
   deleteProjectAction,
   updateDisplayNameAction
 } from '@/actions/projects';
-import { ProcessingFlow } from '@/components/projects/processing-flow';
 import { TabContent } from '@/components/project-detail/tab-content';
 import {
-  MobileTabItem,
-  DesktopTabTrigger
+  DesktopTabTrigger,
+  MobileTabItem
 } from '@/components/project-detail/tab-triggers';
-import { ProjectStatusCard } from '@/components/projects/project-status-card';
 import { HashtagsTab } from '@/components/project-tabs/hashtags-tab';
 import { HighlightMomentsTab } from '@/components/project-tabs/highlight-moments-tab';
-import { SocialPostsTab } from '@/components/project-tabs/social-posts-tab';
 import { RecapsTab } from '@/components/project-tabs/recaps-tab';
+import { SocialPostsTab } from '@/components/project-tabs/social-posts-tab';
 import { TitlesTab } from '@/components/project-tabs/titles-tab';
 import { TranscriptTab } from '@/components/project-tabs/transcript-tab';
 import { YouTubeTimestampsTab } from '@/components/project-tabs/youtube-timestamps-tab';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
+import { ProcessingFlow } from '@/components/projects/processing-flow';
+import { ProjectStatusCard } from '@/components/projects/project-status-card';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -38,6 +35,9 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger
 } from '@/components/ui/alert-dialog';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
 import {
   Select,
   SelectContent,
@@ -47,10 +47,10 @@ import {
 import { Tabs, TabsContent, TabsList } from '@/components/ui/tabs';
 import { api } from '@/convex/_generated/api';
 import type { Id } from '@/convex/_generated/dataModel';
-import type { PhaseStatus } from '@/lib/types';
-import { FEATURES } from '@/lib/tier-config';
-import { PROJECT_TABS } from '@/lib/tab-config';
 import { PODCAST_PROCESSING_PHASE_STATUS } from '@/lib/constants';
+import { PROJECT_TABS } from '@/lib/tab-config';
+import { FEATURES } from '@/lib/tier-config';
+import type { PhaseStatus } from '@/lib/types';
 
 const ProjectDetailPage = () => {
   const { userId } = useAuth();

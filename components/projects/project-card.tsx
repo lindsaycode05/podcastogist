@@ -6,7 +6,6 @@ import { useState } from 'react';
 import { toast } from 'sonner';
 import { deleteProjectAction } from '@/actions/projects';
 import { CompactProgress } from '@/components/projects/compact-progress';
-import { Badge } from '@/components/ui/badge';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -17,12 +16,13 @@ import {
   AlertDialogHeader,
   AlertDialogTitle
 } from '@/components/ui/alert-dialog';
+import { Badge } from '@/components/ui/badge';
 import type { Doc } from '@/convex/_generated/dataModel';
 import { formatDuration, formatFileSize, formatSmartDate } from '@/lib/format';
 import {
+  getProcessingPhaseLabel,
   getStatusIcon,
-  getStatusVariant,
-  getProcessingPhaseLabel
+  getStatusVariant
 } from '@/lib/utils/status-utils';
 import { cn } from '@/lib/utils/utils';
 

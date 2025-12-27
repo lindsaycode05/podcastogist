@@ -37,19 +37,19 @@
  */
 import { api } from '@/convex/_generated/api';
 import { inngest } from '@/inngest/client';
-import { PODCASTOGIST_USER_PLANS, type PlanName } from '@/lib/tier-config';
-import { generateHashtags } from '../steps/ai-generation/hashtags';
-import { generateHighlightMoments } from '../steps/ai-generation/highlight-moments';
-import { generateSocialPosts } from '../steps/ai-generation/social-posts';
-import { generateRecaps } from '../steps/ai-generation/recaps';
-import { generateTitles } from '../steps/ai-generation/titles';
-import { generateYouTubeTimestamps } from '../steps/ai-generation/youtube-timestamps';
-import { transcribeWithAssemblyAI } from '../steps/transcription/assembly-ai';
-import { saveResultsToConvex } from '../steps/resolution/save-to-convex';
+import { PODCAST_PROCESSING_PHASE_STATUS } from '@/lib/constants';
 import { convex } from '@/lib/convex-client';
 import { PODCAST_UPLOADED_EVENT } from '@/lib/events';
 import { INNGEST_STEPS } from '@/lib/inngest-steps';
-import { PODCAST_PROCESSING_PHASE_STATUS } from '@/lib/constants';
+import { type PlanName, PODCASTOGIST_USER_PLANS } from '@/lib/tier-config';
+import { generateHashtags } from '../steps/ai-generation/hashtags';
+import { generateHighlightMoments } from '../steps/ai-generation/highlight-moments';
+import { generateRecaps } from '../steps/ai-generation/recaps';
+import { generateSocialPosts } from '../steps/ai-generation/social-posts';
+import { generateTitles } from '../steps/ai-generation/titles';
+import { generateYouTubeTimestamps } from '../steps/ai-generation/youtube-timestamps';
+import { saveResultsToConvex } from '../steps/resolution/save-to-convex';
+import { transcribeWithAssemblyAI } from '../steps/transcription/assembly-ai';
 
 const FUNCTION_NAME = 'podcast-processor';
 

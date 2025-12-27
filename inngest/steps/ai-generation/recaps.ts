@@ -22,10 +22,10 @@
 import type { step as InngestStep } from 'inngest';
 import type OpenAI from 'openai';
 import { zodResponseFormat } from 'openai/helpers/zod';
-import { BASE_OPENAI_MODEL, openai } from '@/lib/openai-client';
-import { type Recaps, recapsSchema } from '@/schemas/ai-outputs';
-import type { TranscriptWithExtras } from '@/lib/types';
 import { INNGEST_STEPS } from '@/lib/inngest-steps';
+import { BASE_OPENAI_MODEL, openai } from '@/lib/openai-client';
+import type { TranscriptWithExtras } from '@/lib/types';
+import { type Recaps, recapsSchema } from '@/schemas/ai-outputs';
 
 // System prompt defines GPT's role and expertise
 const RECAPS_SYSTEM_PROMPT =

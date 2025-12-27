@@ -12,12 +12,13 @@
  * Note: Validation happens BEFORE this route is called (via server action).
  * This route only handles URL generation for the Vercel Blob upload.
  */
+
+import { auth } from '@clerk/nextjs/server';
 import { type HandleUploadBody, handleUpload } from '@vercel/blob/client';
 import { NextResponse } from 'next/server';
-import { auth } from '@clerk/nextjs/server';
-import { apiError } from '@/lib/utils/api-utils';
 import { ALLOWED_AUDIO_TYPES_LIST } from '@/lib/constants';
 import { PLAN_LIMITS, PODCASTOGIST_USER_PLANS } from '@/lib/tier-config';
+import { apiError } from '@/lib/utils/api-utils';
 
 export async function POST(request: Request): Promise<NextResponse> {
   try {

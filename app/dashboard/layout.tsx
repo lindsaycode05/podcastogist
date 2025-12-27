@@ -1,5 +1,5 @@
-import { Header } from '@/components/home/header';
 import { Footer } from '@/components/home/footer';
+import { Header } from '@/components/home/header';
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   return (

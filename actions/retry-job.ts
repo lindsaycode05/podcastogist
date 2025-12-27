@@ -8,13 +8,17 @@
  * Triggers a new Inngest event to regenerate just that specific output.
  */
 
-import { inngest } from '@/inngest/client';
 import { auth } from '@clerk/nextjs/server';
-import type { Id } from '@/convex/_generated/dataModel';
-import { convex } from '@/lib/convex-client';
 import { api } from '@/convex/_generated/api';
-import { JobName, PlanName, PODCASTOGIST_USER_PLANS } from '@/lib/tier-config';
+import type { Id } from '@/convex/_generated/dataModel';
+import { inngest } from '@/inngest/client';
+import { convex } from '@/lib/convex-client';
 import { PODCAST_RETRY_JOB_EVENT } from '@/lib/events';
+import {
+  type JobName,
+  type PlanName,
+  PODCASTOGIST_USER_PLANS
+} from '@/lib/tier-config';
 
 export async function retryJob(projectId: Id<'projects'>, job: JobName) {
   const authObj = await auth();

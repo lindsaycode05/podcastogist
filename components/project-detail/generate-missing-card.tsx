@@ -1,10 +1,10 @@
 'use client';
 
+import { useState } from 'react';
+import { toast } from 'sonner';
 import { generateMissingFeatures } from '@/actions/generate-missing-features';
 import { Button } from '@/components/ui/button';
 import type { Id } from '@/convex/_generated/dataModel';
-import { useState } from 'react';
-import { toast } from 'sonner';
 
 interface GenerateMissingCardProps {
   projectId: Id<'projects'>;

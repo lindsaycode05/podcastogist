@@ -28,8 +28,8 @@ import type { Id } from '@/convex/_generated/dataModel';
 import { convex } from '@/lib/convex-client';
 import type {
   Hashtags,
-  SocialPosts,
   Recaps,
+  SocialPosts,
   Titles
 } from '@/schemas/ai-outputs';
 

@@ -1,11 +1,11 @@
 import {
   BrainCircuit,
+  Clapperboard,
+  Hash,
+  type LucideIcon,
   ScrollText,
   Share2,
-  Clapperboard,
-  UsersRound,
-  Hash,
-  type LucideIcon
+  UsersRound
 } from 'lucide-react';
 
 interface Feature {

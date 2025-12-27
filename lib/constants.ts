@@ -5,7 +5,7 @@
  * Includes file size limits, allowed formats, timing constants, and UI config.
  */
 import type { LucideIcon } from 'lucide-react';
-import { FileText, Hash, Type, Share2, Crosshair, Youtube } from 'lucide-react';
+import { Crosshair, FileText, Hash, Share2, Type, Youtube } from 'lucide-react';
 import type { PhaseStatus, UploadStatus } from './types';
 
 /**

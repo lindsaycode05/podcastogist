@@ -35,12 +35,12 @@ import { createProjectAction, validateUploadAction } from '@/actions/projects';
 import { Button } from '@/components/ui/button';
 import { UploadDropzone } from '@/components/upload/upload-dropzone';
 import { UploadProgress } from '@/components/upload/upload-progress';
+import { PODCAST_UPLOAD_STATUS } from '@/lib/constants';
+import type { UploadStatus } from '@/lib/types';
 import {
   estimateDurationFromSize,
   getAudioDuration
 } from '@/lib/utils/audio-utils';
-import type { UploadStatus } from '@/lib/types';
-import { PODCAST_UPLOAD_STATUS } from '@/lib/constants';
 
 export const PodcastUploader = () => {
   const router = useRouter();

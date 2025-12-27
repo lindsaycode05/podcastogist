@@ -1,12 +1,12 @@
 'use client';
 
 import { Protect } from '@clerk/nextjs';
+import type { Id } from '@/convex/_generated/dataModel';
+import type { FeatureName, JobName } from '@/lib/tier-config';
 import { ErrorRetryCard } from './error-retry-card';
 import { GenerateMissingCard } from './generate-missing-card';
 import { TabSkeleton } from './tab-skeleton';
 import { UpgradePrompt } from './upgrade-prompt';
-import type { Id } from '@/convex/_generated/dataModel';
-import type { FeatureName, JobName } from '@/lib/tier-config';
 
 interface TabContentProps {
   isLoading: boolean;

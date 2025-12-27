@@ -8,15 +8,15 @@
  * All plan checks use Clerk's native billing system per:
  * https://clerk.com/docs/nextjs/guides/billing/for-b2c
  */
-import { auth as authType } from '@clerk/nextjs/server';
-import { convex } from '@/lib/convex-client';
+import type { auth as authType } from '@clerk/nextjs/server';
 import { api } from '@/convex/_generated/api';
+import { convex } from '@/lib/convex-client';
 import {
+  type FeatureName,
   PLAN_FEATURES,
   PLAN_LIMITS,
-  PODCASTOGIST_USER_PLANS,
-  type FeatureName,
-  type PlanName
+  type PlanName,
+  PODCASTOGIST_USER_PLANS
 } from '../tier-config';
 
 export interface UploadValidationResult {

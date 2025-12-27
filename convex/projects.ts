@@ -17,9 +17,9 @@
  * 4. No WebSocket setup, polling, or manual state management required
  */
 import { v } from 'convex/values';
+import { PODCAST_PROCESSING_PHASE_STATUS } from '../lib/constants';
 import type { Doc } from './_generated/dataModel';
 import { mutation, query } from './_generated/server';
-import { PODCAST_PROCESSING_PHASE_STATUS } from '../lib/constants';
 
 /**
  * Creates a new project record after file upload

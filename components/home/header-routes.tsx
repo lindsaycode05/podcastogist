@@ -1,6 +1,6 @@
 'use client';
 
-import { FileVolume, FileUp } from 'lucide-react';
+import { FileUp, FileVolume } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Button } from '@/components/ui/button';

@@ -25,9 +25,9 @@ import { api } from '@/convex/_generated/api';
 import type { Id } from '@/convex/_generated/dataModel';
 import { inngest } from '@/inngest/client';
 import { convex } from '@/lib/convex-client';
-import { checkUploadLimits } from '@/lib/utils/tier-utils';
-import { PODCASTOGIST_USER_PLANS } from '@/lib/tier-config';
 import { PODCAST_UPLOADED_EVENT } from '@/lib/events';
+import { PODCASTOGIST_USER_PLANS } from '@/lib/tier-config';
+import { checkUploadLimits } from '@/lib/utils/tier-utils';
 
 /**
  * Validate upload before starting

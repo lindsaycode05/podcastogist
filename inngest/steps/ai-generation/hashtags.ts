@@ -20,10 +20,10 @@
 import type { step as InngestStep } from 'inngest';
 import type OpenAI from 'openai';
 import { zodResponseFormat } from 'openai/helpers/zod';
-import { BASE_OPENAI_MODEL, openai } from '@/lib/openai-client';
-import { type Hashtags, hashtagsSchema } from '@/schemas/ai-outputs';
-import type { TranscriptWithExtras } from '@/lib/types';
 import { INNGEST_STEPS } from '@/lib/inngest-steps';
+import { BASE_OPENAI_MODEL, openai } from '@/lib/openai-client';
+import type { TranscriptWithExtras } from '@/lib/types';
+import { type Hashtags, hashtagsSchema } from '@/schemas/ai-outputs';
 
 // System prompt establishes GPT's knowledge of hashtag strategies
 const HASHTAGS_SYSTEM_PROMPT =

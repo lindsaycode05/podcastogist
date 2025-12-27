@@ -5,15 +5,15 @@
  * Used in project detail tabs for features not available on their current plan.
  */
 
-import { Lock, Plus, ArrowBigUpDash } from 'lucide-react';
+import { ArrowBigUpDash, Lock, Plus } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import {
+  type FeatureName,
   PLAN_FEATURES,
-  PODCASTOGIST_USER_PLANS,
   PLAN_PRICES,
   type PlanName,
-  FeatureName
+  PODCASTOGIST_USER_PLANS
 } from '@/lib/tier-config';
 import { getMinimumPlanForFeature } from '@/lib/utils/tier-utils';
 import { capitalize } from '@/lib/utils/utils';
