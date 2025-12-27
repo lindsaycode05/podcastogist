@@ -437,5 +437,6 @@
 /* Any modal div's z-index from Clerk should appear properly above other UI elements */
 div[role="dialog"],
 div[role="alertdialog"] {
+  /* biome-ignore lint: required z-index directive */
   z-index: 99999 !important;
 }

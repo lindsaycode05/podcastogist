@@ -6,7 +6,8 @@
     "dev": "next dev & convex dev",
     "build": "next build",
     "start": "next start",
-    "lint": "biome check",
+    "check": "biome check",
+    "lint": "biome lint",
     "format": "biome format --write"
   },
   "dependencies": {

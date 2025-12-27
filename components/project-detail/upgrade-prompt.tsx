@@ -79,8 +79,8 @@ export const UpgradePrompt = ({
                 Unlock {feature} and more with {planName}:
               </p>
               <ul className='space-y-3 text-sm md:text-base text-gray-700 dark:text-slate-200'>
-                {planFeatures.map((feat, idx) => (
-                  <li key={idx} className='flex items-center gap-3'>
+                {planFeatures.map((feat) => (
+                  <li key={feat} className='flex items-center gap-3'>
                     <span className='text-blue-600 dark:text-blue-300 font-bold text-lg'>
                       ✓
                     </span>

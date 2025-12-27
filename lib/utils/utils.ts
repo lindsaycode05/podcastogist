@@ -17,7 +17,7 @@ export const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs));
  * - capitalize('') => ''
  */
 export const capitalize = (s: string) =>
-  s ? s[0]!.toUpperCase() + s.slice(1) : s;
+  s ? s[0]?.toUpperCase() + s.slice(1) : s;
 
 /**
  * Converts identifiers into human-readable labels.

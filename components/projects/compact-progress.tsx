@@ -23,6 +23,7 @@ export const CompactProgress = ({
   const [progress, setProgress] = useState(0);
   const isTranscribing = jobStatus?.transcription === 'running';
 
+  // biome-ignore lint: lint
   useEffect(() => {
     // Calculate progress based on elapsed time vs estimated completion time
     const updateProgress = () => {

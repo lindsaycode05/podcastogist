@@ -128,6 +128,7 @@ export const podcastProcessor = inngest.createFunction(
       // Each function can fail independently - we save whatever succeeds
 
       // Determine which jobs to run based on plan
+      // biome-ignore lint: different features return different structures
       const jobs: Promise<any>[] = [];
       const jobNames: string[] = [];
 
@@ -170,6 +171,7 @@ export const podcastProcessor = inngest.createFunction(
 
       // Extract successful results based on plan
       // Build results object dynamically based on what was run
+      // biome-ignore lint: different features return different structures
       const generatedContent: Record<string, any> = {};
 
       results.forEach((result, idx) => {
