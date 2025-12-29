@@ -1,0 +1,76 @@
+{
+  "text": "Welcome to the Podcastogist demo episode. Today we cover three topics: building a durable pipeline, shipping real-time UX, and launching with confidence.",
+  "segments": [
+    {
+      "id": 0,
+      "start": 0,
+      "end": 12000,
+      "text": "Welcome to the Podcastogist demo episode.",
+      "words": [
+        { "word": "Welcome", "start": 0, "end": 500 },
+        { "word": "to", "start": 500, "end": 700 },
+        { "word": "the", "start": 700, "end": 900 },
+        { "word": "Podcastogist", "start": 900, "end": 1500 },
+        { "word": "demo", "start": 1500, "end": 1900 },
+        { "word": "episode.", "start": 1900, "end": 2400 }
+      ]
+    },
+    {
+      "id": 1,
+      "start": 12000,
+      "end": 30000,
+      "text": "We cover durable pipelines, real-time UX, and launch readiness.",
+      "words": [
+        { "word": "We", "start": 12000, "end": 12200 },
+        { "word": "cover", "start": 12200, "end": 12600 },
+        { "word": "durable", "start": 12600, "end": 13200 },
+        { "word": "pipelines,", "start": 13200, "end": 13800 },
+        { "word": "real-time", "start": 13800, "end": 14500 },
+        { "word": "UX,", "start": 14500, "end": 14900 },
+        { "word": "and", "start": 14900, "end": 15200 },
+        { "word": "launch", "start": 15200, "end": 15700 },
+        { "word": "readiness.", "start": 15700, "end": 16500 }
+      ]
+    }
+  ],
+  "chapters": [
+    {
+      "start": 0,
+      "end": 60000,
+      "headline": "Opening and Setup",
+      "summary": "Introductions and the goals for the workflow.",
+      "gist": "intro"
+    },
+    {
+      "start": 60000,
+      "end": 120000,
+      "headline": "Durable Pipeline",
+      "summary": "Why the pipeline is resilient and observable.",
+      "gist": "workflow"
+    },
+    {
+      "start": 120000,
+      "end": 180000,
+      "headline": "Launch Confidence",
+      "summary": "Shipping with deterministic testing and metrics.",
+      "gist": "launch"
+    }
+  ],
+  "utterances": [
+    {
+      "start": 0,
+      "end": 12000,
+      "confidence": 0.95,
+      "speaker": "A",
+      "text": "Welcome to the Podcastogist demo episode."
+    },
+    {
+      "start": 12000,
+      "end": 30000,
+      "confidence": 0.93,
+      "speaker": "B",
+      "text": "We cover durable pipelines, real-time UX, and launch readiness."
+    }
+  ],
+  "audio_duration": 180000
+}

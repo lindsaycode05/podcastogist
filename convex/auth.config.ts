@@ -1,13 +1,12 @@
 import type { AuthConfig } from 'convex/server';
 
-if (!process.env.CLERK_JWT_ISSUER_DOMAIN) {
-  throw new Error('Missing CLERK_JWT_ISSUER_DOMAIN environment variable');
-}
+// Our Clerk issuer domain public variable used at deploy time by convex
+const domain = 'https://distinct-bedbug-71.clerk.accounts.dev';
 
 export default {
   providers: [
     {
-      domain: process.env.CLERK_JWT_ISSUER_DOMAIN,
+      domain,
       applicationID: 'convex'
     }
   ]

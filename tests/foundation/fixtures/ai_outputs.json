@@ -1,0 +1,76 @@
+{
+  "recaps": {
+    "full": "This episode introduces Podcastogist and explains how its workflow turns a single upload into multiple deliverables. The hosts walk through durable orchestration, realtime updates, and why deterministic testing keeps the release safe. They highlight the value of structured outputs and event contracts so every step is observable and reliable. The conversation closes with a launch mindset that focuses on confidence and measurable outcomes.",
+    "bullets": [
+      "Podcastogist turns one upload into a full content kit.",
+      "Durable workflows keep long-running jobs reliable.",
+      "Realtime updates remove polling and keep UX fast.",
+      "Structured outputs enforce predictable AI results.",
+      "Event contracts keep providers and services in sync."
+    ],
+    "insights": [
+      "Deterministic fixtures reduce flaky workflows.",
+      "Parallel AI jobs cut total processing time.",
+      "Schema validation makes AI outputs trustworthy."
+    ],
+    "tldr": "A reliable AI workflow ships faster when outputs are structured, observable, and deterministic."
+  },
+  "social_posts": {
+    "twitter": "Podcastogist turns 1 upload into a full content kit. Durable workflows, realtime updates, and structured outputs make it production-grade. 🚀",
+    "linkedin": "Podcastogist is built around durable workflows and realtime UX. This episode breaks down how structured outputs and event contracts keep the pipeline reliable, fast, and shippable.",
+    "instagram": "One upload, a full content kit. 🎙️ Durable workflows + realtime updates = a polished pipeline you can ship.",
+    "tiktok": "Durable pipeline. Realtime UX. Ship-ready AI workflow.",
+    "youtube": "In this episode we break down Podcastogist: a durable workflow pipeline that turns one upload into multiple content deliverables with realtime updates and structured AI outputs.",
+    "facebook": "Podcastogist shows how a durable AI workflow can take one upload and produce a full content kit with realtime updates. What would you automate first?"
+  },
+  "titles": {
+    "youtubeShort": [
+      "Ship a Durable AI Pipeline",
+      "One Upload, Full Content Kit",
+      "Realtime AI Workflow Demo"
+    ],
+    "youtubeLong": [
+      "Durable AI Workflow: Realtime Updates and Structured Outputs",
+      "Podcastogist Pipeline: One Upload to Full Content Kit",
+      "Shipping Reliable AI Jobs with Event Contracts"
+    ],
+    "podcastTitles": [
+      "The Durable Podcast Pipeline",
+      "Realtime UX for AI Workflows",
+      "Shipping with Deterministic AI"
+    ],
+    "seoKeywords": [
+      "AI workflow",
+      "podcast automation",
+      "structured outputs",
+      "event contracts",
+      "realtime UX"
+    ]
+  },
+  "hashtags": {
+    "youtube": ["#AI", "#Podcasts", "#Automation", "#SaaS", "#Workflow"],
+    "instagram": [
+      "#Podcast",
+      "#AI",
+      "#Workflow",
+      "#SaaS",
+      "#CreatorTools",
+      "#Automation"
+    ],
+    "tiktok": ["#AI", "#Podcast", "#Workflow", "#SaaS", "#Automation"],
+    "linkedin": ["#AI", "#SaaS", "#ProductEngineering", "#Automation", "#UX"],
+    "twitter": ["#AI", "#Podcast", "#Workflow", "#SaaS", "#Shipping"]
+  },
+  "youtube_chapter_titles": {
+    "titles": [
+      { "index": 0, "title": "Opening and Setup" },
+      { "index": 1, "title": "Durable Pipeline" },
+      { "index": 2, "title": "Launch Confidence" }
+    ]
+  },
+  "youtube_timestamps": [
+    { "timestamp": "00:00", "description": "Opening and Setup" },
+    { "timestamp": "01:00", "description": "Durable Pipeline" },
+    { "timestamp": "02:00", "description": "Launch Confidence" }
+  ]
+}
