@@ -32,6 +32,9 @@
 [![CI Quality Gate (Biome)](https://github.com/lindsaycode05/podcastogist/actions/workflows/ci-quality-gate-biome.yml/badge.svg)](https://github.com/lindsaycode05/podcastogist/actions/workflows/ci-quality-gate-biome.yml)
 [![CI Quality Gate (Typecheck)](https://github.com/lindsaycode05/podcastogist/actions/workflows/ci-quality-gate-typecheck.yml/badge.svg)](https://github.com/lindsaycode05/podcastogist/actions/workflows/ci-quality-gate-typecheck.yml)
 [![CI Quality Gate (Build)](https://github.com/lindsaycode05/podcastogist/actions/workflows/ci-quality-gate-build.yml/badge.svg)](https://github.com/lindsaycode05/podcastogist/actions/workflows/ci-quality-gate-build.yml)
+[![CI Tests (Unit)](https://github.com/lindsaycode05/podcastogist/actions/workflows/ci-tests-unit.yml/badge.svg)](https://github.com/lindsaycode05/podcastogist/actions/workflows/ci-tests-unit.yml)
+[![CI Tests (Integration)](https://github.com/lindsaycode05/podcastogist/actions/workflows/ci-tests-integration.yml/badge.svg)](https://github.com/lindsaycode05/podcastogist/actions/workflows/ci-tests-integration.yml)
+[![CI Tests (E2E)](https://github.com/lindsaycode05/podcastogist/actions/workflows/ci-tests-e2e.yml/badge.svg)](https://github.com/lindsaycode05/podcastogist/actions/workflows/ci-tests-e2e.yml)
 
 **At a glance:**
 
@@ -40,6 +43,7 @@
 - 🔐 Clerk-based authentication and plan gating (Free / Plus / Max).
 - 📡 Real-time UI updates via Convex subscriptions (no polling).
 - 🌗 Full dark mode + mobile-responsive UI.
+- 🧪 Deterministic CI test suite (unit + integration + E2E) with real-time Convex wiring.
 
 ---
 
@@ -101,6 +105,7 @@
 - [Tech Stack](#tech-stack)
 - [Repo Map](#repo-map)
 - [Engineering Notes](#engineering-notes)
+- [Tests Suite](#tests)
 - [Build Challenges](#build-challenges)
 - [Build Timeline](#build-timeline)
 
@@ -176,6 +181,7 @@ It highlights practical SaaS architecture patterns and real production tradeoffs
 - ✅ Type-safe boundaries using schema validation (Zod) and strong TS typing.
 - ✅ Developer experience: consistent formatting/linting (Biome), modern UI primitives.
 - ✅ CI quality gate on every push to main (Biome, typecheck, build).
+- ✅ Deterministic test suite that validates real SaaS workflows (Vitest + Playwright + Mock Providers Ecosystem).
 
 ### 🧠 Why it matters
 
@@ -1172,6 +1178,60 @@ These are the decisions that made the product reliable.
 - Clerk billing features map directly to app capabilities.
 - Free tier project count includes deleted projects.
 - Plus tier counts only active projects (fair usage).
+
+---
+
+<a id="tests"></a>
+
+## 🔬 Tests
+
+This suite is designed to prove real SaaS workflows, not toy tests.  
+It validates the same contracts used in production while keeping CI deterministic and fast.
+
+### ✅ Coverage Matrix
+
+| Layer | Framework | What it validates | Examples |
+| --- | --- | --- | --- |
+| Unit | Vitest | Gating logic and limits | Plan limits, feature gating, plan-to-feature mapping |
+| Integration | Vitest | Contract-level correctness | Zod output schemas, Inngest event shapes, webhook mapping, golden AI outputs |
+| E2E | Playwright | Real user workflows | Auth gate, create project, upload → processing → results, plan CTA, mobile nav, retry |
+
+**Folder layout:** `tests/unit`, `tests/integration`, `tests/e2e`
+
+### 🧪 Mock Providers Ecosystem (Deterministic by Design)
+
+To make end-to-end testing real yet repeatable, external providers are mocked at the boundary:
+
+- `MOCK_AI=1` returns structured AI fixture outputs that match production Zod schemas.
+- `MOCK_TRANSCRIPTION=1` returns transcript + chapter fixtures (no AssemblyAI calls).
+- `MOCK_PIPELINE=1` runs the pipeline synchronously with mocked providers.
+- `MOCK_AUTH=1` + `MOCK_PLAN=free|plus|max` simulate auth + plan gating.  
+
+Convex is **not mocked**: E2E runs against a real local Convex instance, so mutations, subscriptions, and status transitions are exercised exactly as in production.
+
+### 🔁 CI Proof
+
+All three suites run in GitHub Actions on every push to `main` with named checks:
+
+- ✅ CI Tests (Unit)
+- ✅ CI Tests (Integration)
+- ✅ CI Tests (E2E)
+
+### 🔍 Test Flow Snapshot
+
+```mermaid
+%%{init: {'theme':'base','themeVariables':{'primaryColor':'#3B82F6','primaryTextColor':'#FFFFFF','primaryBorderColor':'#F97316','lineColor':'#3B82F6','secondaryColor':'#F97316','tertiaryColor':'#FFF7ED'}}}%%
+flowchart LR
+  A[Vitest + Playwright] --> B[Mock Flags]
+  B --> C[Mock Providers<br/>AI + Transcription]
+  A --> D[Next.js App]
+  D --> E[Convex Local DB]
+  E --> F[Realtime UI Updates]
+  C --> D
+```
+
+**Why this matters:** It proves the full pipeline (upload → processing → results) without paid APIs, and keeps CI both reliable and high-signal.
+
 
 ---
 
