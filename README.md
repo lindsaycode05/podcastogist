@@ -4,18 +4,15 @@
 
 > AI-Powered Podcast Post-Production Platform  
 > Durable, real-time SaaS workflow pipeline that turns one upload into a full content kit:  
-> upload → transcription → parallel AI jobs → live results
+> upload podcast once → get a complete content pack (transcript + chapters + highlights + social drafts) with real-time progress updates.
 
 ![Podcastogist Hero](readme-assets/hero-banner.jpeg)
 
-**Website:** https://podcastogist.com/  
-**Repository:** https://github.com/lindsaycode05/podcastogist  
-**Issues:** https://github.com/lindsaycode05/podcastogist/issues  
-**LinkedIn:** https://www.linkedin.com/in/lindsaycode/
-
+**Website:** https://podcastogist.com/    
 **Flagship Personal Project:** End-to-end SaaS build created to demonstrate full-stack product engineering depth.  
 **Primary Audience:** Recruiters, hiring managers, and engineers reviewing architecture.  
-**Build Effort:** ~194 hours (Dec 6 → Dec 26, 2025).
+**Build Effort:** ~194 hours (Dec 6 → Dec 26, 2025).  
+**LinkedIn:** https://www.linkedin.com/in/lindsaycode/
 
 ![Next.js](https://img.shields.io/badge/Next.js-16.0.7-black)
 ![React](https://img.shields.io/badge/React-19.2.0-61dafb)
@@ -29,12 +26,14 @@
 ![Tailwind](https://img.shields.io/badge/TailwindCSS-v4-38B2AC)
 ![shadcn/ui](https://img.shields.io/badge/shadcn%2Fui-UI-black)
 ![Biome](https://img.shields.io/badge/Biome-Lint%20%2B%20Format-60A5FA)
-[![CI Quality Gate (Biome)](https://github.com/lindsaycode05/podcastogist/actions/workflows/ci-quality-gate-biome.yml/badge.svg)](https://github.com/lindsaycode05/podcastogist/actions/workflows/ci-quality-gate-biome.yml)
-[![CI Quality Gate (Typecheck)](https://github.com/lindsaycode05/podcastogist/actions/workflows/ci-quality-gate-typecheck.yml/badge.svg)](https://github.com/lindsaycode05/podcastogist/actions/workflows/ci-quality-gate-typecheck.yml)
-[![CI Quality Gate (Build)](https://github.com/lindsaycode05/podcastogist/actions/workflows/ci-quality-gate-build.yml/badge.svg)](https://github.com/lindsaycode05/podcastogist/actions/workflows/ci-quality-gate-build.yml)
-[![CI Tests (Unit)](https://github.com/lindsaycode05/podcastogist/actions/workflows/ci-tests-unit.yml/badge.svg)](https://github.com/lindsaycode05/podcastogist/actions/workflows/ci-tests-unit.yml)
-[![CI Tests (Integration)](https://github.com/lindsaycode05/podcastogist/actions/workflows/ci-tests-integration.yml/badge.svg)](https://github.com/lindsaycode05/podcastogist/actions/workflows/ci-tests-integration.yml)
-[![CI Tests (E2E)](https://github.com/lindsaycode05/podcastogist/actions/workflows/ci-tests-e2e.yml/badge.svg)](https://github.com/lindsaycode05/podcastogist/actions/workflows/ci-tests-e2e.yml)
+[![CI Quality Gate (Biome)](https://github.com/lindsaycode05/podcastogist/actions/workflows/ci-quality-gate-biome.yaml/badge.svg)](https://github.com/lindsaycode05/podcastogist/actions/workflows/ci-quality-gate-biome.yaml)
+[![CI Quality Gate (Typecheck)](https://github.com/lindsaycode05/podcastogist/actions/workflows/ci-quality-gate-typecheck.yaml/badge.svg)](https://github.com/lindsaycode05/podcastogist/actions/workflows/ci-quality-gate-typecheck.yaml)
+[![CI Quality Gate (Build)](https://github.com/lindsaycode05/podcastogist/actions/workflows/ci-quality-gate-build.yaml/badge.svg)](https://github.com/lindsaycode05/podcastogist/actions/workflows/ci-quality-gate-build.yaml)
+[![CI Tests (Unit)](https://github.com/lindsaycode05/podcastogist/actions/workflows/ci-tests-unit.yaml/badge.svg)](https://github.com/lindsaycode05/podcastogist/actions/workflows/ci-tests-unit.yaml)
+[![CI Tests (Integration)](https://github.com/lindsaycode05/podcastogist/actions/workflows/ci-tests-integration.yaml/badge.svg)](https://github.com/lindsaycode05/podcastogist/actions/workflows/ci-tests-integration.yaml)
+[![CI Tests (E2E)](https://github.com/lindsaycode05/podcastogist/actions/workflows/ci-tests-e2e.yaml/badge.svg)](https://github.com/lindsaycode05/podcastogist/actions/workflows/ci-tests-e2e.yaml)
+[![CodeQL](https://github.com/lindsaycode05/podcastogist/actions/workflows/codeql.yaml/badge.svg)](https://github.com/lindsaycode05/podcastogist/actions/workflows/codeql.yaml)
+![Dependabot](https://img.shields.io/badge/Dependabot-Enabled-2cbe4e)
 
 **At a glance:**
 
@@ -105,6 +104,7 @@
 - [Tech Stack](#tech-stack)
 - [Repo Map](#repo-map)
 - [Engineering Notes](#engineering-notes)
+- [Security & Maintenance](#security--maintenance)
 - [Tests Suite](#tests)
 - [Build Challenges](#build-challenges)
 - [Build Timeline](#build-timeline)
@@ -1178,6 +1178,20 @@ These are the decisions that made the product reliable.
 - Clerk billing features map directly to app capabilities.
 - Free tier project count includes deleted projects.
 - Plus tier counts only active projects (fair usage).
+
+---
+
+<a id="security--maintenance"></a>
+
+## 🛡️ Security & Maintenance
+
+- Automated dependency updates (Dependabot)
+- Static analysis / code scanning (CodeQL)
+
+This repo is maintained with automated update and scanning workflows to keep dependencies current and reduce risk.  
+Dependabot PRs are grouped to avoid noise while still surfacing meaningful updates on a weekly cadence.  
+CodeQL runs on pushes, PRs, and a scheduled job to catch common security issues early.  
+Together, these checks keep the Security tab active and provide a visible maintenance signal in GitHub PRs.
 
 ---
 

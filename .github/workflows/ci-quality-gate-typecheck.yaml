@@ -1,7 +1,10 @@
-name: CI Quality Gate (Biome)
+name: CI Quality Gate (Typecheck)
 
 on:
   push:
+    branches:
+      - main
+  pull_request:
     branches:
       - main
 
@@ -9,8 +12,8 @@ permissions:
   contents: read
 
 jobs:
-  biome:
-    name: Biome
+  typecheck:
+    name: Typecheck
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -22,4 +25,4 @@ jobs:
           node-version: 24.11.1
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - run: pnpm check
+      - run: pnpm exec tsc --noEmit
