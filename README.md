@@ -11,12 +11,12 @@
 **Website:** https://podcastogist.com/    
 **Flagship Personal Project:** End-to-end SaaS build created to demonstrate full-stack product engineering depth.  
 **Primary Audience:** Recruiters, hiring managers, and engineers reviewing architecture.  
-**Build Effort:** ~194 hours (Dec 6 → Dec 26, 2025).  
+**Build Effort:** ~200 hours (Dec 6 → Dec 30, 2025).  
 **LinkedIn:** https://www.linkedin.com/in/lindsaycode/
 
-![Next.js](https://img.shields.io/badge/Next.js-16.0.7-black)
-![React](https://img.shields.io/badge/React-19.2.0-61dafb)
-![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)
+![Next.js](https://img.shields.io/badge/Next.js-16.1.1-black)
+![React](https://img.shields.io/badge/React-19.2.3-61dafb)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.9.3-blue)
 ![Clerk](https://img.shields.io/badge/Clerk-Auth%20%2B%20Billing-blue)
 ![Convex](https://img.shields.io/badge/Convex-Realtime%20DB-orange)
 ![Inngest](https://img.shields.io/badge/Inngest-Durable%20Workflows-purple)
@@ -1127,7 +1127,10 @@ A modern, production-grade stack optimized for SaaS workflows.
 - Zod for schema validation.
 - Biome for linting/formatting.
 - CI quality gate on every push to main (Biome, typecheck, build).
+- Vitest for unit + integration tests; Playwright for E2E.
 - Typed AI outputs via Structured Outputs.
+- Dependabot for automated dependency updates.
+- CodeQL for security scanning.
 
 ---
 
@@ -1144,8 +1147,8 @@ Key directories and their roles.
 - `inngest/` → Workflow functions and AI steps.
 - `lib/` → Shared utilities, types, constants, clients.
 - `schemas/` → Zod schemas for AI outputs.
-- `public/` → Runtime app assets.
-- `.github/assets/` → README-only assets (hero, collages, video).
+- `tests/` → Test suites and fixtures.
+- `.github/` → GitHub workflows and repo assets.
 
 ---
 
@@ -1285,9 +1288,9 @@ The project was built in an intense sprint schedule.
 
 **Timeline (2025):**
 
-- Dec 6 → Dec 20: Core build + architecture.
-- Dec 21 → Dec 26: Packaging, video walkthrough, README prep.
-- Total effort: ~194 hours.
+- Dec 6 → Dec 25: Architecture + core build.
+- Dec 25 → Dec 30: Packaging, video walkthrough, README prep.
+- Total effort: ~200 hours.
 
 ---
 
