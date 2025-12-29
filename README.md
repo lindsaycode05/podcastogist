@@ -6,7 +6,7 @@
 > Durable, real-time SaaS workflow pipeline that turns one upload into a full content kit:  
 > upload podcast once → get a complete content pack (transcript + chapters + highlights + social drafts) with real-time progress updates.
 
-![Podcastogist Hero](readme-assets/hero-banner.jpeg)
+![Podcastogist Hero](.github/assets/hero-banner.jpeg)
 
 **Website:** https://podcastogist.com/    
 **Flagship Personal Project:** End-to-end SaaS build created to demonstrate full-stack product engineering depth.  
@@ -349,7 +349,7 @@ flowchart TD
 A fast, high-signal walkthrough of the product flow and key screens.  
 This video is meant for people who want the context in moments.
 
-<video src="readme-assets/walkthrough.mp4" controls></video>
+<video src=".github/assets/walkthrough.mp4" controls></video>
 
 ---
 
@@ -362,55 +362,55 @@ Each collage shows the same page in both themes (light/dark) and viewports (desk
 ### 🏠 Landing Page
 
 Desktop + Mobile • Light + Dark
-![Landing Page](readme-assets/collages/homepage.jpeg)
+![Landing Page](.github/assets/collages/homepage.jpeg)
 
 ### 📤 Upload Page
 
 Drag & drop upload UX + plan limits messaging.  
 Desktop + Mobile • Light + Dark
-![Upload Page](readme-assets/collages/upload.jpeg)
+![Upload Page](.github/assets/collages/upload.jpeg)
 
 ### 🧠 Project Detail — Processing
 
 Project detail view while AI jobs are running.  
 Desktop + Mobile • Light + Dark
-![Project Detail Processing](readme-assets/collages/project-detail_processing.jpeg)
+![Project Detail Processing](.github/assets/collages/project-detail_processing.jpeg)
 
 ### ✅ Project Detail — Processed
 
 Completed project with all unlocked content tabs.  
 Desktop + Mobile • Light + Dark
-![Project Detail Processed](readme-assets/collages/project-detail_processed.jpeg)
+![Project Detail Processed](.github/assets/collages/project-detail_processed.jpeg)
 
 ### 🔒 Project Detail — Feature Gating
 
 Locked tab with upgrade prompt and plan benefits.  
 Desktop + Mobile • Light + Dark
-![Project Detail Feature Gating](readme-assets/collages/project-detail_feature-gating.jpeg)
+![Project Detail Feature Gating](.github/assets/collages/project-detail_feature-gating.jpeg)
 
 ### 📚 Projects Page — Processing
 
 Multiple projects running with live status updates.  
 Desktop + Mobile • Light + Dark
-![Projects Processing](readme-assets/collages/projects_processing.jpeg)
+![Projects Processing](.github/assets/collages/projects_processing.jpeg)
 
 ### 📂 Projects Page — Completed
 
 Multiple finished projects in the dashboard.  
 Desktop + Mobile • Light + Dark
-![Projects Completed](readme-assets/collages/projects_processed.jpeg)
+![Projects Completed](.github/assets/collages/projects_processed.jpeg)
 
 ### 🧼 Projects Page — Empty State
 
 First-time user experience with empty projects list.  
 Desktop • Light + Dark
-![Projects Empty](readme-assets/collages/projects_empty.jpeg)
+![Projects Empty](.github/assets/collages/projects_empty.jpeg)
 
 ### 💳 Upgrade Page
 
 Plan comparison and upgrade CTAs.  
 Desktop • Light + Dark
-![Upgrade Page](readme-assets/collages/upgrade.jpeg)
+![Upgrade Page](.github/assets/collages/upgrade.jpeg)
 
 ---
 
@@ -1145,7 +1145,7 @@ Key directories and their roles.
 - `lib/` → Shared utilities, types, constants, clients.
 - `schemas/` → Zod schemas for AI outputs.
 - `public/` → Runtime app assets.
-- `readme-assets/` → README-only assets (hero, collages, video).
+- `.github/assets/` → README-only assets (hero, collages, video).
 
 ---
 
