@@ -1,9 +1,9 @@
-import { SignInButton } from '@clerk/nextjs';
-import { auth } from '@clerk/nextjs/server';
 import { MicVocal } from 'lucide-react';
 import Link from 'next/link';
+import { SignInButton } from '@/components/auth/auth-client';
 import { Button } from '@/components/ui/button';
 import { PodcastUploader } from '@/components/upload/podcast-uploader';
+import { auth } from '@/lib/auth';
 
 export const HeroSection = async () => {
   const { isAuthenticated } = await auth();

@@ -24,10 +24,10 @@
  */
 'use client';
 
-import { useAuth } from '@clerk/nextjs';
 import { AudioLines, Upload } from 'lucide-react';
 import { useCallback, useMemo } from 'react';
 import { ErrorCode, useDropzone } from 'react-dropzone';
+import { useAuth } from '@/components/auth/auth-client';
 import { ALLOWED_AUDIO_TYPES_EXTENSION_MAP } from '@/lib/constants';
 import { PLAN_LIMITS, PODCASTOGIST_USER_PLANS } from '@/lib/tier-config';
 import { cn } from '@/lib/utils/utils';

@@ -19,11 +19,12 @@
  * - Saves manual editing time for content creators
  * - Each format optimized for its specific purpose
  */
-import type { step as InngestStep } from 'inngest';
 import type OpenAI from 'openai';
 import { zodResponseFormat } from 'openai/helpers/zod';
 import { INNGEST_STEPS } from '@/lib/inngest-steps';
-import { BASE_OPENAI_MODEL, openai } from '@/lib/openai-client';
+import { BASE_OPENAI_MODEL } from '@/lib/openai-client';
+import type { StepTools } from '@/lib/pipeline/step-tools';
+import { aiProvider } from '@/lib/providers/ai-provider';
 import type { TranscriptWithExtras } from '@/lib/types';
 import { type Recaps, recapsSchema } from '@/schemas/ai-outputs';
 
@@ -95,16 +96,13 @@ Be specific, engaging, and valuable. Focus on what makes this podcast unique and
  * - Shows AI call details in Inngest dashboard
  */
 export async function generateRecaps(
-  step: typeof InngestStep,
+  step: StepTools,
   transcript: TranscriptWithExtras
 ): Promise<Recaps> {
   console.log('Generating podcast recaps with GPT-5');
 
   try {
-    // Bind OpenAI method to preserve `this` context (required for step.ai.wrap)
-    const createCompletion = openai.chat.completions.create.bind(
-      openai.chat.completions
-    );
+    const createCompletion = aiProvider.createChatCompletion;
 
     // Call OpenAI with Structured Outputs for type-safe response
     const response = (await step.ai.wrap(

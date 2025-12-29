@@ -17,11 +17,12 @@
  * - TikTok prioritizes trending tags, LinkedIn values professional keywords
  * - Using wrong strategy can reduce reach and engagement
  */
-import type { step as InngestStep } from 'inngest';
 import type OpenAI from 'openai';
 import { zodResponseFormat } from 'openai/helpers/zod';
 import { INNGEST_STEPS } from '@/lib/inngest-steps';
-import { BASE_OPENAI_MODEL, openai } from '@/lib/openai-client';
+import { BASE_OPENAI_MODEL } from '@/lib/openai-client';
+import type { StepTools } from '@/lib/pipeline/step-tools';
+import { aiProvider } from '@/lib/providers/ai-provider';
 import type { TranscriptWithExtras } from '@/lib/types';
 import { type Hashtags, hashtagsSchema } from '@/schemas/ai-outputs';
 
@@ -101,16 +102,13 @@ All hashtags should include the # symbol and be relevant to the actual content d
  * - All hashtags should include # symbol
  */
 export async function generateHashtags(
-  step: typeof InngestStep,
+  step: StepTools,
   transcript: TranscriptWithExtras
 ): Promise<Hashtags> {
   console.log('Generating hashtags with GPT');
 
   try {
-    // Bind OpenAI method to preserve `this` context for step.ai.wrap
-    const createCompletion = openai.chat.completions.create.bind(
-      openai.chat.completions
-    );
+    const createCompletion = aiProvider.createChatCompletion;
 
     // Call OpenAI with Structured Outputs for validated response
     const response = (await step.ai.wrap(

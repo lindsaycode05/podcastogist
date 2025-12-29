@@ -8,10 +8,12 @@
  * Triggers a new Inngest event to regenerate just that specific output.
  */
 
-import { auth } from '@clerk/nextjs/server';
 import { api } from '@/convex/_generated/api';
 import type { Id } from '@/convex/_generated/dataModel';
 import { inngest } from '@/inngest/client';
+import { isMockPipeline } from '@/lib/_tests_/mock-flags';
+import { queueMockRetryJob } from '@/lib/_tests_/mock-runner';
+import { auth } from '@/lib/auth';
 import { convex } from '@/lib/convex-client';
 import { PODCAST_RETRY_JOB_EVENT } from '@/lib/events';
 import {
@@ -51,18 +53,28 @@ export async function retryJob(projectId: Id<'projects'>, job: JobName) {
     originalPlan = PODCASTOGIST_USER_PLANS.PLUS;
   }
 
-  // Trigger Inngest event to retry the specific job
-  // Pass both original and current plans to detect upgrades
-  await inngest.send({
-    name: PODCAST_RETRY_JOB_EVENT,
-    data: {
+  // Used for the test suite
+  if (isMockPipeline()) {
+    queueMockRetryJob({
       projectId,
       job,
-      userId,
       originalPlan,
       currentPlan
-    }
-  });
+    });
+  } else {
+    // Trigger Inngest event to retry the specific job
+    // Pass both original and current plans to detect upgrades
+    await inngest.send({
+      name: PODCAST_RETRY_JOB_EVENT,
+      data: {
+        projectId,
+        job,
+        userId,
+        originalPlan,
+        currentPlan
+      }
+    });
+  }
 
   return { success: true };
 }

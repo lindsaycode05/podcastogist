@@ -19,11 +19,13 @@
  * - Can't be bypassed by client
  */
 
-import { auth } from '@clerk/nextjs/server';
 import { del } from '@vercel/blob';
 import { api } from '@/convex/_generated/api';
 import type { Id } from '@/convex/_generated/dataModel';
 import { inngest } from '@/inngest/client';
+import { isMockPipeline } from '@/lib/_tests_/mock-flags';
+import { queueMockPipeline } from '@/lib/_tests_/mock-runner';
+import { auth } from '@/lib/auth';
 import { convex } from '@/lib/convex-client';
 import { PODCAST_UPLOADED_EVENT } from '@/lib/events';
 import { PODCASTOGIST_USER_PLANS } from '@/lib/tier-config';
@@ -156,20 +158,33 @@ export async function createProjectAction(input: CreateProjectInput) {
       mimeType: mimeType
     });
 
-    // Trigger Inngest workflow asynchronously with user's current plan
-    // Event name "podcast/uploaded" matches workflow trigger
-    await inngest.send({
-      name: PODCAST_UPLOADED_EVENT,
-      data: {
-        projectId, // Convex project ID
+    // Used for the test suite
+    if (isMockPipeline()) {
+      queueMockPipeline({
+        projectId,
         userId,
-        plan, // Pass user's current plan for conditional generation
-        fileUrl, // URL to audio file in Blob
+        plan,
+        fileUrl,
         fileName,
         fileSize: fileSize || 0,
-        mimeType: mimeType
-      }
-    });
+        mimeType
+      });
+    } else {
+      // Trigger Inngest workflow asynchronously with user's current plan
+      // Event name "podcast/uploaded" matches workflow trigger
+      await inngest.send({
+        name: PODCAST_UPLOADED_EVENT,
+        data: {
+          projectId,
+          userId,
+          plan,
+          fileUrl,
+          fileName,
+          fileSize: fileSize || 0,
+          mimeType: mimeType
+        }
+      });
+    }
 
     return { success: true, projectId };
   } catch (error) {

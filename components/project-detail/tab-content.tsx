@@ -1,6 +1,6 @@
 'use client';
 
-import { Protect } from '@clerk/nextjs';
+import { Protect } from '@/components/auth/auth-client';
 import type { Id } from '@/convex/_generated/dataModel';
 import type { FeatureName, JobName } from '@/lib/tier-config';
 import { ErrorRetryCard } from './error-retry-card';

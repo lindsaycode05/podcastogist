@@ -20,8 +20,8 @@
  * - Podcast navigation timestamps
  * - Episode highlight reel planning
  */
-import { formatTimestamp } from '@/lib/format';
-import type { TranscriptWithExtras } from '@/lib/types';
+import { formatTimestamp } from '../../../lib/format';
+import type { TranscriptWithExtras } from '../../../lib/types';
 
 type HighlightMoment = {
   time: string; // Human-readable timestamp (e.g., "12:34")

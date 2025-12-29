@@ -7,8 +7,8 @@
 
 'use client';
 
-import { Protect } from '@clerk/nextjs';
 import { AlertCircle, Lock } from 'lucide-react';
+import { Protect } from '@/components/auth/auth-client';
 import { SelectItem } from '@/components/ui/select';
 import { TabsTrigger } from '@/components/ui/tabs';
 import type { Doc } from '@/convex/_generated/dataModel';

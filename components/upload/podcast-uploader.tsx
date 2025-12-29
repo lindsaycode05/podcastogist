@@ -26,16 +26,16 @@
  */
 'use client';
 
-import { useAuth } from '@clerk/nextjs';
-import { upload } from '@vercel/blob/client';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { toast } from 'sonner';
 import { createProjectAction, validateUploadAction } from '@/actions/projects';
+import { useAuth } from '@/components/auth/auth-client';
 import { Button } from '@/components/ui/button';
 import { UploadDropzone } from '@/components/upload/upload-dropzone';
 import { UploadProgress } from '@/components/upload/upload-progress';
 import { PODCAST_UPLOAD_STATUS } from '@/lib/constants';
+import { uploadPodcastBlob } from '@/lib/providers/blob-provider';
 import type { UploadStatus } from '@/lib/types';
 import {
   estimateDurationFromSize,
@@ -113,13 +113,9 @@ export const PodcastUploader = () => {
         throw new Error(validation.error || 'Validation failed');
       }
 
-      // Step 2: Upload file to Vercel Blob
-      const blob = await upload(selectedFile.name, selectedFile, {
-        access: 'public',
-        handleUploadUrl: '/api/upload',
-        onUploadProgress: ({ percentage }) => {
-          setUploadProgress(percentage);
-        }
+      // Step 2: Upload file to Vercel Blob storage (mockable in tests)
+      const blob = await uploadPodcastBlob(selectedFile, (percentage) => {
+        setUploadProgress(percentage);
       });
 
       // Step 3: Create project and trigger workflow

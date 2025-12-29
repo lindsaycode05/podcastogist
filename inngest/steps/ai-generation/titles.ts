@@ -17,11 +17,12 @@
  * - Each format optimized for specific distribution channel
  * - Keywords help with content strategy beyond just titles
  */
-import type { step as InngestStep } from 'inngest';
 import type OpenAI from 'openai';
 import { zodResponseFormat } from 'openai/helpers/zod';
 import { INNGEST_STEPS } from '@/lib/inngest-steps';
-import { BASE_OPENAI_MODEL, openai } from '@/lib/openai-client';
+import { BASE_OPENAI_MODEL } from '@/lib/openai-client';
+import type { StepTools } from '@/lib/pipeline/step-tools';
+import { aiProvider } from '@/lib/providers/ai-provider';
 import type { TranscriptWithExtras } from '@/lib/types';
 import { type Titles, titlesSchema } from '@/schemas/ai-outputs';
 
@@ -98,16 +99,13 @@ Make titles compelling, accurate, and optimized for discovery.`;
  * - SEO keywords validated for 5-10 range
  */
 export async function generateTitles(
-  step: typeof InngestStep,
+  step: StepTools,
   transcript: TranscriptWithExtras
 ): Promise<Titles> {
   console.log('Generating title suggestions with GPT-5');
 
   try {
-    // Bind OpenAI method to preserve `this` context for step.ai.wrap
-    const createCompletion = openai.chat.completions.create.bind(
-      openai.chat.completions
-    );
+    const createCompletion = aiProvider.createChatCompletion;
 
     // Call OpenAI with Structured Outputs for validated response
     const response = (await step.ai.wrap(

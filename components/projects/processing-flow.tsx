@@ -1,8 +1,8 @@
 'use client';
 
-import { useAuth } from '@clerk/nextjs';
 import { ChevronDown, FileText, MicVocal } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useAuth } from '@/components/auth/auth-client';
 import { GenerationOutputItem } from '@/components/processing-flow/generation-output-item';
 import { PhaseCard } from '@/components/processing-flow/phase-card';
 import { Badge } from '@/components/ui/badge';

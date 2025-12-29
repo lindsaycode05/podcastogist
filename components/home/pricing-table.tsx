@@ -1,7 +1,36 @@
+'use client';
+
 import { PricingTable as ClerkPricingTable } from '@clerk/nextjs';
 import { Loader2 } from 'lucide-react';
+import { isMockAuthClient } from '@/lib/_tests_/mock-flags-client';
 
 export const PricingTable = () => {
+  if (isMockAuthClient()) {
+    return (
+      <div className='flex justify-center w-full'>
+        <div className='max-w-5xl w-full glass-card rounded-3xl p-10 text-center'>
+          <h2 className='text-3xl font-extrabold mb-4'>Pricing</h2>
+          <p className='text-gray-600 dark:text-slate-300 mb-8'>
+            Mock auth is enabled. Billing UI is disabled in test mode.
+          </p>
+          <div className='grid gap-6 md:grid-cols-3'>
+            {['Free', 'Plus', 'Max'].map((plan) => (
+              <div
+                key={plan}
+                className='rounded-2xl border border-border p-6 bg-white/70 dark:bg-slate-900/60'
+              >
+                <p className='text-xl font-bold mb-2'>{plan}</p>
+                <p className='text-sm text-muted-foreground'>
+                  Plan preview placeholder
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className='flex justify-center w-full'>
       <div className='max-w-6xl w-full'>

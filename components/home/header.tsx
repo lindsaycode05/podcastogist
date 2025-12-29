@@ -1,9 +1,14 @@
 'use client';
 
-import { Protect, SignInButton, UserButton, useAuth } from '@clerk/nextjs';
 import { ArrowBigUpDash, Home, MicVocal, Plus } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import {
+  Protect,
+  SignInButton,
+  UserButton,
+  useAuth
+} from '@/components/auth/auth-client';
 import { HeaderRoutes } from '@/components/home/header-routes';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { Badge } from '@/components/ui/badge';

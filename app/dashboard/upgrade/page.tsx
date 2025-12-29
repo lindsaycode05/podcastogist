@@ -14,7 +14,6 @@
  * - /dashboard/upgrade?reason=feature
  */
 
-import { auth } from '@clerk/nextjs/server';
 import {
   ArrowBigUpDash,
   ArrowLeft,
@@ -27,6 +26,7 @@ import {
 import Link from 'next/link';
 import { PricingTable } from '@/components/home/pricing-table';
 import { Badge } from '@/components/ui/badge';
+import { auth } from '@/lib/auth';
 import { PODCASTOGIST_USER_PLANS } from '@/lib/tier-config';
 import { capitalize } from '@/lib/utils/utils';
 

@@ -1,6 +1,6 @@
 'use client';
 
-import { Protect } from '@clerk/nextjs';
+import { Protect } from '@/components/auth/auth-client';
 import { GenerateMissingCard } from '@/components/project-detail/generate-missing-card';
 import { UpgradePrompt } from '@/components/project-detail/upgrade-prompt';
 import { Badge } from '@/components/ui/badge';

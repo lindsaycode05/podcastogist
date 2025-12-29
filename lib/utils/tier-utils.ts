@@ -8,8 +8,8 @@
  * All plan checks use Clerk's native billing system per:
  * https://clerk.com/docs/nextjs/guides/billing/for-b2c
  */
-import type { auth as authType } from '@clerk/nextjs/server';
 import { api } from '@/convex/_generated/api';
+import type { AuthResult } from '@/lib/auth';
 import { convex } from '@/lib/convex-client';
 import {
   type FeatureName,
@@ -42,7 +42,7 @@ export interface UploadValidationResult {
  * @returns Validation result with details
  */
 export const checkUploadLimits = async (
-  auth: Awaited<ReturnType<typeof authType>>,
+  auth: AuthResult,
   userId: string,
   fileSize: number,
   duration?: number

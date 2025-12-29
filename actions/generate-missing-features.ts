@@ -12,10 +12,12 @@
  *
  */
 
-import { auth } from '@clerk/nextjs/server';
 import { api } from '@/convex/_generated/api';
 import type { Id } from '@/convex/_generated/dataModel';
 import { inngest } from '@/inngest/client';
+import { isMockPipeline } from '@/lib/_tests_/mock-flags';
+import { queueMockRetryJob } from '@/lib/_tests_/mock-runner';
+import { auth } from '@/lib/auth';
 import { convex } from '@/lib/convex-client';
 import { PODCAST_RETRY_JOB_EVENT } from '@/lib/events';
 import {
@@ -93,21 +95,33 @@ export async function generateMissingFeatures(projectId: Id<'projects'>) {
     );
   }
 
-  // Trigger Inngest jobs for all missing features in parallel
-  await Promise.all(
-    missingJobs.map((job) =>
-      inngest.send({
-        name: PODCAST_RETRY_JOB_EVENT,
-        data: {
-          projectId,
-          job,
-          userId,
-          originalPlan,
-          currentPlan
-        }
-      })
-    )
-  );
+  // Used for the test suite
+  if (isMockPipeline()) {
+    missingJobs.forEach((job) => {
+      queueMockRetryJob({
+        projectId,
+        job,
+        originalPlan,
+        currentPlan
+      });
+    });
+  } else {
+    // Trigger Inngest jobs for all missing features in parallel
+    await Promise.all(
+      missingJobs.map((job) =>
+        inngest.send({
+          name: PODCAST_RETRY_JOB_EVENT,
+          data: {
+            projectId,
+            job,
+            userId,
+            originalPlan,
+            currentPlan
+          }
+        })
+      )
+    );
+  }
 
   return {
     success: true,

@@ -24,10 +24,11 @@
  * - Improves video SEO and watch time
  * - Enhances viewer navigation experience
  */
-import type { step as InngestStep } from 'inngest';
 import type OpenAI from 'openai';
 import { formatTimestamp } from '@/lib/format';
-import { BASE_OPENAI_MODEL, openai } from '@/lib/openai-client';
+import { BASE_OPENAI_MODEL } from '@/lib/openai-client';
+import type { StepTools } from '@/lib/pipeline/step-tools';
+import { aiProvider } from '@/lib/providers/ai-provider';
 import type { TranscriptWithExtras } from '@/lib/types';
 
 type YouTubeTimestamp = {
@@ -51,7 +52,7 @@ type YouTubeTimestamp = {
  * - Graceful degradation on JSON parse errors
  */
 export async function generateYouTubeTimestamps(
-  step: typeof InngestStep,
+  step: StepTools,
   transcript: TranscriptWithExtras
 ): Promise<YouTubeTimestamp[]> {
   console.log(
@@ -130,10 +131,7 @@ Return ONLY valid JSON in this exact format:
 
 Remember: Create TITLES, not transcript excerpts!`;
 
-  // Bind OpenAI method to preserve `this` context for step.ai.wrap
-  const createCompletion = openai.chat.completions.create.bind(
-    openai.chat.completions
-  );
+  const createCompletion = aiProvider.createChatCompletion;
 
   // Call GPT to enhance chapter titles
   const response = (await step.ai.wrap(

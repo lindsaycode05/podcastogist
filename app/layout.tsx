@@ -5,6 +5,7 @@ import { ClerkProvider } from '@clerk/nextjs';
 import { ConvexClientProvider } from '@/components/convex-client-provider';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/sonner';
+import { isMockAuth } from '@/lib/_tests_/mock-flags';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -26,27 +27,32 @@ const RootLayout = ({
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
-  return (
-    <ClerkProvider>
-      <ConvexClientProvider>
-        <html lang='en' suppressHydrationWarning>
-          <body
-            className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+  const content = (
+    <ConvexClientProvider>
+      <html lang='en' suppressHydrationWarning>
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
+          <ThemeProvider
+            attribute='class'
+            defaultTheme='system'
+            enableSystem
+            disableTransitionOnChange
           >
-            <ThemeProvider
-              attribute='class'
-              defaultTheme='system'
-              enableSystem
-              disableTransitionOnChange
-            >
-              {children}
-              <Toaster />
-            </ThemeProvider>
-          </body>
-        </html>
-      </ConvexClientProvider>
-    </ClerkProvider>
+            {children}
+            <Toaster />
+          </ThemeProvider>
+        </body>
+      </html>
+    </ConvexClientProvider>
   );
+
+  // Used for the test suite
+  if (isMockAuth()) {
+    return content;
+  }
+
+  return <ClerkProvider>{content}</ClerkProvider>;
 };
 
 export default RootLayout;

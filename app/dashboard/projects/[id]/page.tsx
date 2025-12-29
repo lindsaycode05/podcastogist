@@ -1,6 +1,5 @@
 'use client';
 
-import { useAuth } from '@clerk/nextjs';
 import { useQuery } from 'convex/react';
 import { Loader2, Save, SquarePen, Trash2, X } from 'lucide-react';
 import { useParams, useRouter } from 'next/navigation';
@@ -10,6 +9,7 @@ import {
   deleteProjectAction,
   updateDisplayNameAction
 } from '@/actions/projects';
+import { useAuth } from '@/components/auth/auth-client';
 import { TabContent } from '@/components/project-detail/tab-content';
 import {
   DesktopTabTrigger,

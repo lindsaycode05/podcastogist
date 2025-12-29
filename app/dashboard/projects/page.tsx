@@ -1,8 +1,8 @@
-import { auth } from '@clerk/nextjs/server';
 import { preloadQuery } from 'convex/nextjs';
 import { redirect } from 'next/navigation';
 import { ProjectsList } from '@/components/projects/projects-list';
 import { api } from '@/convex/_generated/api';
+import { auth } from '@/lib/auth';
 
 const ProjectsPage = async () => {
   const { userId } = await auth();

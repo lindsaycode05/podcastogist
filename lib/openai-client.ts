@@ -20,6 +20,18 @@ import OpenAI from 'openai';
 // Fast and cost-effective model
 export const BASE_OPENAI_MODEL = 'gpt-5-mini';
 
-export const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY
-});
+let openaiClient: OpenAI | null = null;
+
+export const getOpenAI = (): OpenAI => {
+  if (!openaiClient) {
+    const apiKey = process.env.OPENAI_API_KEY;
+    if (!apiKey) {
+      throw new Error(
+        'Missing OPENAI_API_KEY environment variable for OpenAI client'
+      );
+    }
+    openaiClient = new OpenAI({ apiKey });
+  }
+
+  return openaiClient;
+};

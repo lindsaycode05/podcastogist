@@ -6,6 +6,7 @@
  */
 import { inngest } from '@/inngest/client';
 import { ASSEMBLYAI_TRANSCRIPT_STATUS_EVENT } from '@/lib/events';
+import { parseAssemblyAIWebhook } from '@/lib/providers/transcription-provider';
 
 export const dynamic = 'force-dynamic';
 
@@ -31,14 +32,9 @@ export async function POST(request: Request) {
     );
   }
 
-  const transcriptId =
-    (body.transcript_id as string | undefined) ||
-    (body.transcriptId as string | undefined) ||
-    (body.id as string | undefined);
-  const status = body.status as string | undefined;
-  const error = body.error as string | undefined;
+  const webhookData = parseAssemblyAIWebhook(body);
 
-  if (!transcriptId || !status) {
+  if (!webhookData) {
     return Response.json(
       { ok: false, error: 'Missing transcriptId or status' },
       { status: 400 }
@@ -50,9 +46,9 @@ export async function POST(request: Request) {
       name: ASSEMBLYAI_TRANSCRIPT_STATUS_EVENT,
       data: {
         projectId,
-        transcriptId,
-        status,
-        error
+        transcriptId: webhookData.transcriptId,
+        status: webhookData.status,
+        error: webhookData.error
       }
     });
   } catch (sendError) {
