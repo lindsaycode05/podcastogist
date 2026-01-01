@@ -9,6 +9,7 @@
  */
 
 import type * as _tests_ from "../_tests_.js";
+import type * as demo from "../demo.js";
 import type * as projects from "../projects.js";
 
 import type {
@@ -19,6 +20,7 @@ import type {
 
 declare const fullApi: ApiFromModules<{
   _tests_: typeof _tests_;
+  demo: typeof demo;
   projects: typeof projects;
 }>;
 

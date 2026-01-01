@@ -19,6 +19,11 @@ export default defineSchema({
     // User ownership - links to Clerk user ID
     userId: v.string(),
 
+    // Demo metadata - public sample projects flagged in the DB
+    isDemo: v.optional(v.boolean()),
+    demoSlug: v.optional(v.string()),
+    demoOrder: v.optional(v.number()),
+
     // Soft delete timestamp - allows FREE tier to count all projects ever created
     deletedAt: v.optional(v.number()),
 
@@ -213,4 +218,6 @@ export default defineSchema({
     .index('by_status', ['status']) // Filter by processing status
     .index('by_user_and_status', ['userId', 'status']) // User's active/completed projects
     .index('by_created_at', ['createdAt']) // Sort by newest first
+    .index('by_demo_order', ['isDemo', 'demoOrder']) // List demo projects by order
+    .index('by_demo_slug', ['demoSlug', 'isDemo']) // Lookup demo project by slug
 });
