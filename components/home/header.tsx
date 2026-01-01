@@ -20,6 +20,7 @@ export const Header = () => {
   const pathname = usePathname();
   const isDashboard = pathname?.startsWith('/dashboard');
   const showHeaderRoutes = isDashboard;
+  const showDemoCta = !isSignedIn && pathname === '/';
 
   return (
     <header
@@ -200,6 +201,16 @@ export const Header = () => {
                     Sign In
                   </Button>
                 </SignInButton>
+                {showDemoCta && (
+                  <Link href='/demo'>
+                    <Button className='block md:hidden gradient-sunrise text-white hover-glow hover:scale-105 shadow-lg transition-all duration-300'>
+                      Try Demo
+                    </Button>
+                    <Button className='hidden md:block gradient-sunrise text-white hover-glow hover:scale-105 shadow-lg transition-all duration-300'>
+                      Try Demo as Guest User
+                    </Button>
+                  </Link>
+                )}
               </>
             )}
           </div>
