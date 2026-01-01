@@ -13,6 +13,7 @@ interface TabContentProps {
   data: unknown;
   error?: string;
   children: React.ReactNode;
+  mode?: 'real' | 'demo';
   // Optional props for enhanced error/empty handling
   projectId?: Id<'projects'>;
   feature?: FeatureName;
@@ -35,15 +36,18 @@ export const TabContent = ({
   data,
   error,
   children,
+  mode = 'real',
   projectId,
   feature,
   featureName,
   jobName,
   emptyMessage = 'No data available'
 }: TabContentProps) => {
+  const isDemo = mode === 'demo';
+
   // Helper to wrap content with feature gating if needed
   const wrapWithProtect = (content: React.ReactNode) => {
-    if (!feature || !featureName) return content;
+    if (isDemo || !feature || !featureName) return content;
 
     return (
       <Protect
@@ -62,7 +66,7 @@ export const TabContent = ({
 
   // Simple pass-through if enhanced props not provided (backward compatible)
   if (!projectId || !jobName) {
-    return <>{children}</>;
+    return wrapWithProtect(children);
   }
 
   // Error state

@@ -1,11 +1,11 @@
 import { preloadQuery } from 'convex/nextjs';
 import { Sparkles } from 'lucide-react';
-// import { DemoProjectsList } from '@/components/demo/demo-projects-list';
+import { DemoProjectsList } from '@/components/demo/demo-projects-list';
 import { Badge } from '@/components/ui/badge';
 import { api } from '@/convex/_generated/api';
 
 const DemoPage = async () => {
-  const _preloadedProjects = await preloadQuery(api.demo.listProjects, {});
+  const preloadedProjects = await preloadQuery(api.demo.listProjects, {});
 
   return (
     <div className='min-h-screen mesh-background-subtle -mt-4 xl:-mt-10 pt-4 xl:pt-10'>
@@ -24,7 +24,7 @@ const DemoPage = async () => {
           </p>
         </div>
 
-        {/* <DemoProjectsList preloadedProjects={preloadedProjects} /> */}
+        <DemoProjectsList preloadedProjects={preloadedProjects} />
       </div>
     </div>
   );

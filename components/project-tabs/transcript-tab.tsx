@@ -17,13 +17,16 @@ interface TranscriptTabProps {
       confidence: number;
     }[];
   };
+  mode?: 'real' | 'demo';
 }
 
 export const TranscriptTab = ({
   projectId,
-  transcript
+  transcript,
+  mode = 'real'
 }: TranscriptTabProps) => {
   const hasSpeakers = transcript.speakers && transcript.speakers.length > 0;
+  const isDemo = mode === 'demo';
 
   // Color palette for speakers - cycles through these colors
   const speakerColors = [
@@ -67,6 +70,57 @@ export const TranscriptTab = ({
     );
   }
 
+  const content = (
+    <div className='glass-card rounded-2xl p-6 md:p-8'>
+      <div className='mb-6 md:mb-8'>
+        <h3 className='text-xl md:text-2xl font-bold gradient-sunrise-text mb-2'>
+          Speaker Dialogue
+        </h3>
+        <p className='text-sm text-gray-600 dark:text-slate-300'>
+          Podcastogist identified{' '}
+          {new Set(transcript.speakers?.map((s) => s.speaker)).size} speaker(s)
+          in this podcast
+        </p>
+      </div>
+      <div className='space-y-4 md:space-y-6'>
+        {transcript.speakers?.map((utterance) => (
+          <div
+            key={`${utterance.start}-${utterance.speaker}`}
+            className='flex gap-3 md:gap-4 items-start p-4 md:p-5 glass-card rounded-xl border-l-4 border-l-blue-400 dark:border-l-blue-500/60'
+          >
+            <Badge
+              className={`mt-1 shrink-0 px-3 py-1.5 text-sm font-bold shadow-md ${getSpeakerColor(
+                utterance.speaker
+              )}`}
+            >
+              Speaker {utterance.speaker}
+            </Badge>
+            <div className='flex-1 min-w-0'>
+              <div className='flex flex-wrap items-center gap-2 mb-2'>
+                <Badge
+                  variant='outline'
+                  className='text-xs shrink-0 border-blue-200 text-blue-700 dark:border-blue-500/40 dark:text-blue-200 px-0'
+                >
+                  {new Date(utterance.start * 1000).toISOString().substr(11, 8)}
+                </Badge>
+                <span className='text-xs text-gray-500 dark:text-slate-400'>
+                  {Math.round(utterance.confidence * 100)}% confidence
+                </span>
+              </div>
+              <p className='text-sm md:text-base text-gray-700 dark:text-slate-200 leading-relaxed break-words'>
+                {utterance.text}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+
+  if (isDemo) {
+    return content;
+  }
+
   return (
     <Protect
       feature={FEATURES.SPEAKER_DIARIZATION}
@@ -77,52 +131,7 @@ export const TranscriptTab = ({
         />
       }
     >
-      <div className='glass-card rounded-2xl p-6 md:p-8'>
-        <div className='mb-6 md:mb-8'>
-          <h3 className='text-xl md:text-2xl font-bold gradient-sunrise-text mb-2'>
-            Speaker Dialogue
-          </h3>
-          <p className='text-sm text-gray-600 dark:text-slate-300'>
-            Podcastogist identified{' '}
-            {new Set(transcript.speakers?.map((s) => s.speaker)).size}{' '}
-            speaker(s) in this podcast
-          </p>
-        </div>
-        <div className='space-y-4 md:space-y-6'>
-          {transcript.speakers?.map((utterance) => (
-            <div
-              key={`${utterance.start}-${utterance.speaker}`}
-              className='flex gap-3 md:gap-4 items-start p-4 md:p-5 glass-card rounded-xl border-l-4 border-l-blue-400 dark:border-l-blue-500/60'
-            >
-              <Badge
-                className={`mt-1 shrink-0 px-3 py-1.5 text-sm font-bold shadow-md ${getSpeakerColor(
-                  utterance.speaker
-                )}`}
-              >
-                Speaker {utterance.speaker}
-              </Badge>
-              <div className='flex-1 min-w-0'>
-                <div className='flex flex-wrap items-center gap-2 mb-2'>
-                  <Badge
-                    variant='outline'
-                    className='text-xs shrink-0 border-blue-200 text-blue-700 dark:border-blue-500/40 dark:text-blue-200'
-                  >
-                    {new Date(utterance.start * 1000)
-                      .toISOString()
-                      .substr(11, 8)}
-                  </Badge>
-                  <span className='text-xs text-gray-500 dark:text-slate-400'>
-                    {Math.round(utterance.confidence * 100)}% confidence
-                  </span>
-                </div>
-                <p className='text-sm md:text-base text-gray-700 dark:text-slate-200 leading-relaxed break-words'>
-                  {utterance.text}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+      {content}
     </Protect>
   );
 };

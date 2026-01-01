@@ -17,12 +17,17 @@ import type { TabConfig } from '@/lib/tab-config';
 interface TabTriggerItemProps {
   tab: TabConfig;
   project: Doc<'projects'>;
+  showLocks?: boolean;
 }
 
 /**
  * Mobile dropdown item for a tab
  */
-export const MobileTabItem = ({ tab, project }: TabTriggerItemProps) => {
+export const MobileTabItem = ({
+  tab,
+  project,
+  showLocks = true
+}: TabTriggerItemProps) => {
   const hasError =
     tab.errorKey &&
     project.jobErrors?.[tab.errorKey as keyof typeof project.jobErrors];
@@ -32,7 +37,7 @@ export const MobileTabItem = ({ tab, project }: TabTriggerItemProps) => {
       <span className='flex items-center gap-2'>
         {tab.label}
         {hasError && <AlertCircle className='h-4 w-4 text-destructive' />}
-        {tab.feature && (
+        {tab.feature && showLocks && (
           <Protect
             feature={tab.feature}
             fallback={<Lock className='h-3 w-3' />}
@@ -46,7 +51,11 @@ export const MobileTabItem = ({ tab, project }: TabTriggerItemProps) => {
 /**
  * Desktop tab trigger for a tab
  */
-export const DesktopTabTrigger = ({ tab, project }: TabTriggerItemProps) => {
+export const DesktopTabTrigger = ({
+  tab,
+  project,
+  showLocks = true
+}: TabTriggerItemProps) => {
   const hasError =
     tab.errorKey &&
     project.jobErrors?.[tab.errorKey as keyof typeof project.jobErrors];
@@ -58,7 +67,7 @@ export const DesktopTabTrigger = ({ tab, project }: TabTriggerItemProps) => {
     >
       {tab.label}
       {hasError && <AlertCircle className='h-4 w-4 text-destructive' />}
-      {tab.feature && (
+      {tab.feature && showLocks && (
         <Protect
           feature={tab.feature}
           fallback={<Lock className='h-3 w-3' />}

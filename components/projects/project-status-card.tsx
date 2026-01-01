@@ -4,16 +4,24 @@ import { formatDuration, formatFileSize, formatSmartDate } from '@/lib/format';
 
 interface ProjectStatusCardProps {
   project: Doc<'projects'>;
+  features?: { showDemoCreationDate?: boolean; showFileName?: boolean };
 }
 
-export const ProjectStatusCard = ({ project }: ProjectStatusCardProps) => {
+export const ProjectStatusCard = ({
+  project,
+  features
+}: ProjectStatusCardProps) => {
+  const { showDemoCreationDate = false, showFileName = true } = features || {};
+
   return (
     <div className='glass-card-strong rounded-2xl p-8 hover-lift'>
       <div className='flex flex-col md:flex-row md:items-start gap-6'>
         <div className='flex-1 min-w-0'>
-          <h2 className='text-2xl font-bold wrap-break-words mb-4 text-gray-900 dark:text-slate-100'>
-            {project.fileName}
-          </h2>
+          {showFileName && (
+            <h2 className='text-2xl font-bold wrap-break-words mb-4 text-gray-900 dark:text-slate-100'>
+              {project.fileName}
+            </h2>
+          )}
           <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
             <div className='flex items-center gap-3'>
               <div className='p-2 rounded-lg bg-blue-100 dark:bg-blue-500/20'>
@@ -24,7 +32,9 @@ export const ProjectStatusCard = ({ project }: ProjectStatusCardProps) => {
                   Created
                 </p>
                 <p className='text-sm font-semibold text-gray-900 dark:text-slate-100'>
-                  {formatSmartDate(project.createdAt)}
+                  {showDemoCreationDate
+                    ? 'Now'
+                    : formatSmartDate(project.createdAt)}
                 </p>
               </div>
             </div>

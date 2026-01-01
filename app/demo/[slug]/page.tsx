@@ -4,8 +4,8 @@ import { useQuery } from 'convex/react';
 import { Loader2 } from 'lucide-react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
-// import { DemoGradientOrbs } from '@/components/demo/demo-gradient-orbs';
-// import { DemoProjectDetail } from '@/components/demo/demo-project-detail';
+import { DemoGradientOrbs } from '@/components/demo/demo-gradient-orbs';
+import { DemoProjectDetail } from '@/components/demo/demo-project-detail';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { api } from '@/convex/_generated/api';
@@ -25,7 +25,7 @@ const DemoProjectPage = () => {
         <div className='flex items-center justify-center min-h-[400px]'>
           <Loader2 className='h-8 w-8 animate-spin text-blue-600 dark:text-blue-300' />
         </div>
-        {/* <DemoGradientOrbs /> */}
+        <DemoGradientOrbs />
       </div>
     );
   }
@@ -45,12 +45,12 @@ const DemoProjectPage = () => {
             </Link>
           </CardContent>
         </Card>
-        {/* <DemoGradientOrbs /> */}
+        <DemoGradientOrbs />
       </div>
     );
   }
 
-  // return <DemoProjectDetail project={project} />;
+  return <DemoProjectDetail project={project} />;
 };
 
 export default DemoProjectPage;
