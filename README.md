@@ -8,7 +8,8 @@
 
 ![Podcastogist Hero](.github/assets/hero-banner.jpeg)
 
-**Website:** https://podcastogist.com/    
+**Website:** https://podcastogist.com    
+**Instant demo (no login):** https://podcastogist.com/demo    
 **Flagship Personal Project:** End-to-end SaaS build created to demonstrate full-stack product engineering depth.  
 **Primary Audience:** Recruiters, hiring managers, and engineers reviewing architecture.  
 **Build Effort:** ~200 hours (Dec 6 → Dec 30, 2025).  
