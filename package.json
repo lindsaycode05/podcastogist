@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev & convex dev",
+    "inngest:dev": "pnpm dlx inngest-cli@latest dev",
     "build": "next build",
     "start": "next start",
     "check": "biome check",
