@@ -8,8 +8,8 @@
 
 ![Podcastogist Hero](.github/assets/hero-banner.jpeg)
 
-**Website:** https://podcastogist.com    
-**Instant demo (no login):** https://podcastogist.com/demo    
+**Website:** https://podcastogist.com  
+**Instant demo (no login):** https://podcastogist.com/demo  
 **Flagship Personal Project:** End-to-end SaaS build created to demonstrate full-stack product engineering depth.  
 **Primary Audience:** Recruiters, hiring managers, and engineers reviewing architecture.  
 **Build Effort:** ~200 hours (Dec 6 → Dec 30, 2025).  
@@ -47,6 +47,19 @@
 
 ---
 
+<a id="video-walkthrough"></a>
+
+## 🎥 Video Walkthrough
+
+A fast, 200 seconds, high-signal walkthrough of the product flow, architecture, and quality gates.  
+This video is meant for people who want the context in moments.
+
+Intro - `0:00` | Product Overview - `0:30` | Architecture Overview - `2:20` | CI & Tests - `3:15`
+
+https://github.com/user-attachments/assets/df59a707-b8da-44a3-9261-f0ee01aac0bd
+
+---
+
 <a id="quick-section-jump-buttons"></a>
 
 ## 📋 Table of Sections:
@@ -63,7 +76,7 @@
 
 **🎥 Media & UI**
 
-- [Video Walkthrough](#video-walkthrough)
+- [Video Walkthrough](#video-walkthrough) (Watch this to get instant context 📍)
 - [UI Tour](#ui-tour)
 
 **💳 Plans & Gating**
@@ -340,17 +353,6 @@ flowchart TD
   H --> I[User Views Project Detail page]
   I --> J[Live Updates via Convex]
 ```
-
----
-
-<a id="video-walkthrough"></a>
-
-## 🎥 Video Walkthrough
-
-A fast, high-signal walkthrough of the product flow and key screens.  
-This video is meant for people who want the context in moments.
-
-<video src=".github/assets/walkthrough.mp4" controls></video>
 
 ---
 
@@ -1208,11 +1210,11 @@ It validates the same contracts used in production while keeping CI deterministi
 
 ### ✅ Coverage Matrix
 
-| Layer | Framework | What it validates | Examples |
-| --- | --- | --- | --- |
-| Unit | Vitest | Gating logic and limits | Plan limits, feature gating, plan-to-feature mapping |
-| Integration | Vitest | Contract-level correctness | Zod output schemas, Inngest event shapes, webhook mapping, golden AI outputs |
-| E2E | Playwright | Real user workflows | Auth gate, create project, upload → processing → results, plan CTA, mobile nav, retry |
+| Layer       | Framework  | What it validates          | Examples                                                                              |
+| ----------- | ---------- | -------------------------- | ------------------------------------------------------------------------------------- |
+| Unit        | Vitest     | Gating logic and limits    | Plan limits, feature gating, plan-to-feature mapping                                  |
+| Integration | Vitest     | Contract-level correctness | Zod output schemas, Inngest event shapes, webhook mapping, golden AI outputs          |
+| E2E         | Playwright | Real user workflows        | Auth gate, create project, upload → processing → results, plan CTA, mobile nav, retry |
 
 **Folder layout:** `tests/unit`, `tests/integration`, `tests/e2e`
 
@@ -1223,7 +1225,7 @@ To make end-to-end testing real yet repeatable, external providers are mocked at
 - `MOCK_AI=1` returns structured AI fixture outputs that match production Zod schemas.
 - `MOCK_TRANSCRIPTION=1` returns transcript + chapter fixtures (no AssemblyAI calls).
 - `MOCK_PIPELINE=1` runs the pipeline synchronously with mocked providers.
-- `MOCK_AUTH=1` + `MOCK_PLAN=free|plus|max` simulate auth + plan gating.  
+- `MOCK_AUTH=1` + `MOCK_PLAN=free|plus|max` simulate auth + plan gating.
 
 Convex is **not mocked**: E2E runs against a real local Convex instance, so mutations, subscriptions, and status transitions are exercised exactly as in production.
 
@@ -1249,7 +1251,6 @@ flowchart LR
 ```
 
 **Why this matters:** It proves the full pipeline (upload → processing → results) without paid APIs, and keeps CI both reliable and high-signal.
-
 
 ---
 
